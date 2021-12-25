@@ -1,0 +1,74 @@
+.HeadingContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.Heading {
+	color: var(--pri);
+	font-weight: 900;
+}
+
+.Church {
+	height: fit-content;
+	width: 300px;
+	margin: 20px auto;
+	background: #FE35070D 0% 0% no-repeat padding-box;
+	box-shadow: 0px 10px 10px #00000029;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.NewChurch {
+	padding: 15px;
+}
+
+.Info {
+	padding: 15px;
+}
+
+.Name {
+	margin: 10px 0;
+	font-weight: 700;
+	color: var(--pri) !important;
+}
+
+.Image {
+	display: block;
+	height: 200px;
+	width: 100%;
+	background-color: #f5f5f5;
+}
+
+.TextareaWrapper::after,
+.TextareaWrapper textarea {
+	padding: 0 15px !important;
+	border: 1px solid #ccc;
+}
+
+.TextareaWrapper {
+	padding: 0 !important;
+	border: none;
+}
+
+.TextareaWrapper textarea:focus {
+	border: 1px solid var(--pri);
+}
+
+.PlusIcon {
+	display: block;
+	margin: 10px auto;
+}
+
+@media (min-width: 1000px) {
+	.Churches {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.Church {
+		width: calc(50% - 20px);
+	}
+}

@@ -34,6 +34,10 @@ a {
   box-sizing: border-box;
 }
 
+input {
+	font: inherit;
+}
+
 section {
 	padding: 30px;
 }

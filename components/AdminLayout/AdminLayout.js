@@ -16,12 +16,13 @@ const Sidebar = () => {
 						className={styles.SidebarItem}>
 						<Link 
 							href={pageName}
-							className={({ isActive }) => [
-			        	styles.SidebarLink,
-			        	isActive ? styles.Active : ''
-			        ].join(' ')}
 						>
-							<a>
+							<a
+								className={({ isActive }) => [
+						        	styles.SidebarLink,
+						        	isActive ? styles.Active : ''
+						        ].join(' ')}
+						   	>
 								{ capitalize(pageName).replace(' ', '-') }								
 							</a>
 						</Link>

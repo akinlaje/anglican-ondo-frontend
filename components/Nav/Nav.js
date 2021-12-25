@@ -53,10 +53,6 @@ const Nav = () => {
 			display: 'About the Church'
 		},
 		{
-			href: '/news-and-events',
-			display: 'News and Events'
-		},
-		{
 			href: '/women',
 			display: 'Women[M.U & W.G]'
 		},
@@ -78,7 +74,7 @@ const Nav = () => {
 					<Image 
 						className={styles.NavBrandImg} 
 						alt='Church Logo' 
-						src='/images/diocese logo.png' 
+						src='/images/diocese-logo.png' 
 						height='60px'
 						width='60px'
 					/>

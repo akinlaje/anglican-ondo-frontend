@@ -6,10 +6,10 @@ const footer = () => {
 	return (
 		<footer className={styles.Footer}>
 			<div>
-				<Image 
+				<Image
 						className={styles.Logo} 
 						alt='Church Logo' 
-						src='/images/diocese logo.png' 
+						src='/images/diocese-logo.png' 
 						height='60px'
 						width='60px'
 					/>

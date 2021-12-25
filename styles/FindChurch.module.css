@@ -1,0 +1,30 @@
+.Header {
+	padding: 30px 60px;
+	margin-bottom: 0;
+	text-align: center;
+	background-color: #eee;
+	font-size: 1.2em;
+}
+
+.Heading {
+	color: var(--pri);
+	margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+	.Header {
+		min-height: 65vh;
+		display: flex;
+		flex-flow: column;
+		justify-items: center;
+		text-align: left;
+	}
+
+	.HeaderInner {
+		margin: auto 0;
+	}
+
+	.Heading {
+		font-size: 3em;
+	}
+}

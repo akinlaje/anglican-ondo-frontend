@@ -1,0 +1,130 @@
+.Header {
+	padding: 30px 60px;
+	margin-bottom: 0;
+	text-align: center;
+	background-color: #eee;
+	font-size: 1.2em;
+}
+
+.Heading {
+	color: var(--pri);
+	margin-bottom: 0;
+}
+
+.FormSection {
+	padding: 0;
+}
+
+.Welcome {
+	padding: 30px;
+	color: #fff;
+	background-color: #555;
+}
+
+.HelloText {
+	font-size: 3em;
+	font-weight: 700;
+}
+
+.WelcomeText {
+	font-size: 2.5em;
+	font-weight: 500;
+}
+
+.Here {
+	padding: 10px 20px;
+	width: fit-content;
+	background-color: #fff;
+	color: var(--pri);
+	border-radius: 10px;
+}
+
+.Form {
+	padding: 30px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.FormHeading {
+	font-weight: 500;
+	text-align: center;
+}
+
+.Input {
+	display: block;
+	height: 50px;
+	width: 100%;
+	padding: 0 20px;
+	margin-bottom: 20px;
+	border: 1px solid var(--pri);
+	border-radius: 15px;
+}
+
+/*.DateInputWrapper */
+
+.Label {
+	display: block;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.SubmitButton {
+	display: block;
+	width: fit-content;
+	margin: 0 auto;
+	padding: 15px 25px;
+	background-color: var(--pri);
+	color: #fff;
+	border-radius: 10px;
+	border: none;
+}
+
+@media (min-width: 768px) {
+	.Header {
+		min-height: 65vh;
+		display: flex;
+		flex-flow: column;
+		justify-items: center;
+		text-align: left;
+	}
+
+	.HeaderInner {
+		margin: auto 0;
+	}
+
+	.Heading {
+		font-size: 3em;
+	}
+
+	.Welcome,
+	.Form {
+		padding: 60px;
+	}
+
+	.Flex {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.DateInputWrapper {
+		width: calc(50% - 20px);
+	}
+}
+
+@media (min-width: 960px) {
+	.FormSection {
+		display: flex;
+	}
+
+	.Welcome {
+		flex: 0.9;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.Form {
+		flex: 1;
+		max-width: unset;
+	}
+}

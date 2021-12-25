@@ -1,0 +1,32 @@
+.AddImageContainer {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+
+.UploadImageWrapper {
+	margin: 0 20px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.UploadImage {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Input {
+	min-height: 40px;
+	font-weight: 500;
+	text-align: center;
+	border: none;
+}
+
+@media (min-width: 768px) {
+	.AddImageContainer {
+		flex-flow: row;
+		flex-wrap: wrap;
+		max-width: 988px;
+		margin: 0 auto;
+	}
+}

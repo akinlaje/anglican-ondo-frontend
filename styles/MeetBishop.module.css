@@ -1,0 +1,113 @@
+.Header {
+	padding: 30px 60px;
+	margin-bottom: 0;
+	text-align: center;
+	background-color: #eee;
+	font-size: 1.2em;
+}
+
+.Heading {
+	color: var(--pri);
+	margin-bottom: 0;
+}
+
+.MainTextHeading {
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+
+.MainImageWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.MainImage {
+	display: block;
+	margin: 30px 0;
+	height: 200px;
+	width: 200px;
+	border: 2px solid var(--pri);
+	border-radius: 50%;
+}
+
+.SubHeading {
+	font-weight: 500;
+}
+
+.Clergy {
+	width: fit-content;
+	margin: 30px auto;
+	text-align: center;
+}
+
+.ClergyImage {
+	display: block;
+	height: 250px;
+	width: 250px;
+	margin: 0 auto;
+	border: 2px solid var(--pri);
+	border-radius: 50%;
+}
+
+.ClergyName {
+	margin-bottom: 5px;
+	font-weight: 500;
+}
+
+@media (min-width: 425px) {
+	.MainImage {
+		height: 300px;
+		width: 300px;
+	}
+}
+
+@media (min-width: 768px) {
+	.Header {
+		min-height: 65vh;
+		display: flex;
+		flex-flow: column;
+		justify-items: center;
+		text-align: left;
+	}
+
+	.HeaderInner {
+		margin: auto 0;
+	}
+
+	.Heading {
+		font-size: 3em;
+	}
+
+	.CurrentBishopSection {
+		display: flex;
+		flex-flow: row-reverse;
+	}
+
+	.MainImageWrapper,
+	.MainTextWrapper {
+		flex: 1;
+	}
+
+	.MainImage {
+		margin: 0 20px;
+	}
+
+	.ClergyList {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		max-width: 1150px;
+		margin: 0 auto;
+	}
+
+	.Clergy {
+		width: calc(50% - 20px);
+	}
+}
+
+@media (min-width: 768px) {
+	.Clergy {
+		width: calc(33.33% - 20px);
+	}
+}

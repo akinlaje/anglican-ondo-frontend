@@ -1,0 +1,37 @@
+.Container {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+}
+
+.Stat {
+	height: 250px;
+	width: 250px;
+	padding: 20px;
+	margin: 0 20px;
+	margin-bottom: 30px;
+	text-align: center;
+	border-radius: 50%;
+	border: 3px solid var(--pri);
+}
+
+.StatNumber {
+	font-size: 100px;
+    margin: 0;
+    font-weight: bolder;
+    color: var(--pri);
+}
+
+.StatName {
+	margin: 10px 0;
+	font-weight: 500;
+}
+
+@media (min-width: 768px) {
+	.Container {
+		flex-flow: row;
+		flex-wrap: wrap;
+		max-width: 988px;
+		margin: 0 auto;
+	}
+}

@@ -1,0 +1,93 @@
+.Priests {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 870px;
+	margin: 0 auto;
+}
+
+.Priest {
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	border: 1px solid transparent;
+}
+
+.Priest:hover {
+	border-color: var(--pri);
+}
+
+.Image {
+	display: block;
+	margin: 0 auto;
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+}
+
+.NewPriest .Image {
+	margin-bottom: 15px;
+}
+
+.Name {
+	font-weight: 700;
+}
+
+.TextareaWrapper,
+.TextareaWrapper::after,
+.TextareaWrapper textarea {
+	padding: 0 !important;
+	text-align: center;
+}
+
+.TextareaWrapper::after,
+.TextareaWrapper textarea {
+	border: 1px solid #ccc;
+}
+
+.TextareaWrapper {
+	border: none;
+}
+
+.TextareaWrapper textarea:focus {
+	border: 1px solid var(--pri);
+}
+
+.Button {
+	height: 50px;
+	font-weight: 500;
+	color: var(--pri-light);
+	background-color: #fff;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	display: block;
+	margin: 10px auto;
+	padding: 0 20px;
+	transition: color ease-out 300ms;
+}
+
+.RemoveButton {
+	opacity: 0;
+	transition: background-color ease-out 300ms, opacity ease-out 300ms;
+}
+
+.Priest:hover .RemoveButton {
+	opacity: 1;
+}
+
+.RemoveButton:hover {
+	color: #fff;
+	background-color: var(--pri);
+}
+
+@media (min-width: 768px) {
+	.Priest {
+		width: 50%;
+	}
+}
+
+@media (min-width: 1060px) {
+	.Priest {
+		width: 33.33%;
+	}
+}
