@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import styles from '../../styles/AdminGallery.module.css';
-import UploadImage from '../../../components/UploadImage/UploadImage';
+import UploadImage from '../../components/UploadImage/UploadImage';
 
 const AddImage = () => {
 	return (

@@ -1,8 +1,11 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from './AdminLayout.module.css';
 
 const Sidebar = () => {
-	const pageNames = ['home', 'news', 'events', 'women', 'gallery', 'radio', 'churches', 'priests', 'members'];
+	const router = useRouter();
+
+	const pathNames = ['home', 'news', 'events', 'women', 'gallery', 'radio', 'churches', 'priests', 'members'];
 
 	const capitalize = ([firstLetter, ...rest]) => firstLetter.toUpperCase() + rest.join('');
 
@@ -10,24 +13,27 @@ const Sidebar = () => {
 		<nav className={styles.Sidebar}>
 			<h1 className={styles.SidebarHeading}>WELCOME ADMIN</h1>
 			<ul className={styles.SidebarInner}>
-				{pageNames.map(pageName => (
-					<li 
-						key={pageName} 
-						className={styles.SidebarItem}>
-						<Link 
-							href={pageName}
-						>
-							<a
-								className={({ isActive }) => [
-						        	styles.SidebarLink,
-						        	isActive ? styles.Active : ''
-						        ].join(' ')}
-						   	>
-								{ capitalize(pageName).replace(' ', '-') }								
-							</a>
-						</Link>
-					</li>
-				))}
+				{pathNames.map(pathName => {
+					const isActive = router.pathname === ('/admin/' + pathName);
+					return (
+						<li 
+							key={pathName} 
+							className={styles.SidebarItem}>
+							<Link 
+								href={pathName}
+							>
+								<a
+									className={[
+							        	styles.SidebarLink,
+							        	isActive ? styles.Active : ''
+							        ].join(' ')}
+							   	>
+									{ capitalize(pathName).replace(' ', '-') }								
+								</a>
+							</Link>
+						</li>
+					)
+				})}
 			</ul>
 		</nav>
 	)

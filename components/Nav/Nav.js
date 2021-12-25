@@ -69,21 +69,25 @@ const Nav = () => {
 				menuOpen ? styles.OpenMenu : ''
 			].join(' ')}>
 			{ menuOpen && <div className={styles.Backdrop} onClick={closeMenu}></div> }
-			<div className={styles.NavBrand}>
-				<div className={styles.NavBrandImgWrapper}>
-					<Image 
-						className={styles.NavBrandImg} 
-						alt='Church Logo' 
-						src='/images/diocese-logo.png' 
-						height='60px'
-						width='60px'
-					/>
+			<Link href='/'>
+				<a className={styles.NavBrandLink}>
+					<div className={styles.NavBrand}>
+					<div className={styles.NavBrandImgWrapper}>
+						<Image 
+							className={styles.NavBrandImg} 
+							alt='Church Logo' 
+							src='/images/diocese-logo.png' 
+							height='60px'
+							width='60px'
+						/>
+					</div>
+					<div className={styles.NavBrandText}>
+						DIOCESE OF ONDO
+						<div>[Anglican Communion]</div>
+					</div>
 				</div>
-				<div className={styles.NavBrandText}>
-					DIOCESE OF ONDO
-					<div>[Anglican Communion]</div>
-				</div>
-			</div>
+				</a>
+			</Link>
 			<div className={styles.NavInner}>
 				<div className={styles.NavMenuCloser} onClick={closeMenu}></div>
 				<div className={styles.Top}>

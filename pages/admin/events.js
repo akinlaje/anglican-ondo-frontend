@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import DatePicker from '../../../components/DatePicker/DatePicker';
-import UploadImage from '../../../components/UploadImage/UploadImage';
-import TimePicker from '../../../components/TimePicker/TimePicker';
-import AutoGrowingTextarea from '../../../components/AutoGrowingTextarea/AutoGrowingTextarea';
+import DatePicker from '../../components/DatePicker/DatePicker';
+import UploadImage from '../../components/UploadImage/UploadImage';
+import TimePicker from '../../components/TimePicker/TimePicker';
+import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../../styles/AdminEvents.module.css';
 import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa';
-import { JSONToFormData } from '../../../utils';
+import { JSONToFormData } from '../../utils';
 
 const Events = () => {
 	const [image, setImage] = useState();

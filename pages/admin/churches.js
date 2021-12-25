@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from '../../styles/AdminChurches.module.css';
-import AutoGrowingTextarea from '../../../components/AutoGrowingTextarea/AutoGrowingTextarea';
+import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 
 const AddChurch = ({ name, setName, location, setLocation }) => {

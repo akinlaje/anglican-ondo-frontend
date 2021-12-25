@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from '../../styles/AdminRadio.module.css';
-import AutoGrowingTextarea from '../../../components/AutoGrowingTextarea/AutoGrowingTextarea';
-import TimePicker from '../../../components/TimePicker/TimePicker';
-import DatePicker from '../../../components/DatePicker/DatePicker';
+import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
+import TimePicker from '../../components/TimePicker/TimePicker';
+import DatePicker from '../../components/DatePicker/DatePicker';
 
 const EditEvent = (props) => {
 	const [title, setTitle] = useState(props.title);

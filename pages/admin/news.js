@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import UploadImage from '../../../components/UploadImage/UploadImage';
-import AutoGrowingTextarea from '../../../components/AutoGrowingTextarea/AutoGrowingTextarea';
+import UploadImage from '../../components/UploadImage/UploadImage';
+import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../../styles/AdminNews.module.css';
 import { FaNewspaper as NewsIcon } from 'react-icons/fa';
-import { JSONToFormData } from '../../../utils';
+import { JSONToFormData } from '../../utils';
 
 const News = () => {
 	const [title, setTitle] = useState('');
