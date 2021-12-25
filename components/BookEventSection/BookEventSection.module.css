@@ -1,0 +1,34 @@
+.BookEventSection {
+	background-color: #555;
+	color: #fff;
+}
+
+.BookEvent {
+	padding-top: 100px;
+	text-align: center;
+}
+
+.BookEventHeading {
+	margin-bottom: 0;
+}
+
+.BookEventHeadingStyledText {
+	font-size: 3em;
+	line-height: 1em;
+	color: #FFEE00;
+}
+
+.BookEventText {
+	margin-top: 0;
+}
+
+@media (min-width: 768px) {
+	.BookEventSection {
+		display: flex;
+	}
+
+	.BookEvent {
+		width: 50%;
+		margin-left: auto;
+	}
+}

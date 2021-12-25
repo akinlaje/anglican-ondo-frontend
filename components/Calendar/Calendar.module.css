@@ -1,0 +1,47 @@
+.Container {
+	padding: 10px;
+	border: 1px solid #555;
+	border-radius: 10px;
+}
+
+.Nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 40px;
+}
+
+.Days {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.Day,
+.WeekDay {
+	height: 40px;
+	width: 40px;
+	line-height: 37px;
+	text-align: center;
+	color: #555;
+	border: 1px solid transparent;
+	border-radius: 20px;
+	cursor: default;
+	font-size: 0.85em;
+}
+
+.WeekDay {
+	font-weight: 500;
+}
+
+.Day.NotInCurrentMonth {
+	color: #aaa;
+}
+
+.Day:hover {
+	background-color: #eee;
+}
+
+.Day.Selected {
+	border-color: #555;
+}

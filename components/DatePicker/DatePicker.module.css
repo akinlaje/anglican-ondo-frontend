@@ -1,0 +1,40 @@
+.Container {
+	position: relative;
+}
+
+.Label,
+.Input {
+	display: block
+}
+
+.Label {
+	margin-bottom: 10px;
+}
+
+.Input {
+	height: 40px;
+	width: 170px;
+	padding: 0 20px;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.Input.Active,
+.Input:focus {
+	border-color: #555;
+}
+
+.Input:focus {
+	outline: none;
+}
+
+.Calendar {
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 50%;
+	transform: translateX(-50%);
+	width: fit-content;
+	background-color: #fff;
+	z-index: 50;
+}

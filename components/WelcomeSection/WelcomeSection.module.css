@@ -1,0 +1,9 @@
+.WelcomeSection {
+	text-align: center;
+}
+
+.WelcomeText {
+	max-width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+}

@@ -1,0 +1,21 @@
+.Wrapper {
+	display: inline-grid;
+	vertical-align: top;
+	align-items: center;
+	/*position: relative;*/
+}
+
+.Wrapper::after,
+.Input {
+	width: auto;
+	min-width: 1em;
+	grid-area: 1 / 2;
+	resize: none;
+}
+
+.Wrapper::after {
+	content: attr(data-value);
+	visibility: hidden;
+	white-space: pre-wrap;
+	padding-right: 1ch;
+}

@@ -1,0 +1,70 @@
+/**,
+*::before,
+*::after {
+}*/
+
+.Container {
+  display: inline-grid;
+  vertical-align: top;
+  -webkit-box-align: center;
+  align-items: center;
+  position: relative;
+  border: solid 1px;
+  padding: 0.25em 0.5em;
+  margin: 5px 0;
+  width: 100%;
+}
+.Container.Stacked {
+  padding: 0.5em;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+}
+.Container.Stacked::after,
+.Container.Stacked input,
+.Container.Stacked textarea {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.Container::after,
+.Container input,
+.Container textarea {
+  width: auto;
+  min-width: 1em;
+  grid-area: 1 / 2;
+  font: inherit;
+  padding: 0.25em;
+  margin: 0;
+  resize: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  box-sizing: border-box;
+}
+.Container span {
+  padding: 0.25em;
+}
+.Container::after {
+  content: attr(data-value) ' ';
+  visibility: hidden;
+  white-space: pre-wrap;
+}
+.Container:focus-within {
+  border: 1px solid #757575;
+}
+.Container:focus-within > span {
+  color: blue;
+}
+.Container:focus-within textarea:focus,
+.Container:focus-within input:focus {
+  outline: none;
+}
+
+.Container {
+  border: 1px solid #bbb;
+}
+.Container > span {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}

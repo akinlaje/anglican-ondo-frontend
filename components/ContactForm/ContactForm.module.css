@@ -1,0 +1,71 @@
+.ContactSection {
+	color: #fff;
+	background-color: #555;
+}
+
+.SectionHeading {
+	text-align: center;
+}
+
+.ContactInput,
+.ContactTextarea,
+.ContactButton {
+	display: block;
+	border: none;
+	border-radius: 15px;
+}
+
+.ContactInput {
+	height: 50px;
+	width: 100%;
+	padding: 0 20px;
+	margin-bottom: 20px;
+}
+
+.ContactTextareaWrapper > .ContactTextarea,
+.ContactTextareaWrapper::after {
+	padding: 20px;
+}
+
+.ContactTextareaWrapper {
+	border-radius: 10px !important;
+	background-color: #fff !important;
+}
+
+.ContactButton {
+	display: block;
+	margin: 40px auto;
+	height: 50px;
+	padding: 0 20px;
+	background-color: #fff;
+}
+
+@media (min-width: 960px) {
+	.ContactForm {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.ContactFormInner {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.ContactInputsWrapper,
+	.ContactTextareaWrapper {
+		flex: 1;
+	}
+
+	.ContactInputsWrapper {
+		margin-right: 10px;
+	}
+
+	.ContactTextareaWrapper {
+		margin: 0 !important;
+		margin-left: 10px !important;
+	}
+
+	.ContactInput:last-child {
+		margin-bottom: 0;
+	}
+}

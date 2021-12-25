@@ -1,0 +1,95 @@
+.Heading {
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+}
+
+.RadioProgram {
+	padding: 15px;
+	margin-bottom: 20px;
+	border-radius: 20px;
+	background-color: #fff;
+	font-weight: 500;
+}
+
+.RadioProgramImg {
+	display: block;
+	height: 100px;
+	width: 100px;
+	margin: 10px auto;
+	border-radius: 50%;
+	border: 2px solid var(--pri);
+}
+
+.RadioProgramInfo {
+	display: flex;
+	justify-content: space-between;
+}
+
+.RadioProgramTitle {
+	color: var(--pri);
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.ControlButton {
+	background-color: transparent;
+	height: 50px;
+	width: 50px;
+	margin-left: 20px;
+}
+
+.UpcomingRadioProgramList {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.UpcomingRadioProgramList .RadioProgramImg {
+	height: 70px;
+	width: 70px;
+}
+
+@media (min-width: 768px) {
+	.RadioProgram {
+		width: fit-content;
+		min-width: 450px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+	}
+
+	.RadioProgram.Live {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.RadioProgram.Live .RadioProgramImg {
+		margin: 0;
+		margin-right: 20px;
+	}
+
+	.RadioProgramInfo {
+		flex: 1;
+	}
+}
+
+@media (min-width: 1176px) {
+	.RadioProgram {
+		min-width: unset;
+	}
+
+	.UpcomingRadioProgramList .RadioProgram {
+		margin-right: 30px;
+	}
+
+	.UpcomingRadioProgramList {
+		flex-flow: row;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}

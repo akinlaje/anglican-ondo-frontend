@@ -1,0 +1,82 @@
+.Container {
+}
+
+.InputWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.Input {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	border: 1px solid transparent;
+	border-radius: 10px;
+}
+
+.Input:focus {
+	outline: none;
+	border-color: #555;
+}
+
+.Colon {
+	height: 40px;
+	line-height: 35px;
+	font-size: 1.5em;
+	font-weight: 500;
+	margin: 0 5px;
+	color: #555;
+} 
+
+.Selectbox {
+	position: relative;
+	padding: 0 10px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+
+.Selectbox.Open {
+	border-color: #555;
+}
+
+.SelectboxDisplay {
+	display: flex;
+	align-items: center;
+	height: inherit;
+	line-height: 37px;
+}
+
+.SelectboxArrowDown {
+	display: inline-block;
+}
+
+.SelectboxDropdown {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid #555;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.SelectboxOption {
+	height: 40px;
+	line-height: 37px;
+	border-bottom: 1px solid #555;
+}
+
+.SelectboxOption:hover {
+	background-color: #f5f5f5;
+}
+
+.SelectboxOption.Selected {
+	background-color: var(--pri);
+	color: #fff;
+}

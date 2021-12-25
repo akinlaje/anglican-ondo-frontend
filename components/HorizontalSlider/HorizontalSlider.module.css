@@ -1,0 +1,15 @@
+.Container {
+	width: 100%;
+	overflow-x: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.Container::webkit-scrollbar {
+	display: none;
+}
+
+.Inner {
+	display: flex;
+	width: fit-content;
+}

@@ -1,0 +1,48 @@
+.Container {
+	background-color: #eee;
+	margin-bottom: 40px;
+	max-width: 500px;
+	/*margin-right: auto;*/
+	/*margin-left: auto;*/
+}
+
+.Info {
+	padding: 10px;
+	color: #777;
+}
+
+.Desc {
+	margin: 10px 0;
+	color: var(--pri);
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+.Image {
+	display: block;
+	width: 100%;
+	height: 250px;
+	background-color: #555;
+}
+
+.Bottom {
+	padding: 10px 20px;
+}
+
+.Bottom a {
+	color: #555;
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+@media (min-width: 768px) {
+	.Container {
+		width: calc(50% - 20px);
+	}
+}
+
+@media (min-width: 960px) {
+	.Container {
+		width: calc(33.33% - 20px);
+	}
+}

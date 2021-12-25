@@ -1,0 +1,41 @@
+.Container {
+	position: relative;
+	width: fit-content;
+	margin: 30px 10px;
+	padding: 10px;
+	box-shadow: 0px 20px 20px #00000029;
+	border: 1px solid #707070;
+	border-radius: 15px;
+}
+
+.Image {
+	display: block;
+	margin: 0 auto;
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.Input {
+	display: none;
+}
+
+.PlusIcon {
+	display: block;
+	margin: 10px auto;
+}
+
+.PlusIcon:hover {
+	cursor: pointer;
+}
+
+.PlusIcon:active {
+	color: var(pri-darker);
+}
+
+.AddImage {
+	margin: 20px 0;
+	text-align: center;
+	color: var(--pri);
+	font-weight: 500;
+}

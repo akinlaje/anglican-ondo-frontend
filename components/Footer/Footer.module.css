@@ -1,0 +1,47 @@
+.Footer {
+	padding: 30px;
+	background-color: #777;
+	color: #fff;
+	text-align: center;
+}
+
+.Logo {
+	display: inline-block;
+	height: inherit;
+	width: inherit;
+	margin-right: auto !important;
+	margin-left: auto !important;
+	border-radius: 50%;
+	border: 2px solid #FE3507 !important;
+}
+
+.FooterListHeading {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+
+.FooterList {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 30px;
+}
+
+.FooterLink {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+}
+
+@media (min-width: 960px) {
+	.Footer {
+		padding: 60px;
+		text-align: left;
+	}
+
+	.Top {
+	    display: flex;
+	    justify-content: space-between;
+	}
+}

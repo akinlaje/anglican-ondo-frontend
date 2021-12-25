@@ -1,0 +1,37 @@
+.Container {
+	text-align: center;
+}
+
+.Item {
+	max-width: 300px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.ImageWrapper {
+	display: inline-block;
+	height: 250px;
+	width: 250px;
+	padding: 60px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	border-radius: 50%;
+	background-color: #fe5b369e;
+}
+
+.Image {
+	display: inline-block;
+	height: 100%;
+}
+
+.Heading {
+	margin-bottom: 10px;
+	font-size: 1.5em;
+}
+
+@media (min-width: 960px) {
+	.Wrapper {
+		display: flex;
+		justify-content: space-around;
+	}
+}
