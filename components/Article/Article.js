@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Article.module.css';
 
 const Article = () => {
@@ -10,7 +11,9 @@ const Article = () => {
 			</div>
 			<img alt='article' className={styles.Image} />
 			<div className={styles.Bottom}>
-				<a href='/'>Read More</a>
+				<Link href='/'>
+					<a href='/'>Read More</a>
+				</Link>
 			</div>
 		</div>
 	)

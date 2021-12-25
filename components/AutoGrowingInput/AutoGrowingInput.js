@@ -4,7 +4,6 @@ import styles from './AutoGrowingInput.module.css'
 const AutoGrowingInput = forwardRef(({ 
 	className, 
 	onInput, 
-	component: Component = false, 
 	...rest 
 }, ref) => {
 	const grow = e => {
@@ -22,11 +21,7 @@ const AutoGrowingInput = forwardRef(({
 	}
 	return (
 		<span className={styles.Wrapper}>
-			{Component ? (
-				<Component {...props}/>
-				) : (
-				<input {...props}/>
-			)}
+			<input {...props}/>
 		</span>
 	)
 })
