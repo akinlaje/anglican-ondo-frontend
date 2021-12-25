@@ -12,7 +12,7 @@ const Article = () => {
 			<img alt='article' className={styles.Image} />
 			<div className={styles.Bottom}>
 				<Link href='/'>
-					<a href='/'>Read More</a>
+					<a>Read More</a>
 				</Link>
 			</div>
 		</div>

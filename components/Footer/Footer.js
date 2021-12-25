@@ -19,23 +19,23 @@ const footer = () => {
 					<h3 className={styles.FooterListHeading}>News</h3>
 					<ul className={styles.FooterList}>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Events</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Events</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Blogs</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Blogs</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Synod</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Synod</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Programs</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Programs</a>
 							</Link>
 						</li>
 					</ul>
@@ -44,23 +44,23 @@ const footer = () => {
 					<h3 className={styles.FooterListHeading}>Watch</h3>
 					<ul className={styles.FooterList}>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Youtube</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Youtube</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Radio</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Radio</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Podcast</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Podcast</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Gallery</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Gallery</a>
 							</Link>
 						</li>
 					</ul>
@@ -69,23 +69,23 @@ const footer = () => {
 					<h3 className={styles.FooterListHeading}>Give</h3>
 					<ul className={styles.FooterList}>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Payable Accounts</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Payable Accounts</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Donate</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Donate</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Dues</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Dues</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Accounting System</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Accounting System</a>
 							</Link>
 						</li>
 					</ul>
@@ -94,23 +94,23 @@ const footer = () => {
 					<h3 className={styles.FooterListHeading}>Ministries</h3>
 					<ul className={styles.FooterList}>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Youth</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Youth</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Children</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Children</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Women</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Women</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Men</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Men</a>
 							</Link>
 						</li>
 					</ul>
@@ -119,23 +119,23 @@ const footer = () => {
 					<h3 className={styles.FooterListHeading}>Churches</h3>
 					<ul className={styles.FooterList}>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Archdeaconries</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Archdeaconries</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Archdeacons</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Archdeacons</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Parish Churches</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Parish Churches</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link>
-								<a href='/' className={styles.FooterLink}>Priests</a>
+							<Link href='/'>
+								<a className={styles.FooterLink}>Priests</a>
 							</Link>
 						</li>
 					</ul>
