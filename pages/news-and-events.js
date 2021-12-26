@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from '../styles/NewsAndEvents.module.css';
 import Article from '../components/Article/Article';
 
@@ -13,7 +14,9 @@ const NewsAndEvents = () => {
 			<section>
 				<div className={styles.SubHeadingWrapper}>
 					<h2 className={styles.SubHeading}>LATEST NEWS</h2>
-					<a href='/'>See all News</a>
+					<Link href='/'>
+					<a>See all News</a>
+					</Link>
 				</div>
 				<div className={styles.ArticleWrapper}>
 					{[...Array(3)].map((article, i) => {
@@ -26,7 +29,9 @@ const NewsAndEvents = () => {
 			<section>
 				<div className={styles.SubHeadingWrapper}>
 					<h2 className={styles.SubHeading}>LATEST NEWS</h2>
-					<a href='/'>See all News</a>
+					<Link href='/'>
+					<a>See all News</a>
+					</Link>
 				</div>
 				<div className={styles.ArticleWrapper}>
 					{[...Array(3)].map((article, i) => {
@@ -39,7 +44,9 @@ const NewsAndEvents = () => {
 			<section>
 				<div className={styles.SubHeadingWrapper}>
 					<h2 className={styles.SubHeading}>WHATS ON?</h2>
-					<a href='/'>See all News</a>
+					<Link href='/'>
+					<a>See all News</a>
+					</Link>
 				</div>
 				<div className={styles.ArticleWrapper}>
 					{[...Array(3)].map((article, i) => {
