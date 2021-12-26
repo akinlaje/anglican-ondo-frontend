@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from './AdminLayout.module.css';
 
-const Sidebar = () => {
+const Sidebar = ({ admin }) => {
 	const router = useRouter();
 
 	const pathNames = ['home', 'news', 'events', 'women', 'gallery', 'radio', 'churches', 'priests', 'members'];
@@ -11,7 +11,9 @@ const Sidebar = () => {
 
 	return (
 		<nav className={styles.Sidebar}>
-			<h1 className={styles.SidebarHeading}>WELCOME ADMIN</h1>
+			<h1 className={styles.SidebarHeading}>
+				WELCOME{' '}{admin?.id ? admin.username : 'ADMIN'}
+			</h1>
 			<ul className={styles.SidebarInner}>
 				{pathNames.map(pathName => {
 					const isActive = router.pathname === ('/admin/' + pathName);

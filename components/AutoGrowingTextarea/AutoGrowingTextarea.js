@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import classes from './AutoGrowingTextarea.module.css';
 
-const AutoGrowingTextarea = ({ value='', onChange, placeholder='', className='', textareaClassName='' }) => {
+const AutoGrowingTextarea = ({ value='', onChange, placeholder='', className='', textareaClassName='', name }) => {
   const textarea = useRef();
   useEffect(() => {
     if (textarea.current) {
@@ -23,6 +23,7 @@ const AutoGrowingTextarea = ({ value='', onChange, placeholder='', className='',
           e.target.parentNode.dataset.value = e.target.value;
           if (onChange) onChange(e);
         }}
+        name={name}
       ></textarea>
     </div>
   );

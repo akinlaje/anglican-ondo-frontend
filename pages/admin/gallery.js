@@ -11,9 +11,9 @@ const AddImage = () => {
 	)
 }
 
-const Gallery = () => {
+const Gallery = ({ admin }) => {
 	// const [images, setImages] = useState();
-
+	if (admin) console.log(admin);
 	return (
 		<div className={styles.Container}>
 			<div className={styles.AddImageContainer}>

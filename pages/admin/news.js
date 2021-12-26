@@ -4,31 +4,47 @@ import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowin
 import styles from '../../styles/AdminNews.module.css';
 import { FaNewspaper as NewsIcon } from 'react-icons/fa';
 import { JSONToFormData } from '../../utils';
+import axios from 'axios';
 
-const News = () => {
+const News = ({ admin, authToken }) => {
 	const [title, setTitle] = useState('');
 	const [details, setDetails] = useState('');
 	const [image, setImage] = useState();
+	const [location, setLocation] = useState('Ondo - test');
 
 	const submit = async e => {
-	    e.preventDefault();
+    e.preventDefault();
+    // console.log(image);
+    // return
+		if (!admin.id) return
 
-	    let data = JSONToFormData({
-	    	title,
-	    	details,
-	    	image
-	    })
+		const data = {
+    	title,
+    	details,
+    	image,
+    	location
+    }
+    console.log('data object', data);
 
-	  //   for (const pair of data.entries()) {
-			//   console.log(pair[0]+ ', ' + pair[1]); 
-			// }
 
-	    // const res = await fetch('/api/news', {
-	    //   method: 'POST',
-	    //   body: data,
-	    // })
-	    // console.log(res);
-	  }
+//     let formData = JSONToFormData(data)
+// 
+//     for (const pair of formData.entries()) {
+// 		  console.log(pair[0], pair[1]); 
+// 		}
+// 		console.log(formData);
+// 
+// 		// console.log(admin);
+// 		console.log('sending to api');
+
+    const res = await axios.post('http://localhost:5000/api/create/news', data, {
+    	headers: {
+    		Authorization: authToken,
+    	}
+    })
+
+    console.log(res);
+  }
 
 	return (
 		<div className={styles.Container}>

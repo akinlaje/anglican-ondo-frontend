@@ -34,6 +34,7 @@ a {
   box-sizing: border-box;
 }
 
+button,
 input {
 	font: inherit;
 }

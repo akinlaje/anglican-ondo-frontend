@@ -26,10 +26,10 @@ export default function Home() {
           "name": "Radio",
           "artist": "",
           "album": "",
-          // "url": "https://sirius.shoutca.st:2199/start/anglicanondo",
+          "url": "https://sirius.shoutca.st:2199/start/anglicanondo/stream?type=http&nocache=1972",
           // "url": "https://sirius.shoutca.st:8445/index.html?sid=1",
           // "url": "https://sirius.shoutca.st:8445/index.html/stream",
-          "url": "http://sirius.shoutca.st:8445/index.html/stream?type=http&nocache=1972",
+          // "url": "http://sirius.shoutca.st:8445/index.html/stream?type=http&nocache=1972",
           "cover_art_url": ""
         }
       ],
