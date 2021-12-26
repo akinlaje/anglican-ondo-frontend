@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from '../styles/About.module.css';
 
 const About = () => {
@@ -31,7 +32,9 @@ const About = () => {
 						</div>
 						<img alt='Vision' className={styles.Image} />
 						<div className={styles.Bottom}>
-							<a href='/'>Read More</a>
+							<Link href='/'>
+								<a>Read More</a>
+							</Link>
 						</div>
 					</div>
 					<div className={styles.AboutArticle}>
@@ -52,7 +55,9 @@ const About = () => {
 						</div>
 						<img alt='Vision' className={styles.Image} />
 						<div className={styles.Bottom}>
-							<a href='/'>Read More</a>
+							<Link href='/'>
+								<a>Read More</a>
+							</Link>
 						</div>
 					</div>
 					<div className={styles.AboutArticle}>
@@ -73,7 +78,9 @@ const About = () => {
 						</div>
 						<img alt='Vision' className={styles.Image} />
 						<div className={styles.Bottom}>
-							<a href='/'>Read More</a>
+							<Link href='/'>
+								<a>Read More</a>
+							</Link>
 						</div>
 					</div>
 					<div className={styles.AboutArticle}>
@@ -94,7 +101,9 @@ const About = () => {
 						</div>
 						<img alt='Vision' className={styles.Image} />
 						<div className={styles.Bottom}>
-							<a href='/'>Read More</a>
+							<Link href='/'>
+								<a>Read More</a>
+							</Link>
 						</div>
 					</div>
 					<div className={styles.AboutArticle}>
@@ -115,7 +124,9 @@ const About = () => {
 						</div>
 						<img alt='Vision' className={styles.Image} />
 						<div className={styles.Bottom}>
-							<a href='/'>Read More</a>
+							<Link href='/'>
+								<a>Read More</a>
+							</Link>
 						</div>
 					</div>
 					<div className={styles.AboutArticle}>
@@ -136,7 +147,9 @@ const About = () => {
 						</div>
 						<img alt='Vision' className={styles.Image} />
 						<div className={styles.Bottom}>
-							<a href='/'>Read More</a>
+							<Link href='/'>
+								<a>Read More</a>
+							</Link>
 						</div>
 					</div>
 				</div>
