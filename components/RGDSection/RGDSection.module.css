@@ -9,6 +9,7 @@
 }
 
 .ImageWrapper {
+	position: relative;
 	display: inline-block;
 	height: 250px;
 	width: 250px;
@@ -16,12 +17,39 @@
 	margin: 0 auto;
 	margin-bottom: 15px;
 	border-radius: 50%;
+	background-image: url('/images/ae.jpg');
+	background-size: cover;
+}
+
+.ImageWrapper.Gallery {
+	background-image: url('/images/SA.png');
+}
+
+/*.ImageWrapper:nth-child(3) {
+	background-position-x: right;
+}*/
+
+.ImageWrapper::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: inherit;
 	background-color: #fe5b369e;
+	z-index: 1;
+}
+
+.ImageWrapper.Gallery::after {
+	background-color: #01BFAF9e;
 }
 
 .Image {
+	position: relative;
 	display: inline-block;
 	height: 100%;
+	z-index: 10;
 }
 
 .Heading {

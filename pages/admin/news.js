@@ -56,7 +56,7 @@ const News = ({ admin, authToken }) => {
 			</div>
 			<form onSubmit={submit}>
 				<div className={styles.FormInner}>
-					<UploadImage file={image} setFile={setImage} name='image' />
+					<UploadImage file={image} setFile={setImage} name='image' className={styles.UploadImage} />
 					<div className={styles.TextContainer}>
 						<input 
 							className={styles.Title} 

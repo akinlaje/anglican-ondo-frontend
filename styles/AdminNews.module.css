@@ -27,6 +27,16 @@
 	box-shadow: 0px 20px 20px #00000029;
 }
 
+.UploadImage {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.UploadImage img {
+	max-height: 200px;
+	width: auto;
+}
+
 .TextContainer {
 	border-radius: 10px;
 	overflow: hidden;
@@ -81,4 +91,5 @@
 	font-weight: 500;
 	font-size: 1.3em;
 	border-radius: 15px;
+	border: none;
 }

@@ -1,6 +1,8 @@
 .ContactSection {
 	color: #fff;
-	background-color: #555;
+	background-color: #333;
+	background-image: url('/images/map.png');
+	background-size: cover;
 }
 
 .SectionHeading {

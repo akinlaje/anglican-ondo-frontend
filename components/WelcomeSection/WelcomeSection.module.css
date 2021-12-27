@@ -1,9 +1,38 @@
 .WelcomeSection {
+	position: relative;
 	text-align: center;
+	background-image: url('/images/fedg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.WelcomeText,
+.WelcomeSection div,
+.SectionHeading {
+	position: relative;
+	z-index: 10;
+}
+
+.WelcomeSection::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	background-color: #fff;
+	opacity: 0.7;
 }
 
 .WelcomeText {
 	max-width: 900px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+@media (min-width: 768px) {
+	.WelcomeSection {
+		background-size: contain;
+	}
 }

@@ -6,7 +6,7 @@ const RGDSection = () => {
       <div className={styles.Wrapper}>
         <div className={styles.Item}>
           <div className={styles.ImageWrapper}>
-            <img className={styles.Image} src="./images/svgs/radio.svg" />
+            <img className={styles.Image} src="/images/svgs/radio.svg" />
           </div>
           <h3 className={styles.Heading}>Radio</h3>
           <p className={styles.Text}>
@@ -16,12 +16,12 @@ const RGDSection = () => {
         </div>
         <div className={styles.Item}>
           <div 
-          	style={{
-          		backgroundColor: '#01BFAF9e'
-          	}} 
-          	className={styles.ImageWrapper}
+          	className={[
+              styles.ImageWrapper,
+              styles.Gallery
+            ].join(' ')}
           >
-            <img style={{ paddingTop: '20px' }} className={styles.Image} src="./images/svgs/image.svg" />
+            <img style={{ paddingTop: '20px' }} className={styles.Image} src="/images/svgs/image.svg" />
           </div>
           <h3 className={styles.Heading}>Gallery</h3>
           <p className={styles.Text}>
@@ -31,8 +31,13 @@ const RGDSection = () => {
           </p>
         </div>
         <div className={styles.Item}>
-          <div className={styles.ImageWrapper}>
-            <img className={styles.Image} src="./images/svgs/cloud-download.svg" />
+          <div  
+            style={{
+              backgroundPositionX: 'right'
+            }} 
+            className={styles.ImageWrapper}
+          >
+            <img className={styles.Image} src="/images/svgs/cloud-download.svg" />
           </div>
           <h3 className={styles.Heading}>Download</h3>
           <p className={styles.Text}>

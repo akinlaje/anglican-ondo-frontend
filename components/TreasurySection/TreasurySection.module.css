@@ -1,17 +1,37 @@
 .TreasurySection {
+	padding: 0 !important;
 }
 
 .TreasurySectionHeading {
+	position: relative;
 	color: #fff;
 	background-color: #555;
+	background-image: url('/images/worship.jpeg');
 	padding: 40px 0;
 	text-align: center;
+}
+
+.TreasurySectionHeading::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #fe5b369e;
+	z-index: 1;
+}
+
+.TreasurySectionHeading span {
+	position: relative;
+	z-index: 10;
 }
 
 .TreasuryList {
 	max-width: 700px;
 	margin-right: auto;
 	margin-left: auto;
+	padding: 30px;
 	font-weight: 500;
 	padding: 30px;
 	counter-reset: counter-name;
@@ -51,6 +71,12 @@
 .AccountNumber,
 .AccountBank {
 	margin: 10px 0;
+}
+
+@media {
+	.TreasurySection {
+		padding: 50px;
+	}
 }
 
 @media (min-width: 960px) {

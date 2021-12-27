@@ -9,7 +9,7 @@ const TreasurySection = () => {
       		styles.TreasurySectionHeading
       	].join(' ')}
       >
-      	DIOCESAN TREASURY
+      	<span>DIOCESAN TREASURY</span>
       </h2>
       <ol className={styles.TreasuryList}>
         <li className={styles.TreasuryItem}>
