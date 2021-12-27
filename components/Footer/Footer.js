@@ -5,14 +5,14 @@ import styles from './Footer.module.css';
 const footer = () => {
 	return (
 		<footer className={styles.Footer}>
-			<div>
+			<div className={styles.LogoContainer}>
 				<Image
-						className={styles.Logo} 
-						alt='Church Logo' 
-						src='/images/diocese-logo.png' 
-						height='60px'
-						width='60px'
-					/>
+					className={styles.Logo} 
+					alt='Church Logo' 
+					src='/images/diocese-logo.png' 
+					height='60px'
+					width='60px'
+				/>
 			</div>
 			<div className={styles.Top}>
 				<div className={styles.FooterListWrapper}>

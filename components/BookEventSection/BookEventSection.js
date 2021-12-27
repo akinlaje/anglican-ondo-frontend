@@ -1,8 +1,18 @@
+import Image from 'next/image';
 import styles from './BookEventSection.module.css';
 
 const BookEventSection = () => {
 	return (
 		<section className={styles.BookEventSection}>
+      <div className={styles.LogoContainer}>
+        <Image
+          className={styles.Logo} 
+          alt='Church Logo' 
+          src='/images/diocese-logo.png' 
+          height='60px'
+          width='60px'
+        />
+      </div>
       <div className={styles.BookEvent}>
         <h2 className={styles.BookEventHeading}>
           BOOK OUR EVENT

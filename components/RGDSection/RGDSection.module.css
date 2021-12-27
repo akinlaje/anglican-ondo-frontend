@@ -19,6 +19,7 @@
 	border-radius: 50%;
 	background-image: url('/images/ae.jpg');
 	background-size: cover;
+	cursor: pointer;
 }
 
 .ImageWrapper.Gallery {

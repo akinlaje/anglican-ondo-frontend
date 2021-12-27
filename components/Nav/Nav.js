@@ -50,7 +50,7 @@ const Nav = () => {
 		},
 		{
 			href: '/about',
-			display: 'About the Church'
+			display: 'About the Diocese'
 		},
 		{
 			href: '/women',

@@ -3,6 +3,12 @@
 	background-color: #777;
 	color: #fff;
 	text-align: center;
+	background: transparent linear-gradient(180deg, #FE3507 0%, #511702 100%) 0% 0% no-repeat padding-box;
+}
+
+.LogoContainer {
+	width: fit-content;
+	margin: 0 auto;
 }
 
 .Logo {
