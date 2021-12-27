@@ -4,13 +4,13 @@
 	justify-content: center;
 }
 
-.UploadImageWrapper {
+.ImageWrapper {
 	margin: 0 20px;
 	margin-bottom: 30px;
 	text-align: center;
 }
 
-.UploadImage {
+.Image {
 	margin-right: auto;
 	margin-left: auto;
 }

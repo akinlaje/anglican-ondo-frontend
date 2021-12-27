@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/Image';
 import styles from '../../styles/AdminPriests.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 
-const Priest = () => {
+const Priest = ({ name, position, image }) => {
 	return (
 		<div className={styles.Priest}>
-			<img className={styles.Image} />
-			<h3 className={styles.Name}>Ven S.O. Adeleye</h3>
-			<p>Ondo Archdeaconry</p>
+			<Image height='500px' width='500px' alt={name} className={styles.Image} />
+			<h3 className={styles.Name}>{ name }</h3>
+			<p>{ position }</p>
 			<button 
 				className={[
 					styles.Button, 
@@ -19,10 +20,12 @@ const Priest = () => {
 	)
 }
 
-const AddPriest = ({ name, setName, title, setTitle }) => {
+const AddPriest = ({ name, setName, position, setPosition, image, setImage, savePriest }) => {
 	return (
 		<div className={[styles.Priest, styles.NewPriest].join(' ')}>
-			<PlusIcon className={styles.Image} color='var(--pri)' />
+			{image ? (
+				<Image height='500px' width='500px' src={URL.createObjectURL(image)} alt={name} />
+			) : <PlusIcon className={styles.Image} color='var(--pri)' />}
 			<AutoGrowingTextarea 
 				value={name}
 				onChange={e => setName(e.target.value)}
@@ -30,19 +33,39 @@ const AddPriest = ({ name, setName, title, setTitle }) => {
 				placeholder='Name' 
 			/>
 			<AutoGrowingTextarea 
-				value={title}
-				onChange={e => setTitle(e.target.value)}
+				value={position}
+				onChange={e => setPosition(e.target.value)}
 				className={styles.TextareaWrapper} 
-				placeholder='Title' 
+				placeholder='position' 
 			/>
-			{name.trim() && title.trim() && <button className={styles.Button}>Add</button>}
+			{name.trim() && position.trim() && image && <button onClick={savePriest} className={styles.Button}>Add</button>}
 		</div>
 	)
 }
 
 const Priests = () => {
+	const [priests, setPriests] = useState();
+
 	const [name, setName] = useState('');
-	const [title, setTitle] = useState('');
+	const [position, setPosition] = useState('');
+	const [image, setImage] = useState();
+
+	useEffect(() => {
+		const getPriests = async () => {
+			// get priests from  backend
+			priests = []
+			setPriests(priests)
+		}
+
+		getPriests();
+	}, [])
+
+	const savePriest = () => {
+		const priest = { name, position, image };
+		// save priest to backend
+
+		setPriests(v => [...cloneDeep, priest]);
+	}
 
 	return (
 		<div>
@@ -50,7 +73,7 @@ const Priests = () => {
 				<h1 className={styles.Heading}>Churches</h1>
 			</div>
 			<div className={styles.Priests}>
-				{[...Array(5)].map((priest, i) => {
+				{priests.map((priest, i) => {
 					return (
 						<Priest key={i} />
 					)
@@ -58,8 +81,11 @@ const Priests = () => {
 				<AddPriest 
 					name={name}
 					setName={setName}
-					title={title}
-					setTitle={setTitle} 
+					position={position}
+					setPosition={setPosition}
+					image={image}
+					setImage={setImage} 
+					savePriest={savePriest}
 				/>
 			</div>
 		</div>

@@ -59,6 +59,16 @@
 	margin: 10px auto;
 }
 
+.SaveButton {
+	display: block;
+	width: 100%;
+	color: #fff;
+	margin: 30px;
+	background-color: var(--pri);
+	height: 50px;
+	border-radius: 10px;
+}
+
 @media (min-width: 1000px) {
 	.Churches {
 		display: flex;

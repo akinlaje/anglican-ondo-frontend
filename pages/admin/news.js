@@ -3,20 +3,31 @@ import UploadImage from '../../components/UploadImage/UploadImage';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../../styles/AdminNews.module.css';
 import { FaNewspaper as NewsIcon } from 'react-icons/fa';
-import { JSONToFormData } from '../../utils';
+import { JSONToFormData, /*saveFileToNextServer*/ } from '../../utils';
 import axios from 'axios';
+import Spinner from '../../components/Spinner/Spinner';
+import FormError from '../../components/FormError/FormError';
 
 const News = ({ admin, authToken }) => {
 	const [title, setTitle] = useState('');
 	const [details, setDetails] = useState('');
 	const [image, setImage] = useState();
 	const [location, setLocation] = useState('Ondo - test');
+	const [saving, setSaving] = useState(false);
+	const [error, setError] = useState('');
 
 	const submit = async e => {
     e.preventDefault();
-    // console.log(image);
-    // return
 		if (!admin.id) return
+
+// 		const imageFileFormData = new FormData();
+// 		imageFileFormData.append('file', image);
+// 		const imgRes = await saveFileToNextServer(imageFileFormData);
+// 
+// 		if (imgRes?.data?.status !== 'success') {
+// 			// error has occured while saving image to next
+// 			setError('An Error Occured');
+// 		}
 
 		const data = {
     	title,
@@ -26,21 +37,26 @@ const News = ({ admin, authToken }) => {
     }
     console.log('data object', data);
 
-
     let formData = new FormData();
-	
 		formData.append('title', title);
 		formData.append('details', details);
 		formData.append('image', image);
 		formData.append('location', location);
-
     const res = await axios.post('http://localhost:5000/api/create/news', formData, {
     	headers: {
     		Authorization: authToken,
     	}
     })
 
-    console.log(res);
+    // check if server returned an error
+    const error = false;
+
+    if (error) {
+    	// set the error message
+    	setError(error)
+    }
+
+    setSaving(false);
   }
 
 	return (
@@ -71,7 +87,10 @@ const News = ({ admin, authToken }) => {
 						/>
 					</div>
 				</div>
-				<button type='submit' className={styles.SubmitButton}>Post</button>
+				<FormError error={error} />
+				<button type='submit' className={styles.SubmitButton} disabled={saving}>
+					{saving ? 'Post' : <Spinner />}
+				</button>
 			</form>
 		</div>
 	)

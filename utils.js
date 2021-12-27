@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const JSONToFormData = (json) => {
 	const formData = new FormData();
 
@@ -15,4 +17,16 @@ export const isValidDate = (d) => {
 		}
 	}
 	return valid;
+}
+
+export const saveFileToNextServer = async (formData) => {
+	const config = {
+		headers: {
+			'content-type': 'multipart/form-data'
+		}
+	}
+
+	const res = await axios.post(formData, '/api/uploads');
+
+	return res;
 }

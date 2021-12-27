@@ -36,6 +36,7 @@ const Login  = ({ setAdmin, setAuthToken }) => {
 	return (
 		<div className={styles.Container}>
 			<form className={styles.Form} onSubmit={submit}>
+				<h2>Login</h2>
 				<label className={styles.Label}>
 					Username
 				</label>
