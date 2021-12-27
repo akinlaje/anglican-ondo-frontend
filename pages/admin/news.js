@@ -27,17 +27,14 @@ const News = ({ admin, authToken }) => {
     console.log('data object', data);
 
 
-//     let formData = JSONToFormData(data)
-// 
-//     for (const pair of formData.entries()) {
-// 		  console.log(pair[0], pair[1]); 
-// 		}
-// 		console.log(formData);
-// 
-// 		// console.log(admin);
-// 		console.log('sending to api');
+    let formData = new FormData();
+	
+		formData.append('title', title);
+		formData.append('details', details);
+		formData.append('image', image);
+		formData.append('location', location);
 
-    const res = await axios.post('http://localhost:5000/api/create/news', data, {
+    const res = await axios.post('http://localhost:5000/api/create/news', formData, {
     	headers: {
     		Authorization: authToken,
     	}
@@ -54,7 +51,7 @@ const News = ({ admin, authToken }) => {
 					News
 				</h1>
 			</div>
-			<form onSubmit={submit}>
+			<form onSubmit={submit} method='POST' encType="multipart/form-data" >
 				<div className={styles.FormInner}>
 					<UploadImage file={image} setFile={setImage} name='image' />
 					<div className={styles.TextContainer}>
