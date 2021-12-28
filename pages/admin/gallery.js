@@ -6,7 +6,7 @@ import cloneDeep from 'lodash/cloneDeep';
 const AddImage = ({ image, setImage }) => {
 	return (
 		<div className={styles.ImageWrapper}>
-			<UploadImage className={styles.Image} file{image} setFile={setImage} />
+			<UploadImage className={styles.Image} file={image} setFile={setImage} />
 			<input className={styles.Input} placeholder={'Add Title'} />
 		</div>
 	)

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from '../../styles/AdminChurches.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
@@ -6,7 +6,17 @@ import FormError from '../../components/FormError/FormError';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 import cloneDeep from 'lodash/cloneDeep'
 
-const AddChurch = ({ name, setName, location, setLocation, saveChurch }) => {
+const AddChurch = ({ name, setName, location, setLocation, image, setImage, saveChurch }) => {
+	const inputRef = useRef();
+
+	const onChange = e => {
+		setImage(e.target.files[0])
+	}
+
+	const chooseImage = () => {
+		inputRef.current.click();
+	}
+
 	return (
 		<div className={[styles.Church, styles.NewChurch].join(' ')}>
 			<AutoGrowingTextarea 
@@ -21,9 +31,10 @@ const AddChurch = ({ name, setName, location, setLocation, saveChurch }) => {
 				placeholder='Location' 
 				className={styles.TextareaWrapper} 
 			/>
+			<input style={{display: 'none'}} type='file' accept='.jpg, png, jpeg' onChange={onChange} />
 			{image ? (
-				<Image height='500px' width='500px' src={URL.createObjectURL(image)} alt={name} />
-			) : <PlusIcon className={styles.Image} color='var(--pri)' />}
+				<Image onClick={chooseImage} height='500px' width='500px' src={URL.createObjectURL(image)} alt={name} />
+			) : <PlusIcon  onClick={chooseImage} className={styles.Image} color='var(--pri)' />}
 			<button className={styles.SaveButton} onClick={saveChurch}>Save</button>
 		</div>
 	)
@@ -36,6 +47,7 @@ const Churches = () => {
 	// state for the new church
 	const [name, setName] = useState('');
 	const [location, setLocation] = useState('');
+	const [image, setImage] = useState('');
 
 	const [saving, setSaving] = useState(false);
 	const [error, setError] = useState('');
@@ -68,9 +80,11 @@ const Churches = () => {
 	const saveChurch = async () => {
 		const newChurch = {
 			name,
-			location
+			location,
+			image
 		}
 
+		console.log(newChurch);
 		if (!name) return setError(' Please input a name')
 		if (!location) return setError(' Please input a location')
 
@@ -102,6 +116,8 @@ const Churches = () => {
 					location={location}
 					setLocation={setLocation}
 					saveChurch={saveChurch} 
+					image={image}
+					setImage={setImage}
 				/>
 				{error && <FormError error={error} />}
 			</div>

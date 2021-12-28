@@ -89,7 +89,7 @@ const News = ({ admin, authToken }) => {
 				</div>
 				<FormError error={error} />
 				<button type='submit' className={styles.SubmitButton} disabled={saving}>
-					{saving ? 'Post' : <Spinner />}
+					{saving ? <Spinner /> : 'Post'}
 				</button>
 			</form>
 		</div>

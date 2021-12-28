@@ -1,16 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/AdminRadio.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import TimePicker from '../../components/TimePicker/TimePicker';
 import DatePicker from '../../components/DatePicker/DatePicker';
+import cloneDeep from 'lodash/cloneDeep';
 
-const EditEvent = (props) => {
+const EditRadioEvent = (props) => {
 	const [title, setTitle] = useState(props.title);
 	const [anchor, setAnchor] = useState(props.anchor);
 	const [time, setTime] = useState(props.time);
 	const [date, setDate] = useState(props.date);
 
-	const { setEditing } = props;
+	const { setEditing, saveRadioEvent } = props;
+
+	const save = () => {
+		const newRadioEvent = {
+			title, anchor, time, date
+		}
+		saveRadioEvent(newRadioEvent);
+	}
 
 	return (
 		<div className={styles.Event}>
@@ -43,12 +51,12 @@ const EditEvent = (props) => {
 	)
 }
 
-const Event = (props) => {
+const RadioEvent = (props) => {
 	const [editing, setEditing] = useState(false);
 
 	if (editing) {
 		return (
-			<EditEvent {...props} setEditing={setEditing} />
+			<EditRadioEvent {...props} setEditing={setEditing} />
 		)
 	}
 
@@ -76,21 +84,46 @@ const Event = (props) => {
 }
 
 const Radio = () => {
+	const [radioEvents, setRadioEvents] = useState([]);
+
+	useEffect(() => {
+		const getRadioEvents = async () => {
+			radioEvents = [
+				{
+					title: 'The Efficacy of the Holy Spirit',
+					anchor: 'The Rt. Revd. S. A. Oni',
+					time: '5:00pm',
+					date: '21/11/22'
+				},
+				{
+					title: 'The Efficacy of the Holy Spirit',
+					anchor: 'The Rt. Revd. S. A. Oni',
+					time: '5:00pm',
+					date: '21/11/22'
+				}
+			]
+		}
+
+		getRadioEvents()
+	})
+
+	const saveRadioEvent = async (newRadioEvent) => {
+		// save radio program
+		console.log(newRadioEvent);
+		setRadioEvents(v => [...cloneDeep(v), newRadioEvent])
+	} 
+
 	return (
 		<div>
 			<h1 className={styles.Heading}>Radio</h1>
 			<div className={styles.Events}>
-				{[...Array(3)].map((_, i) => {
-					const event = {
-						title: 'The Efficacy of the Holy Spirit',
-						anchor: 'The Rt. Revd. S. A. Oni',
-						time: '5:00pm',
-						date: '21-/11/22'
-					};
+				{radioEvents.map((radioEvent, i) => {
 					return (
-						<Event 
+						<RadioEvent 
 							key={i} 
-							{...event} />
+							saveRadioEvent={saveRadioEvent}
+							{...radioEvent}
+						/>
 					)
 				})}	
 			</div>

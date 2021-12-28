@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/Image';
 import styles from '../../styles/AdminPriests.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
@@ -21,11 +21,22 @@ const Priest = ({ name, position, image }) => {
 }
 
 const AddPriest = ({ name, setName, position, setPosition, image, setImage, savePriest }) => {
+	const inputRef = useRef();
+
+	const onChange = e => {
+		setImage(e.target.files[0])
+	}
+
+	const chooseImage = () => {
+		inputRef.current.click();
+	}
+
 	return (
 		<div className={[styles.Priest, styles.NewPriest].join(' ')}>
+			<input style={{display: 'none'}} type='file' accept='.jpg, png, jpeg' onChange={onChange} />
 			{image ? (
-				<Image height='500px' width='500px' src={URL.createObjectURL(image)} alt={name} />
-			) : <PlusIcon className={styles.Image} color='var(--pri)' />}
+				<Image onClick={chooseImage} height='500px' width='500px' src={URL.createObjectURL(image)} alt={name} />
+			) : <PlusIcon  onClick={chooseImage} className={styles.Image} color='var(--pri)' />}
 			<AutoGrowingTextarea 
 				value={name}
 				onChange={e => setName(e.target.value)}
@@ -61,10 +72,11 @@ const Priests = () => {
 	}, [])
 
 	const savePriest = () => {
-		const priest = { name, position, image };
+		const newPriest = { name, position, image };
+		console.log(newPriest)
 		// save priest to backend
 
-		setPriests(v => [...cloneDeep, priest]);
+		setPriests(v => [...cloneDeep, newPriest]);
 	}
 
 	return (

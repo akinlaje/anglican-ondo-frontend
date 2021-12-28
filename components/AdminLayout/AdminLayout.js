@@ -2,10 +2,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from './AdminLayout.module.css';
 
-const Sidebar = ({ admin }) => {
-	const router = useRouter();
+const Sidebar = ({ admin, router }) => {
 
-	const pathNames = ['home', 'news', 'events', 'women', 'gallery', 'radio', 'churches', 'priests', 'members'];
+	const pathnames = ['home', 'news', 'events', 'women', 'gallery', 'radio', 'churches', 'priests', 'members'];
 
 	const capitalize = ([firstLetter, ...rest]) => firstLetter.toUpperCase() + rest.join('');
 
@@ -15,14 +14,14 @@ const Sidebar = ({ admin }) => {
 				WELCOME{' '}{admin?.id ? admin.username : 'ADMIN'}
 			</h1>
 			<ul className={styles.SidebarInner}>
-				{pathNames.map(pathName => {
-					const isActive = router.pathname === ('/admin/' + pathName);
+				{pathnames.map(pathname => {
+					const isActive = router.pathname === ('/admin/' + pathname);
 					return (
 						<li 
-							key={pathName} 
+							key={pathname} 
 							className={styles.SidebarItem}>
 							<Link 
-								href={pathName}
+								href={pathname}
 							>
 								<a
 									className={[
@@ -30,7 +29,7 @@ const Sidebar = ({ admin }) => {
 							        	isActive ? styles.Active : ''
 							        ].join(' ')}
 							   	>
-									{ capitalize(pathName).replace(' ', '-') }								
+									{ capitalize(pathname).replace(' ', '-') }								
 								</a>
 							</Link>
 						</li>
@@ -41,12 +40,27 @@ const Sidebar = ({ admin }) => {
 	)
 }
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = ({ children, admin }) => {
+	const router = useRouter();
+
+	let hideSidebar;
+	if (router.pathname === '/admin/login') {
+		hideSidebar = true;
+	}
+
+	let style = {}
+	if (hideSidebar) {
+		style = {
+			marginLeft: '0px'
+		}
+	}
 	return (
 		<div className={styles.Container}>
 			{/* <Nav /> */}
-			<Sidebar />
-			<main className={styles.Main}>
+			{!hideSidebar && <Sidebar admin={admin} router={router} />}
+			<main 
+				style={style}
+				className={styles.Main}>
 				{ children }
 			</main>
 		</div>

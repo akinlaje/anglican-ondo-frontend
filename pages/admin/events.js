@@ -16,9 +16,10 @@ const Events = () => {
 
 	const submit = e => {
 		e.preventDefault();
-		console.log({
+		const newEvent = {
 			image, title, details, date, time
-		})
+		}
+		console.log(newEvent)
 	}
 
 	return (
