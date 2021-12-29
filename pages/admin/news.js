@@ -29,14 +29,6 @@ const News = ({ admin, authToken }) => {
 // 			setError('An Error Occured');
 // 		}
 
-		const data = {
-    	title,
-    	details,
-    	image,
-    	location
-    }
-    console.log('data object', data);
-
     let formData = new FormData();
 		formData.append('title', title);
 		formData.append('details', details);
@@ -46,7 +38,11 @@ const News = ({ admin, authToken }) => {
     	headers: {
     		Authorization: authToken,
     	}
+    }).then(data => {
+		console.log(data)
     })
+		
+		
 
     // check if server returned an error
     const error = false;

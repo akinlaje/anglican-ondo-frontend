@@ -5,21 +5,32 @@ import TimePicker from '../../components/TimePicker/TimePicker';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../../styles/AdminEvents.module.css';
 import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa';
-import { JSONToFormData } from '../../utils';
+import axios from "axios";
 
-const Events = () => {
+const Events = ({ admin, authToken }) => {
 	const [image, setImage] = useState();
 	const [title, setTitle] = useState('');
 	const [details, setDetails] = useState('');
 	const [date, setDate] = useState();
 	const [time, setTime] = useState();
 
-	const submit = e => {
+	const submit = async e => {
 		e.preventDefault();
-		const newEvent = {
-			image, title, details, date, time
-		}
-		console.log(newEvent)
+		if (!admin.id) return
+		
+		let eventsData = new FormData();
+		eventsData.append('title', title);
+		eventsData.append('details', details);
+		eventsData.append('image', image);
+		eventsData.append('date', date);
+		eventsData.append('time', time);
+		const res = await axios.post('http://localhost:5000/api/create/event', eventsData, {
+			headers: {
+				Authorization: authToken,
+			}
+		}).then(data => {
+			console.log(data)
+		})
 	}
 
 	return (
