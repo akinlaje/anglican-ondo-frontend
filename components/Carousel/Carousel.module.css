@@ -1,0 +1,59 @@
+.Container {
+	position: relative;
+	overflow: hidden;
+}
+
+.ChildrenWrapper {
+	display: flex;
+	width: fit-content;
+	transition: left ease-out 300ms;
+	z-index: 10;
+}
+
+.NavIcon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 20;
+}
+
+.PrevIcon {
+	left: 30px;
+}
+
+.NextIcon {
+	right: 30px;
+}
+
+.IndicatorWrapper {
+	position: relative;
+	display: flex;
+	height: 4px;
+	align-items: stretch;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.Indicator {
+	flex: 1;
+	margin: 0 5px;
+	background-color: #fff;
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.Indicator.Active {
+	opacity: 1;
+}
+
+@media (min-width: 768px) {
+	.IndicatorWrapper {
+		width: fit-content;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.Indicator {
+		min-width: 50px;
+	}
+}

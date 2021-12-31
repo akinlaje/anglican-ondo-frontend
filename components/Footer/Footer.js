@@ -143,6 +143,38 @@ const footer = () => {
 			</div>
 			<div className={styles.Bottom}>
 				<div>Contact us</div>
+				<div className={styles.Socials}>
+          <img 
+            className={styles.SocialIcon} 
+            src='/images/svgs/facebook.svg' 
+            height='24px'
+            width='24px'
+          />
+          <img 
+            className={styles.SocialIcon} 
+            src='/images/svgs/instagram.svg' 
+            height='24px'
+            width='24px'
+          />
+          <img 
+            className={styles.SocialIcon} 
+            src='/images/svgs/twitter.svg' 
+            height='24px'
+            width='24px'
+          />
+          <img 
+            className={[styles.SocialIcon, styles.YTIcon].join(' ')} 
+            src='/images/svgs/youtube.svg' 
+            height='24px'
+            width='24px'
+          />
+        </div>
+			</div>
+			<div>
+				Made by
+				<Link href='https://davakconsult.com.ng'>
+					Davak Consult
+				</Link>
 			</div>
 		</footer>
 	)

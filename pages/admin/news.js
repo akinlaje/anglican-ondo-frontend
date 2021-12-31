@@ -3,7 +3,7 @@ import UploadImage from '../../components/UploadImage/UploadImage';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../../styles/AdminNews.module.css';
 import { FaNewspaper as NewsIcon } from 'react-icons/fa';
-import { JSONToFormData, /*saveFileToNextServer*/ } from '../../utils';
+import { saveFileToNextServer } from '../../utils';
 import axios from 'axios';
 import Spinner from '../../components/Spinner/Spinner';
 import FormError from '../../components/FormError/FormError';
@@ -20,14 +20,13 @@ const News = ({ admin, authToken }) => {
     e.preventDefault();
 		if (!admin.id) return
 
-// 		const imageFileFormData = new FormData();
-// 		imageFileFormData.append('file', image);
-// 		const imgRes = await saveFileToNextServer(imageFileFormData);
-// 
-// 		if (imgRes?.data?.status !== 'success') {
-// 			// error has occured while saving image to next
-// 			setError('An Error Occured');
-// 		}
+		const imgRes = await saveFileToNextServer(image);
+		console.log(imgRes)
+
+		if (imgRes?.status !== 200) {
+			// error has occured while saving image to next
+			setError('An Error Occured');
+		}
 
 		const data = {
     	title,

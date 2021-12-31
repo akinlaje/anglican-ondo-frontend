@@ -11,7 +11,7 @@ const MeetBishop = () => {
 			</header>
 			<section className={styles.CurrentBishopSection}>
 				<div className={styles.MainImageWrapper}>
-					<img className={styles.MainImage}  alt='bishop'/>
+					<img className={styles.MainImage}  alt='bishop' src='/images/current_bishop.jpg' />
 				</div>
 				<div className={styles.MainTextWrapper}>
 					<h3 className={styles.MainTextHeading}>Rt. Revd. Stephen Adeniran Oni, PhD, Mcasson</h3>
@@ -69,17 +69,50 @@ const MeetBishop = () => {
 			<section>
 				<h3 className={styles.SubHeading}>Former Bishops</h3>
 				<div className={styles.ClergyList}>
-					{[...Array(6)].map((bishop, i) => (
-						<div key={i} className={styles.Clergy}>
-							<img alt='clergy' className={styles.ClergyImage} />
-							<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
-							<div className='faded'>From 1900 - 2021</div>
-						</div>
-					))}
+					<div key={i} className={styles.Clergy}>
+						<img alt='clergy' className={styles.ClergyImage} src='/images/bishop.jpeg' />
+						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
+						<div className='faded'>From 1900 - 2021</div>
+					</div>
+				</div>
+				<div className={styles.ClergyList}>
+					<div key={i} className={styles.Clergy}>
+						<img alt='clergy' className={styles.ClergyImage} src='/images/bishop.jpeg' />
+						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
+						<div className='faded'>From 1900 - 2021</div>
+					</div>
+				</div>
+				<div className={styles.ClergyList}>
+					<div key={i} className={styles.Clergy}>
+						<img alt='clergy' className={styles.ClergyImage} src='/images/bishop.jpeg' />
+						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
+						<div className='faded'>From 1900 - 2021</div>
+					</div>
+				</div>
+				<div className={styles.ClergyList}>
+					<div key={i} className={styles.Clergy}>
+						<img alt='clergy' className={styles.ClergyImage} src='/images/bishop.jpeg' />
+						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
+						<div className='faded'>From 1900 - 2021</div>
+					</div>
+				</div>
+				<div className={styles.ClergyList}>
+					<div key={i} className={styles.Clergy}>
+						<img alt='clergy' className={styles.ClergyImage} src='/images/bishop.jpeg' />
+						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
+						<div className='faded'>From 1900 - 2021</div>
+					</div>
+				</div>
+				<div className={styles.ClergyList}>
+					<div key={i} className={styles.Clergy}>
+						<img alt='clergy' className={styles.ClergyImage} src='/images/bishop.jpeg' />
+						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
+						<div className='faded'>From 1900 - 2021</div>
+					</div>
 				</div>
 			</section>
 		</>
 	)
 }
 
-export default MeetBishop;
+export default MeetBishop

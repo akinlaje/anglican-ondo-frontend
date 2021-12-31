@@ -3,6 +3,9 @@
 	margin-bottom: 0;
 	text-align: center;
 	background-color: #eee;
+	background-image: '/images/SA.png';
+	background-size: cover;
+	background-repeat: no-repeat;
 	font-size: 1.2em;
 }
 

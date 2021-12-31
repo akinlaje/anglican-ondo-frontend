@@ -16,7 +16,8 @@
 	font-weight: 500;
 }
 
-.Image {
+.ImageWrapper {
+	position: relative;
 	display: block;
 	height: 200px;
 	width: 400px;
@@ -37,6 +38,21 @@
 	flex-flow: wrap;
 	list-style: none;
 	padding: 0;
+}
+
+.Button {
+	display: block;
+	margin: 10px auto;
+	height: 40px;
+	background-color: #fff;
+	color: var(--pri-darker);
+	border-radius: 10px;
+	border: 1px solid var(--pri-darker);
+}
+
+.Button:hover {
+	background-color: var(--pri-darker);
+	color: #fff;
 }
 
 @media (min-width: 768px) {

@@ -5,7 +5,8 @@ import TimePicker from '../../components/TimePicker/TimePicker';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../../styles/AdminEvents.module.css';
 import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa';
-import { JSONToFormData } from '../../utils';
+import { JSONToFormData, saveFileToNextServer } from '../../utils';
+import FormError from '../../components/FormError/FormError';
 
 const Events = () => {
 	const [image, setImage] = useState();
@@ -13,9 +14,19 @@ const Events = () => {
 	const [details, setDetails] = useState('');
 	const [date, setDate] = useState();
 	const [time, setTime] = useState();
+	const [error, setError] = useState('')
 
-	const submit = e => {
+	const submit = async e => {
 		e.preventDefault();
+
+		const imgRes = await saveFileToNextServer(image);
+		console.log(imgRes)
+
+		if (imgRes?.status !== 200) {
+			// error has occured while saving image to next
+			setError('An Error Occured');
+		}
+		
 		const newEvent = {
 			image, title, details, date, time
 		}
@@ -63,6 +74,7 @@ const Events = () => {
 					</div>
 				</div>
 				<button type='submit' className={styles.SubmitButton}>Post</button>
+				<FormError error={error} />
 			</form>
 		</div>
 	)
