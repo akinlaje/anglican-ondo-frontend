@@ -22,7 +22,6 @@ export async function getServerSideProps (context) {
   // get complete news here
 
   const fullNews = {
-  	{
       id: '1',
       title: 'Lorem Ipsum...Lorem Ipsum...',
       details: `Lorem ipsum dolor sit amet, consetetur sadipscing
@@ -34,7 +33,6 @@ export async function getServerSideProps (context) {
       date: '13th December, 2021',
       time: '10:00 pm',
     }
-  }
 
   return {
     props: {
