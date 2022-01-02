@@ -1,5 +1,5 @@
 // import Image from 'next/image'
-import Link from 'next/router';
+import Link from 'next/link';
 import styles from './HomeHeader.module.css';
 import CustomPlayButton from '../CustomPlayButton/CustomPlayButton';
 
