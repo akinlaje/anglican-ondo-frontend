@@ -62,9 +62,14 @@ const News = ({ admin, authToken }) => {
           News
         </h1>
       </div>
-      <form onSubmit={submit}>
+      <form onSubmit={submit} method='POST' encType='multipart/form-data'>
         <div className={styles.FormInner}>
-          <UploadImage file={image} setFile={setImage} name='image' />
+          <UploadImage
+            file={image}
+            setFile={setImage}
+            name='image'
+            className={styles.UploadImage}
+          />
           <div className={styles.TextContainer}>
             <input
               className={styles.Title}
@@ -82,8 +87,9 @@ const News = ({ admin, authToken }) => {
             />
           </div>
         </div>
-        <button type='submit' className={styles.SubmitButton}>
-          Post
+        <FormError error={error} />
+        <button type='submit' className={styles.SubmitButton} disabled={saving}>
+          {saving ? <Spinner /> : 'Post'}
         </button>
       </form>
     </div>
