@@ -44,6 +44,12 @@ const Events = ({ admin, authToken }) => {
       })
       .then((data) => {
         console.log(data);
+        setTitle('');
+        setTime('');
+        setDetails('');
+        setDate('');
+        setImage('');
+        alert('Created Successfully');
       });
   };
 

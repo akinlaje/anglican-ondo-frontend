@@ -41,6 +41,11 @@ const News = ({ admin, authToken }) => {
       })
       .then((data) => {
         console.log(data);
+        setTitle('');
+        setDetails('');
+        setImage('');
+        setLocation('');
+        alert('Created Successfully');
       });
 
     // check if server returned an error
