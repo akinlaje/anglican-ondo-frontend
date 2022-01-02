@@ -1,6 +1,6 @@
 import styles from '../styles/ClergyMen.module.css';
 
-const ClergyMen = () => {
+const ClergyMen = ({ venerables, canons, reverends }) => {
 	return (
 		<>
 			<header className={styles.Header}>
@@ -12,31 +12,31 @@ const ClergyMen = () => {
 			<section>
 				<h3 className={styles.SubHeading}>Former Bishops</h3>
 				<div className={styles.ClergyList}>
-					{[...Array(9)].map((bishop, i) => (
+					{venerables.map((bishop, i) => (
 						<div key={i} className={styles.Clergy}>
 							<img alt='clergy' className={styles.ClergyImage} />
-							<h4 className={styles.ClergyName}>Ven. S. O. Adeleye</h4>
-							<div className='faded'>Ondo Archdeaconry</div>
+							<h4 className={styles.ClergyName}>{bishop.name}</h4>
+							<div className='faded'>{bishop.position}</div>
 						</div>
 					))}
 				</div>
 				<h3 className={styles.SubHeading}>Former Bishops</h3>
 				<div className={styles.ClergyList}>
-					{[...Array(9)].map((bishop, i) => (
+					{canons.map((bishop, i) => (
 						<div key={i} className={styles.Clergy}>
 							<img alt='clergy' className={styles.ClergyImage} />
-							<h4 className={styles.ClergyName}>Ven. S. O. Adeleye</h4>
-							<div className='faded'>Ondo Archdeaconry</div>
+							<h4 className={styles.ClergyName}>{bishop.name}</h4>
+							<div className='faded'>{bishop.position}</div>
 						</div>
 					))}
 				</div>
 				<h3 className={styles.SubHeading}>Former Bishops</h3>
 				<div className={styles.ClergyList}>
-					{[...Array(9)].map((bishop, i) => (
+					{reverends.map((bishop, i) => (
 						<div key={i} className={styles.Clergy}>
 							<img alt='clergy' className={styles.ClergyImage} />
-							<h4 className={styles.ClergyName}>Ven. S. O. Adeleye</h4>
-							<div className='faded'>Ondo Archdeaconry</div>
+							<h4 className={styles.ClergyName}>{bishop.name}</h4>
+							<div className='faded'>{bishop.position}</div>
 						</div>
 					))}
 				</div>
@@ -46,3 +46,30 @@ const ClergyMen = () => {
 }
 
 export default ClergyMen;
+
+export async function getServerSideProps (context) {
+
+  // get venerables, canons and reverends here
+
+  const venerables = [...Array(9)].map(_ => ({
+	  name: 'Ven S. O. Adeleye',
+	  position: 'Ondo Archdeaconry'
+	}))
+
+	const canons = [...Array(9)].map(_ => ({
+	  name: 'Ven S. O. Adeleye',
+	  position: 'Ondo Archdeaconry'
+	}))
+
+	const reverends = [...Array(9)].map(_ => ({
+	  name: 'Ven S. O. Adeleye',
+	  position: 'Ondo Archdeaconry'
+	}))
+
+  return {
+    props: {
+      venerables, canons, reverends
+    }
+  }
+
+}

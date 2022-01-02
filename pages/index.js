@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
-import Script from 'next/script'
-// import Image from 'next/image'
+import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import HomeHeader from '../components/HomeHeader/HomeHeader'
 import WelcomeSection from '../components/WelcomeSection/WelcomeSection'
@@ -9,51 +8,12 @@ import ContactForm from '../components/ContactForm/ContactForm'
 import RGDSection from '../components/RGDSection/RGDSection'
 import TreasurySection from '../components/TreasurySection/TreasurySection'
 import BookEventSection from '../components/BookEventSection/BookEventSection'
+import Carousel from '../components/Carousel/Carousel'
 
-export default function Home() {
-  const [amplitudeLoaded, setAmplitudeLoaded] = useState(false);
-
-  useEffect(() => {
-    if (!amplitudeLoaded) return
-    Amplitude.init({
-      "bindings": {
-        37: 'prev',
-        39: 'next',
-        32: 'play_pause'
-      },
-      songs: [
-        {
-          "name": "Radio",
-          "artist": "",
-          "album": "",
-          "url": "https://sirius.shoutca.st:2199/start/anglicanondo/stream?type=http&nocache=1972",
-          // "url": "https://sirius.shoutca.st:8445/index.html?sid=1",
-          // "url": "https://sirius.shoutca.st:8445/index.html/stream",
-          // "url": "http://sirius.shoutca.st:8445/index.html/stream?type=http&nocache=1972",
-          "cover_art_url": ""
-        }
-      ],
-      playlists: {
-        "radio": {
-          songs: [0],
-          title: 'Radio'
-        } 
-      },
-    });
-  console.log('Amplitude loaded');
-  }, [amplitudeLoaded])
-
+export default function Home({ events=[] }) {
+  
   return (
     <>
-      <Script 
-        type="text/javascript" 
-        src="https://cdn.jsdelivr.net/npm/amplitudejs@5.2.0/dist/amplitude.js" 
-        strategy='afterInteractive'
-        onLoad={() => setAmplitudeLoaded(true)}
-        onError={(e) => {
-          console.log('Error: ', e);
-        }}
-      />
       <div className={styles.Container}>
         <Head>
           <title>Anglican Diocese of Ondo</title>
@@ -63,42 +23,91 @@ export default function Home() {
         <main>
           <HomeHeader />
           <WelcomeSection />
-          {/* <section class="section carousel-1-section"> */}
-          {/*   <div class="carousel"> */}
-          {/*     <div class="carousel-item"> */}
-          {/*       <img class="carousel-1-item-image" /> */}
-          {/*       <div> */}
-          {/*         <h2 class="carousel-1-item-title">Archdeaconries</h2> */}
-          {/*         <p> */}
-          {/*           Check out the archdeaconries and the Archdeacons with the Churches under them and the Priest in Charge */}
-          {/*         </p> */}
-          {/*       </div> */}
-          {/*     </div> */}
-          {/*     <div class="carousel-indicator-wrapper"> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*       <div  class="carousel-indicator active"></div> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*     </div> */}
-          {/*   </div> */}
-          {/* </section> */}
-          {/* <section class="section carousel-2-section"> */}
-          {/*   <h2 class="section-heading">EVENTS</h2> */}
-          {/*   <p class="carousel-2-section-subheading">Upcoming Events & Programs</p> */}
-          {/*   <div class="carousel"> */}
-          {/*     <div class="carousel-item"> */}
-          {/*       <img class="carousel-2-item-image" /> */}
-          {/*     </div> */}
-          {/*     <div class="carousel-indicator-wrapper"> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*       <div  class="carousel-indicator active"></div> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*       <div  class="carousel-indicator"></div> */}
-          {/*     </div> */}
-          {/*   </div> */}
-          {/* </section> */}
+          <section className={styles.CarouselSection}>
+            <Carousel className={styles.Carousel}>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image 
+                    className={styles.CarouselItemImage}
+                    height='500px' 
+                    width='500px'
+                    src='/images/diocese-logo.png'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>Archdeaconries</h2>
+                  <p>
+                    Check out the archdeaconries and the
+                    Archdeacons with the Churches under
+                    them and the Priest in Charge
+                  </p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image 
+                    className={styles.CarouselItemImage}
+                    height='500px' 
+                    width='500px'
+                    src='/images/diocese-logo.png'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>Archdeaconries</h2>
+                  <p>
+                    Check out the archdeaconries and the
+                    Archdeacons with the Churches under
+                    them and the Priest in Charge
+                  </p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image 
+                    className={styles.CarouselItemImage}
+                    height='500px' 
+                    width='500px'
+                    src='/images/diocese-logo.png'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>Archdeaconries</h2>
+                  <p>
+                    Check out the archdeaconries and the
+                    Archdeacons with the Churches under
+                    them and the Priest in Charge
+                  </p>
+                </div>
+              </div>
+            </Carousel>
+          </section>
+          <section className={[styles.CarouselSection, styles.EventSection].join(' ')}>
+            <h2 className={styles.EventCarouselTitle}>Upcoming Events and Programs</h2>
+            <Carousel 
+              className={[styles.Carousel, styles.EventCarousel].join(' ')} 
+              indicatorColor='var(--pri)'
+              iconClassName={[styles.NextIcon, styles.EventCarouselIcon].join(' ')}
+            >
+              {events.map((event, i) => {
+                return (
+                  <div key={i} className={styles.EventCarouselItem}>
+                    <div className={styles.EventImageWrapper}>
+                      <Image 
+                        className={styles.EventsImage}
+                        layout='fill'
+                        objectFit='contain'
+                        src={'/uploads/' + event.image}
+                        alt={event.title}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </Carousel>
+          </section>
           <ContactForm />
           <RGDSection />
           <TreasurySection />
@@ -107,4 +116,34 @@ export default function Home() {
       </div>
     </>
   )
+}
+
+export async function getServerSideProps (context) {
+
+  // get upcoming events here
+
+  const events = [
+    {
+      id: '1',
+      image: '/images/ae.jpg',
+      title: 'Test Event'
+    },
+    {
+      id: '1',
+      image: '/images/ae.jpg',
+      title: 'Test Event'
+    },
+    {
+      id: '1',
+      image: '/images/ae.jpg',
+      title: 'Test Event'
+    },
+  ]
+
+  return {
+    props: {
+      events
+    }
+  }
+
 }

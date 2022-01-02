@@ -18,6 +18,7 @@
 }
 
 .Image {
+	position: relative;
 	display: block;
 	margin: 0 auto;
 	height: 200px;
@@ -64,6 +65,12 @@
 	margin: 10px auto;
 	padding: 0 20px;
 	transition: color ease-out 300ms;
+}
+
+.AddButton {
+	color: #fff;
+	background-color: var(--pri);
+	width: 100%;
 }
 
 .RemoveButton {

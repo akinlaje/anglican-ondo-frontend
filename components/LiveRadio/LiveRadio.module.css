@@ -12,13 +12,15 @@
 	font-weight: 500;
 }
 
-.RadioProgramImg {
+.RadioProgramImgWrapper {
+	position: relative;
 	display: block;
 	height: 100px;
 	width: 100px;
 	margin: 10px auto;
 	border-radius: 50%;
 	border: 2px solid var(--pri);
+	overflow: hidden;
 }
 
 .RadioProgramInfo {
@@ -33,10 +35,18 @@
 }
 
 .ControlButton {
-	background-color: transparent;
+	background-color: var(--pri-darker);
 	height: 50px;
 	width: 50px;
 	margin-left: 20px;
+	border-radius: 50%;
+	border: none;
+}
+
+.ControlButtonIcon {
+	position: relative;
+	top: 3px;
+	left: 1px;
 }
 
 .UpcomingRadioProgramList {
@@ -49,7 +59,7 @@
 	text-align: center;
 }
 
-.UpcomingRadioProgramList .RadioProgramImg {
+.UpcomingRadioProgramList .RadioProgramImgWrapper {
 	height: 70px;
 	width: 70px;
 }
@@ -68,7 +78,7 @@
 		justify-content: space-between;
 	}
 
-	.RadioProgram.Live .RadioProgramImg {
+	.RadioProgram.Live .RadioProgramImgWrapper {
 		margin: 0;
 		margin-right: 20px;
 	}

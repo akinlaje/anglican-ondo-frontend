@@ -2,7 +2,7 @@ import styles from '../styles/FindChurch.module.css';
 import SearchChurches from '../components/SearchChurches/SearchChurches';
 import Locations from '../components/Locations/Locations';
 
-const FindChurch = () => {
+const FindChurch = ({ churches }) => {
 	return (
 		<>
 			<header className={styles.Header}>
@@ -15,10 +15,43 @@ const FindChurch = () => {
 				<SearchChurches />
 			</section>
 			<section className={styles.LocationsSection}>
-				<Locations />
+				<Locations locations={churches} />
 			</section>
 		</>
 	)
 }
 
 export default FindChurch;
+
+export async function getServerSideProps (context) {
+
+  // get upcoming events here
+
+  const churches = [
+    {
+    	id: '1',
+      name: 'ST Stephen Cathedral',
+      image: 'church.jpg',
+      location: 'No 32, Oke Aluko Street, Ondo',
+    },
+    {
+    	id: '2',
+      name: 'ST Stephen Cathedral',
+      image: 'church.jpg',
+      location: 'No 32, Oke Aluko Street, Ondo',
+    },
+    {
+    	id: '3',
+      name: 'ST Stephen Cathedral',
+      image: 'church.jpg',
+      location: 'No 32, Oke Aluko Street, Ondo',
+    },
+  ]
+
+  return {
+    props: {
+      events
+    }
+  }
+
+}

@@ -1,44 +1,63 @@
-import styles from '../../styles/AdminHome.module.css';
+import { useState, useEffect } from 'react'
+import styles from '../../styles/AdminHome.module.css'
 
 const Home = () => {
+	const [stats, setStats] = useState([])
+
+	useEffect(() => {
+		const getStats = async () => {
+			// get stats here
+			const stats = [
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+				{
+					name: 'Registered Members',
+					number: 25
+				},
+			]
+			setStats(stats)
+		}
+		getStats()
+	}, [])
+
 	return (
 		<div className={styles.Container}>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
-			<div className={styles.Stat}>
-				<h2 className={styles.StatNumber}>25</h2>
-				<div className={styles.StatName}>Registered Members</div>
-			</div>
+			{stats.map((stat, i) => (
+				<div key={i} className={styles.Stat}>
+					<h2 className={styles.StatNumber}>{stat.number}</h2>
+					<div className={styles.StatName}>{stat.name}</div>
+				</div>
+			))}
 		</div>
 	)
 }

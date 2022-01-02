@@ -19,14 +19,22 @@ export const isValidDate = (d) => {
 	return valid;
 }
 
-export const saveFileToNextServer = async (formData) => {
+export const saveFileToNextServer = async (file) => {
+	const formData = new FormData();
+	formData.append('file', file);
+
 	const config = {
 		headers: {
 			'content-type': 'multipart/form-data'
 		}
 	}
 
-	const res = await axios.post(formData, '/api/uploads');
+	const res = await axios.post('/api/uploads', formData, config);
 
+	return res;
+}
+
+export const deleteFileFromNextServer = async (filename) => {
+	const res = await axios.delete('/api/uploads', { params: { filename } });
 	return res;
 }

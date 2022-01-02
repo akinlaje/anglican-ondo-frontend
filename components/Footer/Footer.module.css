@@ -40,6 +40,27 @@
 	color: #fff;
 }
 
+.Socials {
+	width: fit-content;
+  display: flex;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.SocialIcon {
+  display: block;
+  height: 24px;
+  padding: 5px 15px;
+  border: 1px solid #fff;
+  box-sizing: content-box;
+}
+
+.SocialIcon.YtIcon {
+  padding-top: 5px;
+  padding-bottom: 0;
+}
+
 @media (min-width: 960px) {
 	.Footer {
 		padding: 60px;

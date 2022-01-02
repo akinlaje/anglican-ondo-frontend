@@ -108,6 +108,7 @@ const Nav = () => {
 									<li key={display} className={styles.TopNavItem}>
 										<Link href={href} >
 											<a 
+												onClick={() => setMenuOpen(false)}
 												className={[
 													styles.TopNavLink, 
 													isActive ? styles.Active : ''
@@ -134,10 +135,10 @@ const Nav = () => {
 							return (
 								<li key={display} className={styles.NavItem}>
 									<Link 
-										onClick={() => setMenuOpen(false)}
 										href={href}
 									>
 										<a
+											onClick={() => setMenuOpen(false)}
 											className={[
 							        	styles.NavLink,
 							        	isActive ? styles.Active : ''

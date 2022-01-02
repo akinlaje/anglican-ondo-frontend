@@ -12,7 +12,7 @@
 }
 
 .LiveRadioSection {
-	background-color: #555;
+	background-color: var(--pri);
 }
 
 .PodcastSection {

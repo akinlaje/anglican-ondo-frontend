@@ -5,21 +5,70 @@
 }
 
 .ImageWrapper {
-	margin: 0 20px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
 	margin-bottom: 30px;
 	text-align: center;
+	height: 250px;
+	width: 250px;
+	border: 1px solid var(--pri);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.AddImageWrapper {
+	height: auto;
+	padding: 10px;
 }
 
 .Image {
-	margin-right: auto;
-	margin-left: auto;
+	margin: 0 !important;
+	margin-bottom: 10px !important;
 }
 
 .Input {
 	min-height: 40px;
 	font-weight: 500;
 	text-align: center;
-	border: none;
+	border: 1px solid #aaa;
+	margin-bottom: 10px;
+}
+
+.Button {
+	position: absolute;
+    bottom: 10px;
+    z-index: 20;
+	display: none;
+	height: 40px;
+	border: 1px solid var(--pri-darker);
+	background-color: #fff;
+	color: var(--pri-darker);
+	padding: 0 20px;
+	margin: 10px 0;
+	border-radius: 10px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.Button.SaveButton {
+	display: block;
+	position: relative;
+	margin: 10px;
+	width: 100%;
+}
+
+.Button:hover {
+	color: #fff;
+	background-color: var(--pri-darker);
+}
+
+.ImageWrapper:hover .Button {
+	display: block;
 }
 
 @media (min-width: 768px) {

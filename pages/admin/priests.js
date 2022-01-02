@@ -1,16 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/Image';
+import Image from 'next/image';
 import styles from '../../styles/AdminPriests.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
+import cloneDeep from 'lodash/cloneDeep'
+import { saveFileToNextServer, deleteFileFromNextServer } from '../../utils';
+import FormError from '../../components/FormError/FormError';
 
-const Priest = ({ name, position, image }) => {
+const Priest = ({ name, position, image, id, deletePriest }) => {
 	return (
 		<div className={styles.Priest}>
-			<Image height='500px' width='500px' alt={name} className={styles.Image} />
+			<div className={styles.Image}>
+				<Image layout='fill' objectFit='contain' alt={name} src={'/uploads/' + image} />
+			</div>
 			<h3 className={styles.Name}>{ name }</h3>
 			<p>{ position }</p>
 			<button 
+				onClick={() => deletePriest(id)}
 				className={[
 					styles.Button, 
 					styles.RemoveButton
@@ -20,7 +26,16 @@ const Priest = ({ name, position, image }) => {
 	)
 }
 
-const AddPriest = ({ name, setName, position, setPosition, image, setImage, savePriest }) => {
+const AddPriest = ({ name, setName, position, setPosition, image, setImage, savePriest, error }) => {
+	const [imageObjectUrl, setImageObjectUrl] = useState(
+		image ? URL.createObjectURL(image) : '/images/svgs/image.svg'
+	)
+
+	useEffect(() => {
+		if (!image) return
+		setImageObjectUrl(URL.createObjectURL(image))
+	}, [image])
+
 	const inputRef = useRef();
 
 	const onChange = e => {
@@ -35,7 +50,9 @@ const AddPriest = ({ name, setName, position, setPosition, image, setImage, save
 		<div className={[styles.Priest, styles.NewPriest].join(' ')}>
 			<input style={{display: 'none'}} type='file' accept='.jpg, png, jpeg' onChange={onChange} />
 			{image ? (
-				<Image onClick={chooseImage} height='500px' width='500px' src={URL.createObjectURL(image)} alt={name} />
+				<div className={styles.Image}>
+					<Image onClick={chooseImage} layout='fill' objectFit='contain' src={imageObjectUrl} alt={name} />
+				</div>
 			) : <PlusIcon  onClick={chooseImage} className={styles.Image} color='var(--pri)' />}
 			<AutoGrowingTextarea 
 				value={name}
@@ -49,45 +66,115 @@ const AddPriest = ({ name, setName, position, setPosition, image, setImage, save
 				className={styles.TextareaWrapper} 
 				placeholder='position' 
 			/>
-			{name.trim() && position.trim() && image && <button onClick={savePriest} className={styles.Button}>Add</button>}
+			<input 
+				ref={inputRef} 
+				style={{display: 'none'}} 
+				type='file' accept='.jpg, png, jpeg' 
+				onChange={onChange} 
+			/>
+			{name.trim() && position.trim() && image && (
+				<button 
+					onClick={savePriest} 
+					className={[styles.Button, styles.AddButton].join(' ')}
+				>Add</button>
+			)}
+			<FormError error={error} />
 		</div>
 	)
 }
 
 const Priests = () => {
-	const [priests, setPriests] = useState();
+	const [priests, setPriests] = useState([]);
 
 	const [name, setName] = useState('');
 	const [position, setPosition] = useState('');
 	const [image, setImage] = useState();
+	const [error, setError] = useState('')
 
 	useEffect(() => {
 		const getPriests = async () => {
 			// get priests from  backend
-			priests = []
+			const priests = [
+				{
+					id: '1',
+					name: 'Ven S. O. Adeleye',
+					position: 'Ondo Archdeaconry',
+					image: 'SA.png'
+				},
+				{
+					id: '2',
+					name: 'Ven S. O. Adeleye',
+					position: 'Ondo Archdeaconry',
+					image: 'SA.png'
+				},
+				{
+					id: '3',
+					name: 'Ven S. O. Adeleye',
+					position: 'Ondo Archdeaconry',
+					image: 'SA.png'
+				},
+			]
 			setPriests(priests)
 		}
 
 		getPriests();
 	}, [])
 
-	const savePriest = () => {
+	const savePriest = async () => {
+
+		const imgRes = await saveFileToNextServer(image);
+		console.log(imgRes)
+
+		if (imgRes?.status !== 200) {
+			// error has occured while saving image to next
+			setError('An Error Occured');
+		}
+
 		const newPriest = { name, position, image };
 		console.log(newPriest)
 		// save priest to backend
 
-		setPriests(v => [...cloneDeep, newPriest]);
+		setPriests(v => [...cloneDeep(v), newPriest]);
+		setImage(null)
+		setName('')
+		setPosition('')
+	}
+
+	const deletePriest = async (id) => {
+		// delete priest from nextjs server
+		let imageName
+		for (let i = priests.length - 1; i >= 0; i--) {
+			if (priests[i].id === id) {
+				imageName = priests[i].image
+				break
+			}
+		}
+
+		console.log(imageName)
+		const imgRes = await deleteFileFromNextServer(imageName);
+		console.log(imgRes)
+
+		if (imgRes?.status !== 200) {
+			// error has occured while saving image to next
+			setError('An Error Occured');
+		}
+
+		// delete priest image from server
+
+		setPriests(
+			priests => priests.map(priest => priest.id === id ? null : {...priest}).filter(v => v)
+		)
 	}
 
 	return (
 		<div>
 			<div className={styles.HeadingContainer}>
-				<h1 className={styles.Heading}>Churches</h1>
+				<h1 className={styles.Heading}>Priests</h1>
 			</div>
 			<div className={styles.Priests}>
 				{priests.map((priest, i) => {
 					return (
-						<Priest key={i} />
+						<Priest key={i} {...priest} deletePriest={deletePriest}/>
 					)
 				})}
 				<AddPriest 
@@ -98,6 +185,7 @@ const Priests = () => {
 					image={image}
 					setImage={setImage} 
 					savePriest={savePriest}
+					error={error}
 				/>
 			</div>
 		</div>

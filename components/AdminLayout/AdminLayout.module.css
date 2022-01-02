@@ -7,9 +7,18 @@
 	background-color: #fff;
 }*/
 
+.NavMenuOpener {
+	position: fixed;
+	top: 20px;
+	left: 30px;
+	height: fit-content;
+	width: fit-content;
+	z-index: 2000;
+}
+
 .Sidebar {
 	position: fixed;
-	left: 0;
+	left: -100vw;
 	top: 0;
 	height: 100vh;
 	width: 280px;
@@ -17,6 +26,24 @@
 	max-width: 100%;
 	background: transparent linear-gradient(270deg, #FE3507 0%, #511702 100%) 0% 0% no-repeat padding-box;
 	color: #fff;
+	z-index: 1000;
+	overflow: auto;
+	transition: left ease-out 300ms;
+}
+
+.Sidebar.Open {
+	left: 0;
+}
+
+.Backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: #555;
+	opacity: 0.5;
+	z-index: 500;
 }
 
 .SidebarHeading {
@@ -28,6 +55,7 @@
 .SidebarInner {
 	list-style: none;
 	padding: 0;
+	height: fit-content;
 	margin-top: auto;
 	margin-bottom: 100px;
 	font-weight: 500;
@@ -64,6 +92,11 @@
 
 	.SidebarLink {
 		height: 50px;
+	}
+
+	.NavMenuOpener,
+	.Backdrop {
+		display: none;
 	}
 
 	.Main {

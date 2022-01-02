@@ -1,21 +1,25 @@
 import styles from './PreviousPodcast.module.css';
+import PlayPauseButton from '../PlayPauseButton/PlayPauseButton'
 
-const previousPodcast = () => {
+const previousPodcast = ({ previousPodcasts }) => {
 	return (
 		<div className={styles.Container}>
 			<h2 className={styles.Heading}>Previous Podcasts</h2>
 			<ul className={styles.List}>
-				{[...Array(10)].map((_, i) => (
+				{previousPodcasts.map((podcast, i) => (
 					<li key={i} className={styles.Podcast}>
-						<img alt='Live Program' className={styles.PodcastImg} />
+						<img alt={podcast.title || 'Live Program'} className={styles.PodcastImg} src={podcast.image} />
 						<div className={styles.PodcastInfo}>
 							<div>
-								<h3 className={styles.PodcastTitle}>The efficacy of the holy spirit</h3>
-								<div className={styles.PodcastAuthor}>The Rt. Revd. S. A. Oni</div>
+								<h3 className={styles.PodcastTitle}>{podcast.title}</h3>
+								<div className={styles.PodcastAuthor}>{podcast.anchor}</div>
 							</div>
-							<button className={styles.ControlButton}>
-								
-							</button>
+							<PlayPauseButton 
+								amplitudeSongIndex={podcast.amplitudeSongIndex}
+								amplitudePlaylistName={podcast.amplitudePlaylistName}
+								className={styles.ControlButton}
+								iconClassName={styles.ControlButtonIcon}
+							/>
 						</div>
 					</li>
 				))}

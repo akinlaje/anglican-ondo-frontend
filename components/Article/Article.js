@@ -1,17 +1,20 @@
+import Image from 'next/image' 
 import Link from 'next/link';
 import styles from './Article.module.css';
 
-const Article = () => {
+const Article = ({ id, title, details, image, date, time }) => {
 	return (
 		<div className={styles.Container}>
 			<div className={styles.Info}>
 				<div>News</div>
-				<p className={styles.Desc}>Lorem Ipsum... Lorem Ipsum...</p>
-				<div>Dec 2, 2021</div>
+				<p className={styles.Desc}>{title}</p>
+				<div>{date}</div>
 			</div>
-			<img alt='article' className={styles.Image} />
+			<div className={styles.Image}>
+				<Image alt='article' src={'/uploads/' + image} layout='fill' objectFit='contain' />
+			</div>
 			<div className={styles.Bottom}>
-				<Link href='/'>
+				<Link href={'/new-and-events/' + id}>
 					<a>Read More</a>
 				</Link>
 			</div>

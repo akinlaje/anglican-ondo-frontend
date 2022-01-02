@@ -45,7 +45,7 @@ const UploadImage = ({ file, setFile, name, className }) => {
 				) : (
 				<PlusIcon className={styles.PlusIcon} size='50px' color='var(--pri)' />
 			)}
-			<div className={styles.AddImage}>{ file ? 'Change ' : 'Add ' }Image</div>
+			<button className={styles.AddImageButton}>{ file ? 'Change ' : 'Add ' }Image</button>
 		</div>
 	)
 }

@@ -1,74 +1,9 @@
+import Image from 'next/image'
 import styles from '../styles/Gallery.module.css';
 import HorizontalSlider from '../components/HorizontalSlider/HorizontalSlider';
 import Event from '../components/Event/Event';
 
-const Gallery = () => {
-	const events = [
-		{
-			month: 'October',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-			]
-		},
-		{
-			month: 'November',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-			]
-		},
-		{
-			month: 'December',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?'
-				},
-			]
-		},
-	]
-
+const Gallery = ({ events=[], recentEvents=[] }) => {
 	return (
 		<>
 			<header className={styles.Header}>
@@ -80,10 +15,13 @@ const Gallery = () => {
 			<section>
 				<h2 className={styles.SubHeading}>EVENT IMAGE</h2>
 				<HorizontalSlider>
-					<img className={styles.Image} alt='event' />
-					<img className={styles.Image} alt='event' />
-					<img className={styles.Image} alt='event' />
-					<img className={styles.Image} alt='event' />	
+					{recentEvents.map((event, i) => {
+						return (
+							<div key={i} className={styles.ImageWrapper}>
+								<Image laout='fill' objectFit='cover' className={styles.Image} alt='event' src={'/uploads/' + event.image} />	
+							</div>
+						)
+					})}
 				</HorizontalSlider>
 				{events.map(({ month, events }, i) => (
 					<div key={i} className={styles.Month}>
@@ -103,3 +41,118 @@ const Gallery = () => {
 }
 
 export default Gallery;
+
+export async function getServerSideProps (context) {
+
+  // get events and recent events here
+  
+	const events = [
+		{
+			month: 'October',
+			events: [
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+			]
+		},
+		{
+			month: 'November',
+			events: [
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+			]
+		},
+		{
+			month: 'December',
+			events: [
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+				{
+					title: 'Synod 2020',
+					desc: 'Who are you?',
+					image: 'ae.jpg'
+				},
+			]
+		},
+	]
+
+	const recentEvents = [
+		{
+			image: 'ae.jpg'
+		},
+		{
+			image: 'ae.jpg'
+		},
+		{
+			image: 'ae.jpg'
+		},
+		{
+			image: 'ae.jpg'
+		},
+		{
+			image: 'ae.jpg'
+		},
+		{
+			image: 'ae.jpg'
+		},
+		{
+			image: 'ae.jpg'
+		},
+	]
+
+  return {
+    props: {
+      events,
+      recentEvents
+    }
+  }
+
+}

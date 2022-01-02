@@ -6,17 +6,23 @@ import Spinner from '../../components/Spinner/Spinner';
 import axios from 'axios';
 import { FaUser as UserIcon } from 'react-icons/fa';
 
-const Login  = ({ setAdmin, setAuthToken }) => {
+const Login  = ({ setAdmin, setAuthToken, admin }) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
-
-	useEffect(() => {
-		console.log(loading)
-	}, [loading])
+	const [loggedIn, setLoggedIn] = useState(false)
 
 	const router = useRouter();
+
+	let returnUrl = router?.query?.returnUrl || '/admin/home'
+
+	useEffect(() => {
+		console.log(admin, loggedIn)
+		if (admin && loggedIn) {
+			router.push(returnUrl)
+		}
+	}, [admin, loggedIn, returnUrl])
 
 	const submit = async e => {
 		e.preventDefault();
@@ -33,14 +39,14 @@ const Login  = ({ setAdmin, setAuthToken }) => {
 		  },
 		});
 		const { token, user: admin, err } = data;
-		// console.log(admin, token);
+		console.log(admin, token);
 
 		if (err) return setError(err);
 
 		setLoading(false);
+		setLoggedIn(true)
 		setAdmin(admin);
 		setAuthToken(token)
-		router.push('/admin/home');
 	}
 
 	// email: raheemolalekanusman94@gmail.com

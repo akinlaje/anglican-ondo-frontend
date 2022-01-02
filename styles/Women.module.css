@@ -36,12 +36,16 @@
 	color: #fff;
 }
 
-.AboutArticle,
+.SectionHeading {
+	font-weight: 500;
+}
+
+.Article,
 .Image {
 	border-radius: 10px;
 }
 
-.AboutArticle {
+.Article {
 	margin-bottom: 40px;
 	background-color: #eee;
 }
@@ -88,7 +92,7 @@
 		font-size: 3em;
 	}
 
-	.AboutArticles {
+	.Articles {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
@@ -96,7 +100,7 @@
 		margin: 0 auto;
 	}
 
-	.AboutArticle {
+	.Article {
 		width: calc(50% - 20px);
 	}
 }

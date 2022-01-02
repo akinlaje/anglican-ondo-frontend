@@ -4,9 +4,19 @@ import styles from '../../styles/AdminChurches.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import FormError from '../../components/FormError/FormError';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
+import { JSONToFormData, saveFileToNextServer } from '../../utils';
 import cloneDeep from 'lodash/cloneDeep'
 
 const AddChurch = ({ name, setName, location, setLocation, image, setImage, saveChurch }) => {
+	const [imageObjectUrl, setImageObjectUrl] = useState(
+		image ? URL.createObjectURL(image) : '/images/svgs/image.svg'
+	)
+
+	useEffect(() => {
+		if (!image) return
+		setImageObjectUrl(URL.createObjectURL(image))
+	}, [image])
+
 	const inputRef = useRef();
 
 	const onChange = e => {
@@ -31,11 +41,23 @@ const AddChurch = ({ name, setName, location, setLocation, image, setImage, save
 				placeholder='Location' 
 				className={styles.TextareaWrapper} 
 			/>
-			<input style={{display: 'none'}} type='file' accept='.jpg, png, jpeg' onChange={onChange} />
+			<input ref={inputRef} style={{display: 'none'}} type='file' accept='.jpg, png, jpeg' onChange={onChange} />
 			{image ? (
-				<Image onClick={chooseImage} height='500px' width='500px' src={URL.createObjectURL(image)} alt={name} />
+				<div className={styles.Image}>
+					<Image 
+						onClick={chooseImage} 
+						layout='fill' 
+						objectFit='contain' 
+						src={imageObjectUrl} 
+						alt={name} 
+					/>
+				</div>
 			) : <PlusIcon  onClick={chooseImage} className={styles.Image} color='var(--pri)' />}
-			<button className={styles.SaveButton} onClick={saveChurch}>Save</button>
+			<button 
+				className={styles.SaveButton} 
+				onClick={saveChurch} 
+				disabled={!name || !image || !location}
+			>Save</button>
 		</div>
 	)
 }
@@ -57,19 +79,22 @@ const Churches = () => {
 			// get the saved churches
 			const churches = [
 				{
+					id: '1',
 					name: 'ST. Stephen Cathedral',
 					location: 'No 32 Oke Aluko Street, Ondo',
-					image: '/images/ae.jpg'
+					image: 'church.jpg'
 				},
 				{
+					id: '2',
 					name: 'ST. Stephen Cathedral',
 					location: 'No 32 Oke Aluko Street, Ondo',
-					image: '/images/ae.jpg'
+					image: 'church.jpg'
 				},
 				{
+					id: '3',
 					name: 'ST. Stephen Cathedral',
 					location: 'No 32 Oke Aluko Street, Ondo',
-					image: '/images/ae.jpg'
+					image: 'church.jpg'
 				},
 			]
 			setChurches(churches)
@@ -78,6 +103,15 @@ const Churches = () => {
 	}, [])
 
 	const saveChurch = async () => {
+		// save to next server
+		const imgRes = await saveFileToNextServer(image);
+		console.log(imgRes)
+
+		if (imgRes?.status !== 200) {
+			setError('An Error Occured');
+		}
+
+		// save to backend
 		const newChurch = {
 			name,
 			location,
@@ -91,6 +125,35 @@ const Churches = () => {
 		// save church
 
 		setChurches(v => [...cloneDeep(v), newChurch]);
+		setName('')
+		setLocation('')
+		setImage(null)
+	}
+
+	const deleteChurch = async (id) => {
+		// delete church from nextjs server
+		let imageName
+		for (let i = churches.length - 1; i >= 0; i--) {
+			if (churches[i].id === id) {
+				imageName = churches[i].image
+				break
+			}
+		}
+
+		console.log(imageName)
+		const imgRes = await deleteFileFromNextServer(imageName);
+		console.log(imgRes)
+
+		if (imgRes?.status !== 200) {
+			// error has occured while saving image to next
+			setError('An Error Occured');
+		}
+
+		// delete church image from server
+
+		setChurches(
+			churches => churches.map(church => church.id === id ? null : {...church}).filter(v => v)
+		)
 	}
 
 	return (
@@ -99,14 +162,17 @@ const Churches = () => {
 				<h1 className={styles.Heading}>Churches</h1>
 			</div>
 			<div className={styles.Churches}>
-				{churches.map(({ name, location, image }, i) => {
+				{churches.map(({ name, location, image, id }, i) => {
 					return (
 						<div key={i} className={styles.Church}>
 							<div className={styles.Info}>
 								<h3 className={styles.Name}>{ name }</h3>
 								<div className={styles.Location}>{location}</div>
 							</div>
-							<Image height='500px' width='500px' className={styles.Image} src={image} alt={name}/>
+							<div className={styles.Image}>
+								<Image layout='fill' objectFit='contain' src={'/uploads/' + image} alt={name}/>
+							</div>
+							<button className={styles.DeleteButton} onClick={() => deleteChurch(id)}>Delete</button>
 						</div>
 					)
 				})}
