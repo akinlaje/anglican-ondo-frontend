@@ -64,12 +64,7 @@ const News = ({ admin, authToken }) => {
       </div>
       <form onSubmit={submit}>
         <div className={styles.FormInner}>
-          <UploadImage
-            file={image}
-            setFile={setImage}
-            name='image'
-            className={styles.UploadImage}
-          />
+          <UploadImage file={image} setFile={setImage} name='image' />
           <div className={styles.TextContainer}>
             <input
               className={styles.Title}
@@ -87,9 +82,8 @@ const News = ({ admin, authToken }) => {
             />
           </div>
         </div>
-        <FormError error={error} />
-        <button type='submit' className={styles.SubmitButton} disabled={saving}>
-          {saving ? <Spinner /> : 'Post'}
+        <button type='submit' className={styles.SubmitButton}>
+          Post
         </button>
       </form>
     </div>
