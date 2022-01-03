@@ -4,7 +4,7 @@ import Pagination from '../Pagination/Pagination';
 
 const Location = ({ id, name, image, location, imageUrl }) => {
 	return (
-		<div className={styles.Location}> + 
+		<div className={styles.Location}>
 			<div className={styles.Info}>
 				<h3 className={styles.LocationName}>{name}</h3>
 				<div>{location}</div>
