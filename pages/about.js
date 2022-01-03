@@ -42,7 +42,7 @@ const About = () => {
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Our Mission</h2>
 							<p className={styles.Content}>
-								A 'Cruce Salus' (safety of the cross) is our watchword and will continue to be 
+								A &apos;Cruce Salus&apos; (safety of the cross) is our watchword and will continue to be 
 								our guide.
 							</p>
 							<p className={styles.Content}>
