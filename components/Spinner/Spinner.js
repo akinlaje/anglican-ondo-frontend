@@ -1,10 +1,15 @@
 import { CgSpinner } from 'react-icons/cg';
 import styles from './Spinner.module.css';
 
-const Spinner = ({className, ...rest}) => {
+const Spinner = ({className, color, size, ...rest}) => {
 
 	return (
-		<CgSpinner className={[styles.Icon, className].join(' ')} {...rest} />
+		<CgSpinner 
+			className={[styles.Icon, className].join(' ')} 
+			color={color || '#ccc'} 
+			size={size || '2em'} 
+			{...rest} 
+		/>
 	)
 }
 

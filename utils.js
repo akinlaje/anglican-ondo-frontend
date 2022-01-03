@@ -38,3 +38,5 @@ export const deleteFileFromNextServer = async (filename) => {
 	const res = await axios.delete('/api/uploads', { params: { filename } });
 	return res;
 }
+
+export const BASE_URL = 'http://localhost:5000/api/'

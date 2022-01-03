@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image';
 import styles from './BookEventSection.module.css';
 
@@ -23,6 +24,9 @@ const BookEventSection = () => {
           book the diocese event center and get the utmost
           Satisfaction for your events.
         </p>
+        <Link href='/book-event'>
+          <a className={styles.Button}>Book Event Center</a>
+        </Link>
       </div>
     </section>
 	)

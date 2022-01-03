@@ -5,6 +5,7 @@
 	background-repeat: no-repeat;
 	background-color: #555;
 	color: #fff;
+	padding: 0;
 }
 
 .BookEventSection::after {
@@ -25,8 +26,10 @@
 }
 
 .BookEvent {
+	width: 51%;
+	background-color: #555;
 	position: relative;
-	padding-top: 70px;
+	padding: 100px 50px;
 	padding-bottom: 50px;
 	text-align: center;
 	z-index: 10;
@@ -45,6 +48,24 @@
 
 .BookEventText {
 	margin-top: 0;
+}
+
+.Button {
+	display: block;
+	height: 50px;
+	width: 80%;
+	max-width: 400px;
+	border-radius: 15px;
+	background-color: #FFEE00;
+	color: #000;
+	font-weight: 500;
+	margin: 20px auto;
+	border: none;
+	cursor: pointer;
+}
+
+.Button:hover {
+	background-color: #e9d900;
 }
 
 @media (min-width: 768px) {

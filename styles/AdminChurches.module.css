@@ -42,17 +42,23 @@
 }
 
 .DeleteButton {
-	position: absolute;
-	bottom: 10px;
-	left: 50%;
-	transform: translateX(-50%);
-	display: none;
+	margin: 15px 0;
 	padding: 0 20px;
 	border: 1px solid var(--pri-darker);
 	background-color: #fff;
 	color: var(--pri-darker);
 	height: 50px;
 	border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+	.DeleteButton {
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: none;
+	}
 }
 
 .Church:hover .DeleteButton {

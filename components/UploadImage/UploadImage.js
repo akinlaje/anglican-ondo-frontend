@@ -13,14 +13,19 @@ const UploadImage = ({ file, setFile, name, className }) => {
 	const FILE_TYPES = ['png', 'jpg', 'jpeg'];
 
 	const onChange = e => {
+		setUnsupported(false)
 		const selectedFile = e.target.files[0];
 		if (!setUnsupported) return;
 		const { name } = selectedFile;
 		const ext = name.slice((name.lastIndexOf(".") - 1 >>> 0) + 2);
-		if (!FILE_TYPES.includes(ext)) {
-			setUnsupported(true);
-			return;
+		let supported = false
+		for (let i = FILE_TYPES.length - 1; i >= 0; i--) {
+			if (FILE_TYPES[i] === ext.toLowerCase()) {
+				supported = true
+				break;
+			}
 		}
+		setUnsupported(!supported);
 		setFile(selectedFile);
 	}
 

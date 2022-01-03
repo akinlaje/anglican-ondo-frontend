@@ -4,11 +4,12 @@ import styles from '../../styles/AdminPriests.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 import cloneDeep from 'lodash/cloneDeep';
-import { saveFileToNextServer, deleteFileFromNextServer } from '../../utils';
+import Spinner from '../../components/Spinner/Spinner';
 import FormError from '../../components/FormError/FormError';
+import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
-const Priest = ({ name, position, image, id, deletePriest }) => {
+const Priest = ({ name, position, image, id, deletePriest, imageUrl, deleting }) => {
   return (
     <div className={styles.Priest}>
       <div className={styles.Image}>
@@ -16,16 +17,16 @@ const Priest = ({ name, position, image, id, deletePriest }) => {
           layout='fill'
           objectFit='contain'
           alt={name}
-          src={'/uploads/' + image}
+          src={imageUrl}
         />
       </div>
       <h3 className={styles.Name}>{name}</h3>
       <p>{position}</p>
       <button
-        onClick={() => deletePriest(id)}
+        onClick={() => deletePriest(id, image)}
         className={[styles.Button, styles.RemoveButton].join(' ')}
       >
-        Remove
+        {deleting === id ? <Spinner color='#000' /> : 'Remove'}
       </button>
     </div>
   );
@@ -40,6 +41,7 @@ const AddPriest = ({
   setImage,
   savePriest,
   error,
+  saving
 }) => {
   const [imageObjectUrl, setImageObjectUrl] = useState(
     image ? URL.createObjectURL(image) : '/images/svgs/image.svg'
@@ -62,12 +64,6 @@ const AddPriest = ({
 
   return (
     <div className={[styles.Priest, styles.NewPriest].join(' ')}>
-      <input
-        style={{ display: 'none' }}
-        type='file'
-        accept='.jpg, png, jpeg'
-        onChange={onChange}
-      />
       {image ? (
         <div className={styles.Image}>
           <Image
@@ -101,15 +97,16 @@ const AddPriest = ({
         ref={inputRef}
         style={{ display: 'none' }}
         type='file'
-        accept='.jpg, png, jpeg'
+        accept='.jpg, .png, .jpeg'
         onChange={onChange}
       />
       {name.trim() && position.trim() && image && (
         <button
           onClick={savePriest}
           className={[styles.Button, styles.AddButton].join(' ')}
+          disabled={saving}
         >
-          Add
+          {saving ? <Spinner /> : 'Add'}
         </button>
       )}
       <FormError error={error} />
@@ -117,13 +114,15 @@ const AddPriest = ({
   );
 };
 
-const Priests = ({ admin, authToken }) => {
+const Priests = ({ admin, authToken, apiBaseUrl }) => {
   const [priests, setPriests] = useState([]);
 
   const [name, setName] = useState('');
   const [position, setPosition] = useState('');
   const [image, setImage] = useState();
   const [error, setError] = useState('');
+  const [saving, setSaving] = useState(false)
+  const [deleting, setDeleting] = useState('')
 
   useEffect(() => {
     const getPriests = async () => {
@@ -134,18 +133,21 @@ const Priests = ({ admin, authToken }) => {
           name: 'Ven S. O. Adeleye',
           position: 'Ondo Archdeaconry',
           image: 'SA.png',
+          imageUrl: '/images/SA.png',
         },
         {
           id: '2',
           name: 'Ven S. O. Adeleye',
           position: 'Ondo Archdeaconry',
           image: 'SA.png',
+          imageUrl: '/images/SA.png',
         },
         {
           id: '3',
           name: 'Ven S. O. Adeleye',
           position: 'Ondo Archdeaconry',
           image: 'SA.png',
+          imageUrl: '/images/SA.png',
         },
       ];
       setPriests(priests);
@@ -155,67 +157,65 @@ const Priests = ({ admin, authToken }) => {
   }, []);
 
   const savePriest = async () => {
-    const imgRes = await saveFileToNextServer(image);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      // error has occured while saving image to next
-      setError('An Error Occured');
-    }
-
-    const newPriest = { name, position, image };
-    console.log(newPriest);
-    // save priest to backend
-
-    if (!admin.id) return;
-
+    setSaving(true)
     let priestData = new FormData();
     priestData.append('name', name);
     priestData.append('image', image);
     priestData.append('position', position);
+    priestData.append('id', uuidv4());
     const res = await axios
-      .post('http://localhost:5000/api/create/priest', priestData, {
+      .post(apiBaseUrl + 'create/priest', priestData, {
         headers: {
           Authorization: authToken,
         },
       })
-      .then((data) => {
-        console.log(data);
+      .then(({ data: { data, msgDb, success } }) => {
 
-        setPriests((v) => [...cloneDeep(v), newPriest]);
+        setPriests((v) => [...cloneDeep(v), data]);
         setImage(null);
         setName('');
         setPosition('');
+        setSaving(false);
         alert('Created Successfully');
+      })
+      .catch(err => {
+        setSaving(false);
+        alert('An Error occured');
       });
   };
 
-  const deletePriest = async (id) => {
-    // delete priest from nextjs server
-    let imageName;
-    for (let i = priests.length - 1; i >= 0; i--) {
-      if (priests[i].id === id) {
-        imageName = priests[i].image;
-        break;
-      }
-    }
-
-    console.log(imageName);
-    const imgRes = await deleteFileFromNextServer(imageName);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      // error has occured while saving image to next
-      setError('An Error Occured');
-    }
-
+  const deletePriest = (id, image) => {
     // delete priest image from server
-
-    setPriests((priests) =>
-      priests
-        .map((priest) => (priest.id === id ? null : { ...priest }))
-        .filter((v) => v)
-    );
+    setDeleting(id)
+    axios
+      .delete(
+        apiBaseUrl + 'delete/priest', 
+        {
+          data: { id, image },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: authToken
+          },
+        }
+      )
+      .then(({ data: { success, message } }) => {
+        if (success) {
+          setPriests((priests) =>
+            priests
+              .map((priest) => (priest.id === id ? null : { ...priest }))
+              .filter((v) => v)
+          );
+          setDeleting('')
+          alert('Removed')
+        } else {
+          alert(message)
+          setDeleting('')
+        }
+      })
+      .catch(err => {
+        alert('An error occured')
+        setDeleting('')
+      });
   };
 
   return (
@@ -225,7 +225,7 @@ const Priests = ({ admin, authToken }) => {
       </div>
       <div className={styles.Priests}>
         {priests.map((priest, i) => {
-          return <Priest key={i} {...priest} deletePriest={deletePriest} />;
+          return <Priest key={i} {...priest} deletePriest={deletePriest} deleting={deleting} />;
         })}
         <AddPriest
           name={name}
@@ -236,6 +236,7 @@ const Priests = ({ admin, authToken }) => {
           setImage={setImage}
           savePriest={savePriest}
           error={error}
+          saving={saving}
         />
       </div>
     </div>

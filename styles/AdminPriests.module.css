@@ -74,7 +74,7 @@
 }
 
 .RemoveButton {
-	opacity: 0;
+	opacity: 1;
 	transition: background-color ease-out 300ms, opacity ease-out 300ms;
 }
 
@@ -90,6 +90,10 @@
 @media (min-width: 768px) {
 	.Priest {
 		width: 50%;
+	}
+
+	.RemoveButton {
+		opacity: 0;
 	}
 }
 

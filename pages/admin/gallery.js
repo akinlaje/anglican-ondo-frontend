@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from '../../styles/AdminGallery.module.css';
 import UploadImage from '../../components/UploadImage/UploadImage';
+import Spinner from '../../components/Spinner/Spinner';
 import cloneDeep from 'lodash/cloneDeep';
-import { saveFileToNextServer, deleteFileFromNextServer } from '../../utils';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
-const AddImage = ({ image, setImage, title, setTitle, saveImage }) => {
+const AddImage = ({ image, setImage, title, setTitle, saveImage, saving }) => {
   return (
     <div className={[styles.ImageWrapper, styles.AddImageWrapper].join(' ')}>
       <UploadImage className={styles.Image} file={image} setFile={setImage} />
@@ -20,27 +21,28 @@ const AddImage = ({ image, setImage, title, setTitle, saveImage }) => {
         <button
           onClick={saveImage}
           className={[styles.SaveButton, styles.Button].join(' ')}
+          disabled={saving}
         >
-          Save
+          {saving ? <Spinner coolor='var(--pri)' /> : 'Save'}
         </button>
       )}
     </div>
   );
 };
 
-const Gallery = ({ admin, authToken }) => {
+const Gallery = ({ admin, authToken, apiBaseUrl }) => {
   const [images, setImages] = useState([]);
   const [image, setImage] = useState();
   const [title, setTitle = { setTitle }] = useState('');
-
-  console.log(images);
+  const [saving, setSaving] = useState(false)
+  const [deleting, setDeleting] = useState('')
 
   useEffect(() => {
     const getImages = async () => {
       // get images from backend
       const images = [
-        { image: 'ae.jpg', id: '0' },
-        { image: 'ae.jpg', id: '1' },
+        { imageUrl: '/images/ae.jpg', image: 'ae.jpg', id: '0' },
+        { imageUrl: '/images/ae.jpg', image: 'ae.jpg', id: '1' },
       ];
       setImages(images);
     };
@@ -48,88 +50,84 @@ const Gallery = ({ admin, authToken }) => {
     getImages();
   }, []);
 
-  const saveImage = async () => {
-    // save image to nextjs server
-
-    const imgRes = await saveFileToNextServer(image);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      // error has occured while saving image to next
-      setError('An Error Occured');
-    }
-
-    if (!admin.id) return;
-
+  const saveImage = () => {
+    setSaving(true);
     let galleryData = new FormData();
     galleryData.append('title', title);
     galleryData.append('image', image);
-    const res = await axios
-      .post('http://localhost:5000/api/create/gallery', galleryData, {
+    galleryData.append('id', uuidv4());
+
+    axios
+      .post(apiBaseUrl + 'create/gallery', galleryData, {
         headers: {
           Authorization: authToken,
         },
       })
-      .then((data) => {
-        console.log(data);
-        const id = String(images.length);
-
-        const newImage = {
-          image: image.name,
-          id,
-        };
-        setImages((v) => [...cloneDeep(v), newImage]);
+      .then(({ data: { data, msgDb, success } }) => {
+        setImages((v) => [...cloneDeep(v), data]);
         setImage(null);
         setTitle('');
+        setSaving(false);
         alert('Created Successfully');
+      })
+      .catch(err => {
+        setSaving(false);
+        alert('An Error occured');
       });
   };
 
-  const deleteImage = async (id) => {
-    // delete image from nextjs server
-    let imageName;
-    for (let i = images.length - 1; i >= 0; i--) {
-      if (images[i].id === id) {
-        imageName = images[i].image;
-        break;
-      }
-    }
-
-    console.log(imageName);
-    const imgRes = await deleteFileFromNextServer(imageName);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      // error has occured while saving image to next
-      setError('An Error Occured');
-    }
-
+  const deleteImage = (id, image) => {
     // delete image from server
-
-    setImages((images) =>
-      images
-        .map((image) => (image.id === id ? null : { ...image }))
-        .filter((v) => v)
-    );
+    setDeleting(id)
+    axios
+      .delete(
+        apiBaseUrl + 'delete/priest', 
+        {
+          data: { id, image },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: authToken
+          },
+        }
+      )
+      .then(({ data: { success, message } }) => {
+        if (success) {
+          setImages((images) =>
+            images
+              .map((image) => (image.id === id ? null : { ...image }))
+              .filter((v) => v)
+          );
+          setDeleting('')
+          alert('Deleted')
+        } else {
+          alert(message)
+          setDeleting('')
+        }
+      })
+      .catch(err => {
+        alert('An error occured')
+        setDeleting('')
+      });
   };
 
   return (
     <div className={styles.Container}>
       <div className={styles.AddImageContainer}>
-        {images.map((img, i) => (
+        {images.map(({ id, image, imageUrl }, i) => (
           <div key={i} className={styles.ImageWrapper}>
             <Image
               className={styles.Image}
               layout='fill'
               objectFit='cover'
-              alt={img.image}
-              src={`/uploads/${img.image}`}
+              alt={image}
+              src={imageUrl}
             />
             <button
               className={styles.Button}
-              onClick={() => deleteImage(img.id)}
+              onClick={() => deleteImage(id, image)}
+              disabled={deleting === id}
             >
-              Delete
+              {deleting === id ? <Spinner color='#000' /> : 'Delete'}
             </button>
           </div>
         ))}
@@ -139,6 +137,7 @@ const Gallery = ({ admin, authToken }) => {
           title={title}
           setTitle={setTitle}
           saveImage={saveImage}
+          saving={saving}
         />
       </div>
     </div>

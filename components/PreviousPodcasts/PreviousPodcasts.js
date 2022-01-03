@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './PreviousPodcast.module.css';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton'
 
@@ -8,7 +9,14 @@ const previousPodcast = ({ previousPodcasts }) => {
 			<ul className={styles.List}>
 				{previousPodcasts.map((podcast, i) => (
 					<li key={i} className={styles.Podcast}>
-						<img alt={podcast.title || 'Live Program'} className={styles.PodcastImg} src={podcast.image} />
+						<div className={styles.PodcastImg}>
+							<Image 
+								layout='fill'
+								objectFit='cover'
+								alt={podcast.title || 'Live Program'} 
+								src={podcast.imageUrl} 
+							/>
+						</div>
 						<div className={styles.PodcastInfo}>
 							<div>
 								<h3 className={styles.PodcastTitle}>{podcast.title}</h3>

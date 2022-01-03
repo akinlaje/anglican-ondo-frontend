@@ -6,7 +6,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import axios from 'axios';
 import { FaUser as UserIcon } from 'react-icons/fa';
 
-const Login  = ({ setAdmin, setAuthToken, admin }) => {
+const Login  = ({ setAdmin, setAuthToken, admin, apiBaseUrl }) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
@@ -18,11 +18,10 @@ const Login  = ({ setAdmin, setAuthToken, admin }) => {
 	let returnUrl = router?.query?.returnUrl || '/admin/home'
 
 	useEffect(() => {
-		console.log(admin, loggedIn)
-		if (admin && loggedIn) {
+		if (admin && admin.id) {
 			router.push(returnUrl)
 		}
-	}, [admin, loggedIn, returnUrl])
+	},)
 
 	const submit = async e => {
 		e.preventDefault();
@@ -31,17 +30,19 @@ const Login  = ({ setAdmin, setAuthToken, admin }) => {
 			username,
 			password
 		}
-		console.log('logging in user: ', user);
 
-		const { data } = await axios.post('http://localhost:5000/api/user/login', user, {
+		const { data } = await axios.post(apiBaseUrl + 'user/login', user, {
 			headers: {
 		    'Content-Type': 'application/json',
 		  },
 		});
-		const { token, user: admin, err } = data;
-		console.log(admin, token);
+		const { token, user: admin, success, message } = data;
 
-		if (err) return setError(err);
+		if (!success) {
+			setError(message);
+			setLoading(false);
+			return
+		}
 
 		setLoading(false);
 		setLoggedIn(true)
@@ -78,7 +79,7 @@ const Login  = ({ setAdmin, setAuthToken, admin }) => {
 				/>
 				{error && <FormError error={error} />}
 				<button className={styles.SubmitButton} disabled={loading}>
-					{loading ? <Spinner size='1.2em' /> : 'Login'}
+					{loading ? <Spinner /> : 'Login'}
 				</button>
 			</form>
 		</div>

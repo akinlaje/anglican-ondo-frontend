@@ -1,9 +1,15 @@
+import Head from 'next/head'
 import styles from '../styles/MeetBishop.module.css';
 
 const MeetBishop = () => {
 	return (
 		<>
 			<header className={styles.Header}>
+        <Head>
+          <title>Meet Bishop | Anglican Diocese of Ondo</title>
+          <meta name="description" content="Bishop of the Anglican diocese of Ondo" />
+          <link rel="icon" href="/images/diocese-logo.png" />
+        </Head>
 				<div className={styles.HeaderInner}>
 					<h1 className={styles.Heading}>Meet the Bishop</h1>
 					<p>Rt. Revd. Stephen Adeniran Oni. <span className='faded'>PhD, Mcasson</span></p>

@@ -15,7 +15,7 @@ const LiveRadio = ({ liveProgram, upcomingPrograms }) => {
 			>
 				<div className={styles.RadioProgramImgWrapper}>
 					<Image 
-						src={'/uploads/' + liveProgram.image}
+						src={'/uploads/' + liveProgram.imageUrl}
 						layout='fill'
 						objectFit='cover'
 						alt={liveProgram.title || 'Live Program'}
@@ -41,7 +41,7 @@ const LiveRadio = ({ liveProgram, upcomingPrograms }) => {
 					return (
 						<li key={i} className={styles.RadioProgram}>
 							<div className={styles.RadioProgramImgWrapper}>
-								<Image layout='fill' alt='NEXT Program' className={styles.RadioProgramImg} src={'/uploads/' + program.image} />
+								<Image layout='fill' alt='NEXT Program' className={styles.RadioProgramImg} src={program.imageUrl} />
 							</div>
 							<div>
 								<h3 className={styles.RadioProgramTitle}>{program.title}</h3>

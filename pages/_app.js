@@ -6,6 +6,7 @@ import AdminLayout from '../components/AdminLayout/AdminLayout'
 import AdminRouteGuard from '../components/AdminRouteGuard/AdminRouteGuard'
 import '../styles/globals.css'
 import { IconContext } from 'react-icons';
+import { BASE_URL } from '../utils'
 
 function MyApp({ Component, pageProps }) {
   const [admin, setAdmin] = useState({});
@@ -38,20 +39,33 @@ function MyApp({ Component, pageProps }) {
   })
 
   useEffect(() => {
-    console.log(admin)
+    const savedAdmin = JSON.parse(window.localStorage.getItem('admin')) || {}
+    setAdmin(savedAdmin)
+  }, [])
+
+   useEffect(() => {
+    const savedAuthToken = JSON.parse(window.localStorage.getItem('authToken')) || ''
+    setAuthToken(savedAuthToken)
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('admin', JSON.stringify(admin))
   }, [admin])
+
+  useEffect(() => {
+    window.localStorage.setItem('authToken', JSON.stringify(authToken))
+  }, [authToken])
 
   useEffect(() => {
     if (!amplitudeLoaded) return
     Amplitude.init(amplitudeData);
-    console.log('Amplitude loaded');
   }, [amplitudeLoaded, amplitudeData])
 
   const router = useRouter();
 
 	let page;
   if (router.pathname.includes('/admin')) {
-    let adminProps = { ...pageProps, admin, authToken };
+    let adminProps = { ...pageProps, admin, authToken, apiBaseUrl: BASE_URL };
     if (router.pathname.includes('/login')) {
       adminProps = { ...pageProps, ...adminProps, setAdmin, setAuthToken };
     } 

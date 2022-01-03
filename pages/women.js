@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link';
 import styles from '../styles/Women.module.css';
 
@@ -5,6 +6,11 @@ const Women = () => {
 	return (
 		<>
 			<header className={styles.Header}>
+        <Head>
+          <title>Women | Anglican Diocese of Ondo</title>
+          <meta name="description" content="Anglican diocese of Ondo Women" />
+          <link rel="icon" href="/images/diocese-logo.png" />
+        </Head>
 				<div className={styles.HeaderInner}>
 					<h1 className={styles.Heading}>Women</h1>
 					<p className={styles.HeadingText}>
@@ -31,7 +37,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>
@@ -54,7 +62,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>
@@ -77,7 +87,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>
@@ -100,7 +112,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>
@@ -128,7 +142,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>
@@ -151,7 +167,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>
@@ -174,7 +192,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>
@@ -197,7 +217,9 @@ const Women = () => {
 								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
 							</p>
 						</div>
-						<img src='/images/women.png' alt='Vision' className={styles.Image} />
+						<div className={styles.Image}>
+							<Image layout='fill' objectFit='cover' alt='Women' src='/images/women.png'/>
+						</div>
 						<div className={styles.Bottom}>
 							<Link href='/'>
 								<a>Read More</a>

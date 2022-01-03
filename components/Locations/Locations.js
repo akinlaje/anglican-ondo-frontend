@@ -1,14 +1,17 @@
+import Image from 'next/image'
 import styles from './Locations.module.css';
 import Pagination from '../Pagination/Pagination';
 
-const Location = ({ id, name, image, location }) => {
+const Location = ({ id, name, image, location, imageUrl }) => {
 	return (
 		<div className={styles.Location}> + 
 			<div className={styles.Info}>
 				<h3 className={styles.LocationName}>{name}</h3>
 				<div>{locations}</div>
 			</div>
-			<img alt='location' className={styles.LocationImage} src={'/uploads/' + image} />
+			<div className={styles.LocationImage}>
+				<Image alt={name} src={imageUrl} layout='fill' objectFit='cover' />
+			</div>
 		</div>
 	)
 }

@@ -3,53 +3,51 @@ import DatePicker from '../../components/DatePicker/DatePicker';
 import UploadImage from '../../components/UploadImage/UploadImage';
 import TimePicker from '../../components/TimePicker/TimePicker';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
+import Spinner from '../../components/Spinner/Spinner';
 import styles from '../../styles/AdminEvents.module.css';
 import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa';
 import axios from 'axios';
-import { JSONToFormData, saveFileToNextServer } from '../../utils';
 import FormError from '../../components/FormError/FormError';
+import { v4 as uuidv4 } from 'uuid';
 
-const Events = ({ admin, authToken }) => {
+const Events = ({ admin, authToken, apiBaseUrl }) => {
   const [image, setImage] = useState();
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [error, setError] = useState('');
+  const [saving, setSaving] = useState(false)
 
-  const submit = async (e) => {
-    e.preventDefault();
-
-    const imgRes = await saveFileToNextServer(image);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      // error has occured while saving image to next
-      setError('An Error Occured');
-    }
-
-    if (!admin.id) return;
-
+  const submit = (e) => {
+    e.preventDefault()
+    setSaving(true)
     let eventsData = new FormData();
     eventsData.append('title', title);
     eventsData.append('details', details);
     eventsData.append('image', image);
     eventsData.append('date', date);
     eventsData.append('time', time);
-    const res = await axios
-      .post('http://localhost:5000/api/create/event', eventsData, {
+    eventsData.append('id', uuidv4());
+
+    axios
+      .post(apiBaseUrl + 'create/event', eventsData, {
         headers: {
           Authorization: authToken,
         },
       })
       .then((data) => {
-        console.log(data);
         setTitle('');
         setTime('');
         setDetails('');
         setDate('');
         setImage('');
+        setSaving(false)
         alert('Created Successfully');
+      })
+      .catch(err => {
+        setSaving(false);
+        alert('An Error occured');
       });
   };
 
@@ -93,8 +91,8 @@ const Events = ({ admin, authToken }) => {
             />
           </div>
         </div>
-        <button type='submit' className={styles.SubmitButton}>
-          Post
+        <button type='submit' className={styles.SubmitButton} disabled={saving}>
+          {saving ? <Spinner /> : 'Post'}
         </button>
         <FormError error={error} />
       </form>

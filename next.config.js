@@ -8,5 +8,10 @@ module.exports = {
 	  		permanent: false	
 	  	}
   	]
+  },
+  images: {
+  	domains: [
+  		'localhost',
+  	],
   }
 }

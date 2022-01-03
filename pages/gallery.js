@@ -7,6 +7,11 @@ const Gallery = ({ events=[], recentEvents=[] }) => {
 	return (
 		<>
 			<header className={styles.Header}>
+        <Head>
+          <title>Gallery | Anglican Diocese of Ondo</title>
+          <meta name="description" content="Gallery of the Anglican diocese of Ondo" />
+          <link rel="icon" href="/images/diocese-logo.png" />
+        </Head>
 				<div className={styles.HeaderInner}>
 					<h1 className={styles.Heading}>Welcome</h1>
 					<p>to Our Gallery, Explore</p>
@@ -18,7 +23,13 @@ const Gallery = ({ events=[], recentEvents=[] }) => {
 					{recentEvents.map((event, i) => {
 						return (
 							<div key={i} className={styles.ImageWrapper}>
-								<Image laout='fill' objectFit='cover' className={styles.Image} alt='event' src={'/uploads/' + event.image} />	
+								<Image 
+									layout='fill' 
+									objectFit='cover' 
+									className={styles.Image} 
+									alt='event' 
+									src={event.imageUrl} 
+								/>	
 							</div>
 						)
 					})}
@@ -53,22 +64,26 @@ export async function getServerSideProps (context) {
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 			]
 		},
@@ -78,22 +93,26 @@ export async function getServerSideProps (context) {
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 			]
 		},
@@ -103,22 +122,26 @@ export async function getServerSideProps (context) {
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 				{
 					title: 'Synod 2020',
 					desc: 'Who are you?',
-					image: 'ae.jpg'
+					image: 'ae.jpg',
+					imageUrl: '/images/ae.jpg'
 				},
 			]
 		},
@@ -126,25 +149,32 @@ export async function getServerSideProps (context) {
 
 	const recentEvents = [
 		{
-			image: 'ae.jpg'
+			image: 'ae.jpg',
+			imageUrl: '/images/ae.jpg'
 		},
 		{
-			image: 'ae.jpg'
+			image: 'ae.jpg',
+			imageUrl: '/images/ae.jpg'
 		},
 		{
-			image: 'ae.jpg'
+			image: 'ae.jpg',
+			imageUrl: '/images/ae.jpg'
 		},
 		{
-			image: 'ae.jpg'
+			image: 'ae.jpg',
+			imageUrl: '/images/ae.jpg'
 		},
 		{
-			image: 'ae.jpg'
+			image: 'ae.jpg',
+			imageUrl: '/images/ae.jpg'
 		},
 		{
-			image: 'ae.jpg'
+			image: 'ae.jpg',
+			imageUrl: '/images/ae.jpg'
 		},
 		{
-			image: 'ae.jpg'
+			image: 'ae.jpg',
+			imageUrl: '/images/ae.jpg'
 		},
 	]
 

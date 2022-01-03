@@ -3,12 +3,12 @@ import UploadImage from '../../components/UploadImage/UploadImage';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../../styles/AdminNews.module.css';
 import { FaNewspaper as NewsIcon } from 'react-icons/fa';
-import { saveFileToNextServer } from '../../utils';
 import axios from 'axios';
 import Spinner from '../../components/Spinner/Spinner';
 import FormError from '../../components/FormError/FormError';
+import { v4 as uuidv4 } from 'uuid';
 
-const News = ({ admin, authToken }) => {
+const News = ({ admin, authToken, apiBaseUrl }) => {
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [image, setImage] = useState();
@@ -18,34 +18,31 @@ const News = ({ admin, authToken }) => {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!admin.id) return;
-
-    const imgRes = await saveFileToNextServer(image);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      // error has occured while saving image to next
-      setError('An Error Occured');
-    }
-
+    setSaving(true);
     let formData = new FormData();
     formData.append('title', title);
     formData.append('details', details);
     formData.append('image', image);
     formData.append('location', location);
+    formData.append('id', uuidv4());
+
     const res = await axios
-      .post('http://localhost:5000/api/create/news', formData, {
+      .post(apiBaseUrl + 'create/news', formData, {
         headers: {
           Authorization: authToken,
         },
       })
       .then((data) => {
-        console.log(data);
         setTitle('');
         setDetails('');
         setImage('');
         setLocation('');
         alert('Created Successfully');
+        setSaving(false)
+      })
+      .catch(err => {
+        setSaving(false);
+        alert('An Error occured');
       });
 
     // check if server returned an error

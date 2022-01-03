@@ -1,4 +1,5 @@
 // import { useState, useEffect } from 'react'
+import Head from 'next/head'
 import styles from '../styles/RadioAndPodcast.module.css';
 import LiveRadio from '../components/LiveRadio/LiveRadio';
 import UpcomingPodcasts from '../components/UpcomingPodcasts/UpcomingPodcasts';
@@ -58,6 +59,11 @@ const RadioAndPodcast = ({ liveProgram={}, upcomingPrograms=[], upcomingPodcasts
 	return (
 		<>
 			<header className={styles.Header}>
+        <Head>
+          <title>Radio and Podcast| Anglican Diocese of Ondo</title>
+          <meta name="description" content="Radio and Podcasts of the Anglican diocese of Ondo" />
+          <link rel="icon" href="/images/diocese-logo.png" />
+        </Head>
 				<div className={styles.HeaderInner}>
 					<h1 className={styles.Heading}>Welcome</h1>
 					<p>to Our Online Radio and Podcast Station</p>
@@ -84,7 +90,8 @@ export async function getServerSideProps (context) {
 		id: '1',
 		title: 'The efficacy of the holy spirit',
 		anchor: 'The Rt. Revd. S. A. Oni',
-		image: '/images/ae.jpg',
+		imageUrl: '/images/ae.jpg',
+		image: 'ae.jpg',
 		amplitudePlaylistName: 'radio',
 		amplitudeSongIndex: '0' 
 	}
@@ -93,17 +100,20 @@ export async function getServerSideProps (context) {
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg'
+			imageUrl: '/images/ae.jpg'
+			image: 'ae.jpg'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg'
+			imageUrl: '/images/ae.jpg'
+			image: 'ae.jpg'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg'
+			imageUrl: '/images/ae.jpg'
+			image: 'ae.jpg'
 		}
 	]
 
@@ -111,77 +121,88 @@ export async function getServerSideProps (context) {
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0'
 		},
@@ -192,7 +213,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},
@@ -200,7 +222,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},
@@ -208,7 +231,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},
@@ -216,7 +240,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},
@@ -224,7 +249,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},
@@ -232,7 +258,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},
@@ -240,7 +267,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},
@@ -248,7 +276,8 @@ export async function getServerSideProps (context) {
 			id: '1',
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			image: '/images/ae.jpg',
+			imageUrl: '/images/ae.jpg',
+			image: 'ae.jpg',
 			amplitudePlaylistName: 'radio',
 			amplitudeSongIndex: '0' 
 		},

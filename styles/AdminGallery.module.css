@@ -43,7 +43,6 @@
 	position: absolute;
     bottom: 10px;
     z-index: 20;
-	display: none;
 	height: 40px;
 	border: 1px solid var(--pri-darker);
 	background-color: #fff;
@@ -77,5 +76,9 @@
 		flex-wrap: wrap;
 		max-width: 988px;
 		margin: 0 auto;
+	}
+
+	.Button {
+		display: none;
 	}
 }

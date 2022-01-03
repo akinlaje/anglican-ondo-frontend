@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from './Nav.module.css';
-import { FaSearch as SearchIcon } from 'react-icons/fa';
+// import { FaSearch as SearchIcon } from 'react-icons/fa';
 
 const Nav = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -36,6 +36,14 @@ const Nav = () => {
 		{
 			href: '/clergy',
 			display: 'Clergy Men'
+		},
+		{
+			href: '/membership',
+			display: 'Membership'
+		},
+		{
+			href: '/gallery',
+			display: 'Gallery'
 		},
 	]
 
@@ -123,12 +131,12 @@ const Nav = () => {
 					</ul>
 				</div>
 				<div className={styles.Bottom}>
-					<div className={styles.NavSearch}>
-						<input className={styles.NavSearchInput} placeholder="Search" />
-						<button className={styles.NavSearchButton}>
-							<SearchIcon size='1.3em' className={styles.NavSearchIcon} alt='Search Icon' />
-						</button>
-					</div>
+					{/* <div className={styles.NavSearch}> */}
+					{/* 	<input className={styles.NavSearchInput} placeholder="Search" /> */}
+					{/* 	<button className={styles.NavSearchButton}> */}
+					{/* 		<SearchIcon size='1.3em' className={styles.NavSearchIcon} alt='Search Icon' /> */}
+					{/* 	</button> */}
+					{/* </div> */}
 					<ul className={styles.NavItemsList}>
 						{bottomLinks.map(({ href, display }) => {
 							const isActive = router.pathname === href;

@@ -109,7 +109,6 @@ const Radio = () => {
 
 	const saveRadioEvent = async (newRadioEvent) => {
 		// save radio program
-		console.log(newRadioEvent);
 		setRadioEvents(v => [...cloneDeep(v), newRadioEvent])
 	} 
 

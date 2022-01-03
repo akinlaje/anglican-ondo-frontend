@@ -3,10 +3,12 @@ import Image from 'next/image';
 import styles from '../../styles/AdminChurches.module.css';
 import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import FormError from '../../components/FormError/FormError';
+import Spinner from '../../components/Spinner/Spinner';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
-import { JSONToFormData, saveFileToNextServer } from '../../utils';
 import cloneDeep from 'lodash/cloneDeep';
-import axios from 'axios';
+import { MdLocationOn as LocationIcon } from 'react-icons/md';
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios'
 
 const AddChurch = ({
   name,
@@ -16,6 +18,7 @@ const AddChurch = ({
   image,
   setImage,
   saveChurch,
+  saving
 }) => {
   const [imageObjectUrl, setImageObjectUrl] = useState(
     image ? URL.createObjectURL(image) : '/images/svgs/image.svg'
@@ -54,7 +57,7 @@ const AddChurch = ({
         ref={inputRef}
         style={{ display: 'none' }}
         type='file'
-        accept='.jpg, png, jpeg'
+        accept='image/jpg, image/png, image/jpeg'
         onChange={onChange}
       />
       {image ? (
@@ -62,7 +65,7 @@ const AddChurch = ({
           <Image
             onClick={chooseImage}
             layout='fill'
-            objectFit='contain'
+            objectFit='cover'
             src={imageObjectUrl}
             alt={name}
           />
@@ -77,15 +80,15 @@ const AddChurch = ({
       <button
         className={styles.SaveButton}
         onClick={saveChurch}
-        disabled={!name || !image || !location}
+        disabled={!name || !image || !location || saving}
       >
-        Save
+        {saving ? <Spinner /> : 'Save'}
       </button>
     </div>
   );
 };
 
-const Churches = ({ admin, authToken }) => {
+const Churches = ({ admin, authToken, apiBaseUrl }) => {
   // state for saved chrches
   const [churches, setChurches] = useState([]);
 
@@ -96,6 +99,7 @@ const Churches = ({ admin, authToken }) => {
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [deleting, setDeleting] = useState('')
 
   useEffect(() => {
     const getChurches = async () => {
@@ -103,103 +107,88 @@ const Churches = ({ admin, authToken }) => {
       const churches = [
         {
           id: '1',
-          name: 'ST. Stephen Cathedral',
+          name: 'All Saints Anglican Church. Headquarters of Ondo Archdeaconry',
           location: 'No 32 Oke Aluko Street, Ondo',
-          image: 'church.jpg',
+          image: 'all-saints-church-2.jpg',
+          imageUrl: '/images/all-saints-church-2.jpg'
         },
         {
           id: '2',
-          name: 'ST. Stephen Cathedral',
-          location: 'No 32 Oke Aluko Street, Ondo',
-          image: 'church.jpg',
-        },
-        {
-          id: '3',
-          name: 'ST. Stephen Cathedral',
-          location: 'No 32 Oke Aluko Street, Ondo',
-          image: 'church.jpg',
-        },
+          name: 'St. Peters Anglican Church. Headquarters of Araromi Archdeaconry',
+          location: 'Araromi Obu',
+          image: 'st-peters-church.jpg',
+          imageUrl: '/images/st-peters-church.jpg'
+        }
       ];
       setChurches(churches);
     };
     getChurches();
   }, []);
 
-  const saveChurch = async () => {
-    // save to next server
-    const imgRes = await saveFileToNextServer(image);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      setError('An Error Occured');
-    }
-
+  const saveChurch = () => {
     // save to backend
-    const newChurch = {
-      name,
-      location,
-      image,
-    };
-
-    console.log(newChurch);
     if (!name) return setError(' Please input a name');
     if (!location) return setError(' Please input a location');
 
     // save church
-
-    if (!admin.id) return;
+    setSaving(true)
 
     let churchData = new FormData();
     churchData.append('name', name);
     churchData.append('image', image);
     churchData.append('location', location);
-    const res = await axios
-      .post('http://localhost:5000/api/create/church', churchData, {
+    churchData.append('id', uuidv4());
+
+    axios
+      .post(apiBaseUrl + 'create/church', churchData, {
         headers: {
-          Authorization: authToken,
-        },
+          Authorization: authToken
+        }
       })
-      .then((data) => {
-        console.log(data);
-        setChurches((v) => [...cloneDeep(v), newChurch]);
+      .then(({ data: { data, msgDb, success } }) => {
+        setChurches((v) => [...cloneDeep(v), data]);
         setName('');
         setLocation('');
         setImage(null);
+        setSaving(false);
         alert('Created Successfully');
+      })
+      .catch(err => {
+        setSaving(false);
+        alert('An Error occured');
       });
-
-    setChurches((v) => [...cloneDeep(v), newChurch]);
-    setName('');
-    setLocation('');
-    setImage(null);
   };
 
-  const deleteChurch = async (id) => {
-    // delete church from nextjs server
-    let imageName;
-    for (let i = churches.length - 1; i >= 0; i--) {
-      if (churches[i].id === id) {
-        imageName = churches[i].image;
-        break;
-      }
-    }
-
-    console.log(imageName);
-    const imgRes = await deleteFileFromNextServer(imageName);
-    console.log(imgRes);
-
-    if (imgRes?.status !== 200) {
-      // error has occured while saving image to next
-      setError('An Error Occured');
-    }
-
+  const deleteChurch = (id, image) => {
     // delete church image from server
-
-    setChurches((churches) =>
-      churches
-        .map((church) => (church.id === id ? null : { ...church }))
-        .filter((v) => v)
-    );
+    axios
+      .delete(
+        apiBaseUrl + 'delete/church', 
+        {
+          data: { id, image },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: authToken
+          },
+        }
+      )
+      .then(({ data: { success, message } }) => {
+        if (success) {
+          setChurches((churches) =>
+            churches
+              .map((church) => (church.id === id ? null : { ...church }))
+              .filter((v) => v)
+          )
+          setDeleting('')
+          alert('Deleted')
+        } else {
+          alert(message)
+          setDeleting('')
+        }
+      })
+      .catch(err => {
+        alert('An error occured')
+      });
   };
 
   return (
@@ -208,26 +197,30 @@ const Churches = ({ admin, authToken }) => {
         <h1 className={styles.Heading}>Churches</h1>
       </div>
       <div className={styles.Churches}>
-        {churches.map(({ name, location, image, id }, i) => {
+        {churches.map(({ name, location, image, imageUrl, id }, i) => {
           return (
             <div key={i} className={styles.Church}>
               <div className={styles.Info}>
                 <h3 className={styles.Name}>{name}</h3>
-                <div className={styles.Location}>{location}</div>
+                <div className={styles.Location}>
+                  <LocationIcon color='#000' size='1.7em' style={{ marginRight: '10px' }} />
+                  {location}
+                </div>
               </div>
               <div className={styles.Image}>
                 <Image
                   layout='fill'
-                  objectFit='contain'
-                  src={'/uploads/' + image}
+                  objectFit='cover'
+                  src={imageUrl}
                   alt={name}
                 />
               </div>
               <button
                 className={styles.DeleteButton}
-                onClick={() => deleteChurch(id)}
+                onClick={() => deleteChurch(id, image)}
+                disabled={deleting === id}
               >
-                Delete
+                {deleting === id ? <Spinner color='#000' /> : 'Delete'}
               </button>
             </div>
           );
@@ -240,6 +233,7 @@ const Churches = ({ admin, authToken }) => {
           saveChurch={saveChurch}
           image={image}
           setImage={setImage}
+          saving={saving}
         />
         {error && <FormError error={error} />}
       </div>
