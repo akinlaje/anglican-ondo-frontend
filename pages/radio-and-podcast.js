@@ -100,19 +100,19 @@ export async function getServerSideProps (context) {
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			imageUrl: '/images/ae.jpg'
+			imageUrl: '/images/ae.jpg',
 			image: 'ae.jpg'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			imageUrl: '/images/ae.jpg'
+			imageUrl: '/images/ae.jpg',
 			image: 'ae.jpg'
 		},
 		{
 			title: 'The efficacy of the holy spirit',
 			anchor: 'The Rt. Revd. S. A. Oni',
-			imageUrl: '/images/ae.jpg'
+			imageUrl: '/images/ae.jpg',
 			image: 'ae.jpg'
 		}
 	]

@@ -25,8 +25,8 @@ const About = () => {
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Our Vision</h2>
 							<p className={styles.Content}>
-								To be a leading Diocese in the Church of Nigeria (Anglican Communion)
-								 in the proclamation of the Gospel and populating of God's Kingdom
+								{`To be a leading Diocese in the Church of Nigeria (Anglican Communion)
+								in the proclamation of the Gospel and populating of God's Kingdom`}
 							</p>
 						</div>
 						<div className={styles.Image}>
