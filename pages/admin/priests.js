@@ -9,16 +9,19 @@ import FormError from '../../components/FormError/FormError';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
-const Priest = ({ name, position, image, id, deletePriest, imageUrl, deleting }) => {
+const Priest = ({
+  name,
+  position,
+  image,
+  id,
+  deletePriest,
+  imageUrl,
+  deleting,
+}) => {
   return (
     <div className={styles.Priest}>
       <div className={styles.Image}>
-        <Image
-          layout='fill'
-          objectFit='contain'
-          alt={name}
-          src={imageUrl}
-        />
+        <Image layout='fill' objectFit='contain' alt={name} src={imageUrl} />
       </div>
       <h3 className={styles.Name}>{name}</h3>
       <p>{position}</p>
@@ -41,7 +44,7 @@ const AddPriest = ({
   setImage,
   savePriest,
   error,
-  saving
+  saving,
 }) => {
   const [imageObjectUrl, setImageObjectUrl] = useState(
     image ? URL.createObjectURL(image) : '/images/svgs/image.svg'
@@ -121,8 +124,8 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
   const [position, setPosition] = useState('');
   const [image, setImage] = useState();
   const [error, setError] = useState('');
-  const [saving, setSaving] = useState(false)
-  const [deleting, setDeleting] = useState('')
+  const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState('');
 
   useEffect(() => {
     const getPriests = async () => {
@@ -157,12 +160,12 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
   }, []);
 
   const savePriest = async () => {
-    setSaving(true)
+    setSaving(true);
     let priestData = new FormData();
+    priestData.append('id', uuidv4());
     priestData.append('name', name);
     priestData.append('image', image);
     priestData.append('position', position);
-    priestData.append('id', uuidv4());
     const res = await axios
       .post(apiBaseUrl + 'create/priest', priestData, {
         headers: {
@@ -170,7 +173,6 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
         },
       })
       .then(({ data: { data, msgDb, success } }) => {
-
         setPriests((v) => [...cloneDeep(v), data]);
         setImage(null);
         setName('');
@@ -178,7 +180,7 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
         setSaving(false);
         alert('Created Successfully');
       })
-      .catch(err => {
+      .catch((err) => {
         setSaving(false);
         alert('An Error occured');
       });
@@ -186,18 +188,15 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
 
   const deletePriest = (id, image) => {
     // delete priest image from server
-    setDeleting(id)
+    setDeleting(id);
     axios
-      .delete(
-        apiBaseUrl + 'delete/priest', 
-        {
-          data: { id, image },
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: authToken
-          },
-        }
-      )
+      .delete(apiBaseUrl + 'delete/priest', {
+        data: { id, image },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authToken,
+        },
+      })
       .then(({ data: { success, message } }) => {
         if (success) {
           setPriests((priests) =>
@@ -205,16 +204,16 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
               .map((priest) => (priest.id === id ? null : { ...priest }))
               .filter((v) => v)
           );
-          setDeleting('')
-          alert('Removed')
+          setDeleting('');
+          alert('Removed');
         } else {
-          alert(message)
-          setDeleting('')
+          alert(message);
+          setDeleting('');
         }
       })
-      .catch(err => {
-        alert('An error occured')
-        setDeleting('')
+      .catch((err) => {
+        alert('An error occured');
+        setDeleting('');
       });
   };
 
@@ -225,7 +224,14 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
       </div>
       <div className={styles.Priests}>
         {priests.map((priest, i) => {
-          return <Priest key={i} {...priest} deletePriest={deletePriest} deleting={deleting} />;
+          return (
+            <Priest
+              key={i}
+              {...priest}
+              deletePriest={deletePriest}
+              deleting={deleting}
+            />
+          );
         })}
         <AddPriest
           name={name}
