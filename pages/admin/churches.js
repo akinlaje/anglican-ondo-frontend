@@ -134,7 +134,10 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
     setSaving(true);
 
     let churchData = new FormData();
-    churchData.append('id', uuidv4());
+
+    let id = `${name}${uuidv4()}`;
+
+    churchData.append('id', id);
     churchData.append('name', name);
     churchData.append('image', image);
     churchData.append('location', location);

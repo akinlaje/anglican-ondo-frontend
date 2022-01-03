@@ -162,7 +162,10 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
   const savePriest = async () => {
     setSaving(true);
     let priestData = new FormData();
-    priestData.append('id', uuidv4());
+
+    let id = `${name}${uuidv4()}`;
+
+    priestData.append('id', id);
     priestData.append('name', name);
     priestData.append('image', image);
     priestData.append('position', position);
@@ -173,6 +176,7 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
         },
       })
       .then(({ data: { data, msgDb, success } }) => {
+        // console.log(data);
         setPriests((v) => [...cloneDeep(v), data]);
         setImage(null);
         setName('');

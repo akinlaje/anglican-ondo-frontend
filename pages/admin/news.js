@@ -20,7 +20,10 @@ const News = ({ admin, authToken, apiBaseUrl }) => {
     e.preventDefault();
     setSaving(true);
     let formData = new FormData();
-    formData.append('id', uuidv4());
+
+    let id = `${title}${uuidv4()}`;
+
+    formData.append('id', id);
     formData.append('title', title);
     formData.append('details', details);
     formData.append('image', image);

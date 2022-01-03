@@ -53,7 +53,10 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
   const saveImage = () => {
     setSaving(true);
     let galleryData = new FormData();
-    galleryData.append('id', uuidv4());
+
+    let id = `${title}${uuidv4()}`;
+
+    galleryData.append('id', id);
     galleryData.append('title', title);
     galleryData.append('image', image);
 

@@ -23,7 +23,10 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
     e.preventDefault();
     setSaving(true);
     let eventsData = new FormData();
-    eventsData.append('id', uuidv4());
+
+    let id = `${title}${uuidv4()}`;
+
+    eventsData.append('id', id);
     eventsData.append('title', title);
     eventsData.append('details', details);
     eventsData.append('image', image);
