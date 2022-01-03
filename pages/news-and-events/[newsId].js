@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const FullNews = ({ id, title, details, image, date, time }) => {
+const FullNews = ({ id, title, details, image, imageUrl, date, time }) => {
 	return (
 		<div>
 			<h1>{title}</h1>
@@ -8,7 +8,7 @@ const FullNews = ({ id, title, details, image, date, time }) => {
 				<span>{time}</span>
 				<span>{date}</span>
 			</div>
-			<Image layout='fill' objectFit='contain' src={'/uploads/' + image} alt={title || 'News title'} />
+			<Image layout='fill' objectFit='contain' src={imageUrl} alt={title || 'News title'} />
 			<div>{details}</div>
 		</div>
 	)

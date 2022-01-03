@@ -1,0 +1,102 @@
+.Header {
+	position: relative;
+	padding: 30px 60px;
+	margin-bottom: 0;
+	background-color: #aaa;
+	background-image: url('/images/event-center-2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #555;
+	font-size: 1.2em;
+}
+
+.Header::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-color: #000;
+	opacity: 0.6;
+	z-index: 10;
+}
+
+.HeaderInner {
+	position: relative;
+	z-index: 20;
+}
+
+.Heading {
+	color: var(--pri);
+	margin-bottom: 0;
+}
+
+.HeadingText {
+	color: #fff;
+}
+
+.SeeOnGoogle {
+	display: block;
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.Form {
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+
+.AutoTextareaWrapper,
+.Input {
+	width: 100%;
+	padding: 0 20px;
+	margin-bottom: 30px;
+	border: 1px solid #aaa;
+	border-radius: 15px;
+}
+
+.Input {
+	display: block;
+	height: 50px;
+	width: 100%;
+}
+
+.Label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+
+.DatePicker,
+.TimePicker {
+	width: fit-content;
+	height: fit-content;
+	padding: 10px 20px;
+	margin-bottom: 30px;
+	text-align: center;
+	color: var(--pri);
+	font-weight: 500;
+	box-shadow: 0px 20px 20px #00000029;
+	border-radius: 15px;
+	border: 1px solid #aaa;
+}
+
+.DatePicker {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.SubmitButton {
+	display: block;
+	width: 100%;
+	margin: 30px 0;
+	padding: 15px 25px;
+	background-color: var(--pri);
+	color: #fff;
+	border-radius: 10px;
+	border: none;
+}
