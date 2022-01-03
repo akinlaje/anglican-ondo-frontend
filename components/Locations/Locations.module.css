@@ -25,9 +25,11 @@
 }
 
 .LocationImage {
+	position: relative;
 	display: block;
 	background-color: #555;
 	height: 250px;
+	overflow: hidden;
 }
 
 @media (min-width: 768px) {

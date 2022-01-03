@@ -27,12 +27,14 @@
 }
 
 .PodcastImg {
+	position: relative;
 	display: block;
 	height: 50px;
 	width: 50px;
 	margin-right: 15px;
 	border-radius: 50%;
 	border: 2px solid var(--pri);
+	overflow: hidden;
 }
 
 .PodcastInfo {

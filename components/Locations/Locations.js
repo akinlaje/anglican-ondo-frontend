@@ -7,7 +7,7 @@ const Location = ({ id, name, image, location, imageUrl }) => {
 		<div className={styles.Location}> + 
 			<div className={styles.Info}>
 				<h3 className={styles.LocationName}>{name}</h3>
-				<div>{locations}</div>
+				<div>{location}</div>
 			</div>
 			<div className={styles.LocationImage}>
 				<Image alt={name} src={imageUrl} layout='fill' objectFit='cover' />
@@ -16,10 +16,10 @@ const Location = ({ id, name, image, location, imageUrl }) => {
 	)
 }
 
-const Locations = ({ Locations }) => {
+const Locations = ({ locations }) => {
 	return (
 		<div className={styles.Container}>
-			{Locations.map((location, i) => (
+			{locations.map((location, i) => (
 				<Location key={i} {...location} />
 			))}
 			<Pagination />

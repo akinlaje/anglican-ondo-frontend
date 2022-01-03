@@ -9,10 +9,12 @@
 }
 
 .Image {
+	position: relative;
 	display: block;
 	height: 120px;
 	width: 120px;
 	margin: 0 auto;
 	border-radius: 50%;
 	background-color: #eee;
+	overflow: hidden;
 }

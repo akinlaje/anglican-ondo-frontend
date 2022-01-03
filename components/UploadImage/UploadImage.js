@@ -44,7 +44,11 @@ const UploadImage = ({ file, setFile, name, className }) => {
 				accept={FILE_TYPES.map(type => '.' + type).join(', ')}
 				name={name}
 			/>
-			{file ? <Image file={file} alt={file.filename} className={styles.Image} /> : 
+			{file ? (
+					<div className={styles.Image}>
+						<Image file={file} alt={file.filename} layout='fill' objectFit='contain' />
+					</div>
+				) : 
 				unsupported ? (
 					<div>Unsupported file type please upload a png, jpg or jpeg file</div>
 				) : (
