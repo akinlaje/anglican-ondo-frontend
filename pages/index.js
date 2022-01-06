@@ -18,6 +18,7 @@ export default function Home({ events=[] }) {
         <Head>
           <title>Anglican Diocese of Ondo</title>
           <meta name="description" content="Anglican diocese of Ondo" />
+          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
           <link rel="icon" href="/images/diocese-logo.png" />
         </Head>
         <main>
