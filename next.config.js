@@ -10,6 +10,10 @@ module.exports = {
     ];
   },
   images: {
-    domains: ['ec2-18-224-16-187.us-east-2.compute.amazonaws.com', 'localhost'],
+    domains: [
+      'ec2-18-224-16-187.us-east-2.compute.amazonaws.com',
+      'localhost',
+      '18.224.16.187.nip.io',
+    ],
   },
 };

@@ -39,5 +39,4 @@ export const deleteFileFromNextServer = async (filename) => {
   return res;
 };
 
-export const BASE_URL =
-  'http://ec2-18-224-16-187.us-east-2.compute.amazonaws.com:5000/api/';
+export const BASE_URL = 'https://18.224.16.187.nip.io/api/';
