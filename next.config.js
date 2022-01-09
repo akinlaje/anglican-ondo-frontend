@@ -16,4 +16,5 @@ module.exports = {
       '18.224.16.187.nip.io',
     ],
   },
+  presets: ['next/babel'],
 };

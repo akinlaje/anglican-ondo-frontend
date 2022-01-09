@@ -30,7 +30,7 @@ export default function Home({ events = [] }) {
                     className={styles.CarouselItemImage}
                     height='500px'
                     width='500px'
-                    src='/images/diocese-logo.png'
+                    src='/images/IMG-20220102-WA0044.jpg'
                     alt='Logo'
                   />
                 </div>
@@ -48,7 +48,7 @@ export default function Home({ events = [] }) {
                     className={styles.CarouselItemImage}
                     height='500px'
                     width='500px'
-                    src='/images/diocese-logo.png'
+                    src='/images/IMG-20220102-WA0045.jpg'
                     alt='Logo'
                   />
                 </div>
@@ -66,7 +66,7 @@ export default function Home({ events = [] }) {
                     className={styles.CarouselItemImage}
                     height='500px'
                     width='500px'
-                    src='/images/diocese-logo.png'
+                    src='/images/IMG-20220102-WA0044.jpg'
                     alt='Logo'
                   />
                 </div>
