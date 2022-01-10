@@ -20,11 +20,14 @@ const News = ({ admin, authToken, apiBaseUrl }) => {
     e.preventDefault();
     setSaving(true);
     let formData = new FormData();
+
+    let id = `${title}${uuidv4()}`;
+
+    formData.append('id', id);
     formData.append('title', title);
     formData.append('details', details);
     formData.append('image', image);
     formData.append('location', location);
-    formData.append('id', uuidv4());
 
     const res = await axios
       .post(apiBaseUrl + 'create/news', formData, {
@@ -38,9 +41,9 @@ const News = ({ admin, authToken, apiBaseUrl }) => {
         setImage('');
         setLocation('');
         alert('Created Successfully');
-        setSaving(false)
+        setSaving(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setSaving(false);
         alert('An Error occured');
       });

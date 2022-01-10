@@ -34,8 +34,8 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
   const [images, setImages] = useState([]);
   const [image, setImage] = useState();
   const [title, setTitle = { setTitle }] = useState('');
-  const [saving, setSaving] = useState(false)
-  const [deleting, setDeleting] = useState('')
+  const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState('');
 
   useEffect(() => {
     const getImages = async () => {
@@ -53,9 +53,12 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
   const saveImage = () => {
     setSaving(true);
     let galleryData = new FormData();
+
+    let id = `${title}${uuidv4()}`;
+
+    galleryData.append('id', id);
     galleryData.append('title', title);
     galleryData.append('image', image);
-    galleryData.append('id', uuidv4());
 
     axios
       .post(apiBaseUrl + 'create/gallery', galleryData, {
@@ -70,7 +73,7 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
         setSaving(false);
         alert('Created Successfully');
       })
-      .catch(err => {
+      .catch((err) => {
         setSaving(false);
         alert('An Error occured');
       });
@@ -78,18 +81,15 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
 
   const deleteImage = (id, image) => {
     // delete image from server
-    setDeleting(id)
+    setDeleting(id);
     axios
-      .delete(
-        apiBaseUrl + 'delete/priest', 
-        {
-          data: { id, image },
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: authToken
-          },
-        }
-      )
+      .delete(apiBaseUrl + 'delete/priest', {
+        data: { id, image },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authToken,
+        },
+      })
       .then(({ data: { success, message } }) => {
         if (success) {
           setImages((images) =>
@@ -97,16 +97,16 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
               .map((image) => (image.id === id ? null : { ...image }))
               .filter((v) => v)
           );
-          setDeleting('')
-          alert('Deleted')
+          setDeleting('');
+          alert('Deleted');
         } else {
-          alert(message)
-          setDeleting('')
+          alert(message);
+          setDeleting('');
         }
       })
-      .catch(err => {
-        alert('An error occured')
-        setDeleting('')
+      .catch((err) => {
+        alert('An error occured');
+        setDeleting('');
       });
   };
 

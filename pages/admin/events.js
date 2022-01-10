@@ -17,18 +17,21 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [error, setError] = useState('');
-  const [saving, setSaving] = useState(false)
+  const [saving, setSaving] = useState(false);
 
   const submit = (e) => {
-    e.preventDefault()
-    setSaving(true)
+    e.preventDefault();
+    setSaving(true);
     let eventsData = new FormData();
+
+    let id = `${title}${uuidv4()}`;
+
+    eventsData.append('id', id);
     eventsData.append('title', title);
     eventsData.append('details', details);
     eventsData.append('image', image);
     eventsData.append('date', date);
     eventsData.append('time', time);
-    eventsData.append('id', uuidv4());
 
     axios
       .post(apiBaseUrl + 'create/event', eventsData, {
@@ -42,10 +45,10 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
         setDetails('');
         setDate('');
         setImage('');
-        setSaving(false)
+        setSaving(false);
         alert('Created Successfully');
       })
-      .catch(err => {
+      .catch((err) => {
         setSaving(false);
         alert('An Error occured');
       });

@@ -8,7 +8,7 @@ import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 import cloneDeep from 'lodash/cloneDeep';
 import { MdLocationOn as LocationIcon } from 'react-icons/md';
 import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios'
+import axios from 'axios';
 
 const AddChurch = ({
   name,
@@ -18,7 +18,7 @@ const AddChurch = ({
   image,
   setImage,
   saveChurch,
-  saving
+  saving,
 }) => {
   const [imageObjectUrl, setImageObjectUrl] = useState(
     image ? URL.createObjectURL(image) : '/images/svgs/image.svg'
@@ -99,7 +99,7 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
-  const [deleting, setDeleting] = useState('')
+  const [deleting, setDeleting] = useState('');
 
   useEffect(() => {
     const getChurches = async () => {
@@ -110,15 +110,15 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
           name: 'All Saints Anglican Church. Headquarters of Ondo Archdeaconry',
           location: 'No 32 Oke Aluko Street, Ondo',
           image: 'all-saints-church-2.jpg',
-          imageUrl: '/images/all-saints-church-2.jpg'
+          imageUrl: '/images/all-saints-church-2.jpg',
         },
         {
           id: '2',
           name: 'St. Peters Anglican Church. Headquarters of Araromi Archdeaconry',
           location: 'Araromi Obu',
           image: 'st-peters-church.jpg',
-          imageUrl: '/images/st-peters-church.jpg'
-        }
+          imageUrl: '/images/st-peters-church.jpg',
+        },
       ];
       setChurches(churches);
     };
@@ -131,19 +131,22 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
     if (!location) return setError(' Please input a location');
 
     // save church
-    setSaving(true)
+    setSaving(true);
 
     let churchData = new FormData();
+
+    let id = `${name}${uuidv4()}`;
+
+    churchData.append('id', id);
     churchData.append('name', name);
     churchData.append('image', image);
     churchData.append('location', location);
-    churchData.append('id', uuidv4());
 
     axios
       .post(apiBaseUrl + 'create/church', churchData, {
         headers: {
-          Authorization: authToken
-        }
+          Authorization: authToken,
+        },
       })
       .then(({ data: { data, msgDb, success } }) => {
         setChurches((v) => [...cloneDeep(v), data]);
@@ -153,7 +156,7 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
         setSaving(false);
         alert('Created Successfully');
       })
-      .catch(err => {
+      .catch((err) => {
         setSaving(false);
         alert('An Error occured');
       });
@@ -162,32 +165,29 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
   const deleteChurch = (id, image) => {
     // delete church image from server
     axios
-      .delete(
-        apiBaseUrl + 'delete/church', 
-        {
-          data: { id, image },
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: authToken
-          },
-        }
-      )
+      .delete(apiBaseUrl + 'delete/church', {
+        data: { id, image },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authToken,
+        },
+      })
       .then(({ data: { success, message } }) => {
         if (success) {
           setChurches((churches) =>
             churches
               .map((church) => (church.id === id ? null : { ...church }))
               .filter((v) => v)
-          )
-          setDeleting('')
-          alert('Deleted')
+          );
+          setDeleting('');
+          alert('Deleted');
         } else {
-          alert(message)
-          setDeleting('')
+          alert(message);
+          setDeleting('');
         }
       })
-      .catch(err => {
-        alert('An error occured')
+      .catch((err) => {
+        alert('An error occured');
       });
   };
 
@@ -203,7 +203,11 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
               <div className={styles.Info}>
                 <h3 className={styles.Name}>{name}</h3>
                 <div className={styles.Location}>
-                  <LocationIcon color='#000' size='1.7em' style={{ marginRight: '10px' }} />
+                  <LocationIcon
+                    color='#000'
+                    size='1.7em'
+                    style={{ marginRight: '10px' }}
+                  />
                   {location}
                 </div>
               </div>
