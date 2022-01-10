@@ -33,7 +33,7 @@ export default async (req, res) => {
   const mailData = {
     from: {
       name: `${name}`,
-      address: 'mailbot626@gmail.com',
+      address: `${email}`,
     },
     replyTo: `${email}`,
     to: 'ondoanglican@gmail.com',

@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         name: 'Radio',
         artist: '',
         album: '',
-        url: 'http://sirius.shoutca.st:8445/index.html/stream?type=http&nocache=1972',
+        url: 'https://anglicanondo.radioca.st/stream?type=http&nocache=22',
         cover_art_url: '',
       },
     ],
