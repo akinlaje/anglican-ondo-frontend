@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Membership.module.css';
+import UploadImage from '../components/UploadImage/UploadImage';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
 const Membership = () => {
   const [surname, setSurname] = useState('');
   const [lastName, setLastName] = useState('');
-  const [otherNames, setOtherNames] = useState('');
+  const [otherName, setOtherName] = useState('');
   const [email, setEmail] = useState('');
   const [church, setChurch] = useState('');
   const [archdeaconry, setArchdeaconry] = useState('');
@@ -28,7 +29,7 @@ const Membership = () => {
     membersData.append('id', id);
     membersData.append('surname', surname);
     membersData.append('lastName', lastName);
-    membersData.append('otherNames', otherNames);
+    membersData.append('otherNames', otherName);
     membersData.append('email', email);
     membersData.append('archdeaconry', archdeaconry);
     membersData.append('church', church);
@@ -44,7 +45,7 @@ const Membership = () => {
       .then((data) => {
         setSurname('');
         setLastName('');
-        setOtherNames('');
+        setOtherName('');
         setEmail('');
         setChurch('');
         setArchdeaconry('');
@@ -86,6 +87,7 @@ const Membership = () => {
         </div>
         <form className={styles.Form} onSubmit={submit}>
           <h2 className={styles.FormHeading}>Register As a Member</h2>
+          <UploadImage file={image} setFile={setImage} />
           <input
             className={styles.Input}
             placeholder='Surname'
@@ -94,9 +96,21 @@ const Membership = () => {
           />
           <input
             className={styles.Input}
+            placeholder='Last Name'
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <input
+            className={styles.Input}
             placeholder='Other Names'
-            value={otherNames}
-            onChange={(e) => setOtherNames(e.target.value)}
+            value={otherName}
+            onChange={(e) => setOtherName(e.target.value)}
+          />
+          <input
+            className={styles.Input}
+            placeholder='Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             className={styles.Input}
@@ -104,7 +118,12 @@ const Membership = () => {
             value={church}
             onChange={(e) => setChurch(e.target.value)}
           />
-          <input className={styles.Input} placeholder='Archdeaconry' />
+          <input
+            className={styles.Input}
+            placeholder='Archdeaconry'
+            value={archdeaconry}
+            onChange={(e) => setArchdeaconry(e.target.value)}
+          />
           <input
             type='number'
             className={styles.Input}
@@ -120,15 +139,9 @@ const Membership = () => {
           />
           <input
             className={styles.Input}
-            placeholder='Date of baptism'
-            value={baptismDate}
-            onChange={(e) => setBaptismDate(e.target.value)}
-          />
-          <input
-            className={styles.Input}
-            placeholder='Date of confirmation'
-            value={confirmationDate}
-            onChange={(e) => setConfirmationDate(e.target.value)}
+            placeholder='Role'
+            value={roles}
+            onChange={(e) => setRoles(e.target.value)}
           />
           <div className={styles.Flex}>
             <div className={styles.DateInputWrapper}>
@@ -137,10 +150,10 @@ const Membership = () => {
               </label>
               <input
                 className={styles.Input}
-                placeholder='DD/MM/YY'
-                id='birthday'
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
+                placeholder='Date of birth'
+                value={birthDate}
+                type='date'
+                onChange={(e) => setBirthDate(e.target.value)}
               />
             </div>
             <div className={styles.DateInputWrapper}>
@@ -151,6 +164,7 @@ const Membership = () => {
                 className={styles.Input}
                 placeholder='DD/MM/YY'
                 id='weddingAnniversary'
+                type='date'
                 value={weddingAnniversary}
                 onChange={(e) => setWeddingAnniversary(e.target.value)}
               />
