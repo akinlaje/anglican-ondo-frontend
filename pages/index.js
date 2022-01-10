@@ -105,7 +105,7 @@ export default function Home({ events = [] }) {
                         className={styles.EventsImage}
                         layout='fill'
                         objectFit='contain'
-                        src={'/uploads/' + event.image}
+                        src={event.image}
                         alt={event.title}
                       />
                     </div>
