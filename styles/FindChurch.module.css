@@ -1,11 +1,12 @@
 .Header {
+	position: relative;
 	padding: 30px 60px;
 	margin-bottom: 0;
 	text-align: center;
-	background-color: #eee;
 	background-image: url('/images/map.png');
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-color: var(--light-blue);
 	font-size: 1.2em;
 }
 

@@ -1,9 +1,8 @@
 .Header {
 	position: relative;
 	padding: 30px 60px;
-	margin-bottom: 0;
+	margin-bottom: 40px;
 	text-align: center;
-	background-color: #aaa;
 	background-image: url('/images/event-center-2.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -14,11 +13,13 @@
 .Header::after {
 	content: '';
 	position: absolute;
+	top: 0;
+	left: 0;
 	display: block;
 	height: 100%;
 	width: 100%;
 	background-color: #000;
-	opacity: 0.4;
+	opacity: 0.6;
 	z-index: 10;
 }
 
@@ -43,7 +44,8 @@
 
 .AboutArticle {
 	margin-bottom: 40px;
-	background-color: #eee;
+	background-color: #FE35070D;
+	height: fit-content;
 }
 
 .ArticleInfo {
@@ -63,7 +65,13 @@
 	background-color: #555;
 }
 
+p.Content {
+	margin: 7px 0;
+}
+
 .Bottom {
+	display: flex;
+	justify-content: space-between;
 	padding: 20px;
 }
 

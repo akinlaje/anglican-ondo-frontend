@@ -40,7 +40,7 @@ const Gallery = ({ events=[], recentEvents=[] }) => {
 						<h2 className={styles.MonthName}>{month}</h2>
 						<ul className={styles.EventList}>
 							{events.map((event, i) => (
-								<li key={i}>
+								<li key={i} className={styles.EventListItem}>
 									<Event {...event} />
 								</li>
 							))}

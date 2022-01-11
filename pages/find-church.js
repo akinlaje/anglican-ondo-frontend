@@ -1,9 +1,13 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/FindChurch.module.css';
 import SearchChurches from '../components/SearchChurches/SearchChurches';
 import Locations from '../components/Locations/Locations';
 
 const FindChurch = ({ churches }) => {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [searchedTerm, setSearchedTerm] = useState('')
+
 	return (
 		<>
 			<header className={styles.Header}>
@@ -18,10 +22,10 @@ const FindChurch = ({ churches }) => {
 				</div>
 			</header>
 			<section className={styles.SearchChurches}>
-				<SearchChurches />
+				<SearchChurches searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchedTerm />
 			</section>
 			<section className={styles.LocationsSection}>
-				<Locations locations={churches} />
+				<Locations locations={churches} searchTerm={searchTerm} setSearchedTerm={setSearchedTerm} />
 			</section>
 		</>
 	)
@@ -37,7 +41,7 @@ export async function getServerSideProps (context) {
     {
       id: '1',
       name: 'All Saints Anglican Church. Headquarters of Ondo Archdeaconry',
-      location: 'No 32 Oke Aluko Street, Ondo',
+      location: 'Ogbonkowo, Ondo',
       image: 'all-saints-church-2.jpg',
       imageUrl: '/images/all-saints-church-2.jpg'
     },
@@ -47,7 +51,7 @@ export async function getServerSideProps (context) {
       location: 'Araromi Obu',
       image: 'st-peters-church.jpg',
       imageUrl: '/images/st-peters-church.jpg'
-    }
+    },
   ];
 
   return {

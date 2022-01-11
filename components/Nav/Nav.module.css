@@ -178,12 +178,12 @@
 
 .NavLink {
 	padding: 10px;
+	border-bottom: 2px solid transparent;
 }
 
 .NavLink:hover,
 .NavLink.Active {
-	font-weight: 500;
-	border-bottom: 2px solid var(--pri);
+	border-color: var(--pri);
 }
 
 .TopNavLink.Active {

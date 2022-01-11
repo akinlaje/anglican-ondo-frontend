@@ -6,7 +6,7 @@
 	position: relative;
 	color: #fff;
 	background-color: #555;
-	background-image: url('/images/worship.jpeg');
+	/*background-image: url('/images/worship.jpeg');*/
 	padding: 40px 0;
 	text-align: center;
 }
@@ -73,7 +73,7 @@
 	margin: 10px 0;
 }
 
-@media {
+@media (min-width: 768px) {
 	.TreasurySection {
 		padding: 50px;
 	}

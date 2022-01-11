@@ -61,6 +61,21 @@
   padding-bottom: 0;
 }
 
+.Credit {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Credit a {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.Credit a:hover {
+	text-decoration: underline;
+}
+
 @media (min-width: 960px) {
 	.Footer {
 		padding: 60px;

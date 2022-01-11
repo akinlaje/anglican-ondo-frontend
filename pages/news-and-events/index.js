@@ -15,7 +15,7 @@ const NewsAndEvents = ({ latestNews, whatsOn }) => {
 				<div className={styles.SubHeadingWrapper}>
 					<h2 className={styles.SubHeading}>LATEST NEWS</h2>
 					<Link href='/'>
-					<a>See all News</a>
+					<a className={styles.SeeAllLink}>See all News</a>
 					</Link>
 				</div>
 				<div className={styles.ArticleWrapper}>
@@ -30,7 +30,7 @@ const NewsAndEvents = ({ latestNews, whatsOn }) => {
 				<div className={styles.SubHeadingWrapper}>
 					<h2 className={styles.SubHeading}>WHATS ON?</h2>
 					<Link href='/'>
-					<a>See all News</a>
+					<a className={styles.SeeAllLink}>See all News</a>
 					</Link>
 				</div>
 				<div className={styles.ArticleWrapper}>
@@ -55,38 +55,17 @@ export async function getServerSideProps (context) {
     {
       id: '1',
       title: 'Lorem Ipsum...Lorem Ipsum...',
-      details: `Lorem ipsum dolor sit amet, consetetur sadipscing
-		elitr, sed diam nonumy eirmod tempor invidunt ut
-		labore et dolore magna aliquyam erat, sed diam
-		voluptua. At vero eos et accusam et justo duo dolores
-		et ea rebum. Stet clita kasd gubergren, no sea`,
       image: '/images/ae.jpg',
-      date: '13th December, 2021',
-      time: '10:00 pm',
     },
     {
       id: '2',
       title: 'Lorem Ipsum...Lorem Ipsum...',
-      details: `Lorem ipsum dolor sit amet, consetetur sadipscing
-		elitr, sed diam nonumy eirmod tempor invidunt ut
-		labore et dolore magna aliquyam erat, sed diam
-		voluptua. At vero eos et accusam et justo duo dolores
-		et ea rebum. Stet clita kasd gubergren, no sea`,
       image: '/images/ae.jpg',
-      date: '13th December, 2021',
-      time: '10:00 pm',
     },
     {
       id: '3',
       title: 'Lorem Ipsum...Lorem Ipsum...',
-      details: `Lorem ipsum dolor sit amet, consetetur sadipscing
-		elitr, sed diam nonumy eirmod tempor invidunt ut
-		labore et dolore magna aliquyam erat, sed diam
-		voluptua. At vero eos et accusam et justo duo dolores
-		et ea rebum. Stet clita kasd gubergren, no sea`,
       image: '/images/ae.jpg',
-      date: '13th December, 2021',
-      time: '10:00 pm',
     },
   ]
 
@@ -102,6 +81,7 @@ export async function getServerSideProps (context) {
       image: '/images/ae.jpg',
       date: '13th December, 2021',
       time: '10:00 pm',
+      location: 'ST. Stephen Cathedral'
     },
     {
       id: '2',
@@ -114,6 +94,7 @@ export async function getServerSideProps (context) {
       image: '/images/ae.jpg',
       date: '13th December, 2021',
       time: '10:00 pm',
+      location: 'ST. Stephen Cathedral'
     },
     {
       id: '3',
@@ -126,6 +107,7 @@ export async function getServerSideProps (context) {
       image: '/images/ae.jpg',
       date: '13th December, 2021',
       time: '10:00 pm',
+      location: 'ST. Stephen Cathedral'
     },
   ]
 

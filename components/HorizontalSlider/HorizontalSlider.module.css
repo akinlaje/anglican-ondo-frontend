@@ -3,6 +3,20 @@
 	overflow-x: auto;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+	scrollbar-color: transparent transparent;
+}
+
+.Container::-webkit-scrollbar {
+	display: none;
+  width: 0;
+}
+
+.Container::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.Container::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
 .Container::webkit-scrollbar {

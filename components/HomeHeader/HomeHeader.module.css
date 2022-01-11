@@ -51,6 +51,16 @@
   border-radius: 20px;
 }
 
+.HeaderButton:hover {
+  background-color: var(--pri-darker);
+  cursor: pointer;
+}
+
+.PlayPauseButton:hover {
+  background-color: transparent linear-gradient(180deg, var(--pri-darker) 0%, var(--pri-darkest) 100%) 0% 0% no-repeat padding-box;
+  cursor: pointer;
+}
+
 .PlayPauseButton {
   height: 100px;
   background: transparent linear-gradient(180deg, var(--pri) 0%, var(--pri-darker) 100%) 0% 0% no-repeat padding-box;

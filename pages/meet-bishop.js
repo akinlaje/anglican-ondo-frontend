@@ -69,143 +69,147 @@ const MeetBishop = () => {
 					<h3>
 						EDUCATIONAL INSTITUTIONS ATTENDED WITH DATES AND QUALIFICATIONS OBTAINED AND APPOINTMENTS
 					</h3>
-					<table className={styles.Table}>
-						<tr>
-							<td className={styles.RomanNumber}>i.</td> 
-							<td className={styles.Acheivement}>Archbishop Vining College of Theology, Akure</td>
-							<td className={styles.Date}>1996 - 1999 </td>
-							<td>Dip.Th</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>ii.</td> 
-							<td className={styles.Acheivement}>Lagos State University, Ojo, Lagos</td>
-							<td className={styles.Date}>1999 - 2004 </td>
-							<td>BA (Ed)</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>iii.</td> 
-							<td className={styles.Acheivement}>University of Ibadan </td>
-							<td className={styles.Date}>2015 - 2019 </td>
-							<td>M.Ed (Counselling Psychology)</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>iv.</td> 
-							<td className={styles.Acheivement}>University of Ibadan </td>
-							<td className={styles.Date}>1996 - 1999 </td>
-							<td>Ph.D (Counselling Psychology)</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>v.</td> 
-							<td className={styles.Acheivement}>Alumnus Haggai International</td>
-							<td className={styles.Date}>2012 </td>
-							<td>Leadership Training</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>vi.</td> 
-							<td className={styles.Acheivement}>Alumnus of Anglican Center in Rome, Italy</td>
-							<td className={styles.Date}>2014 </td>
-							<td>Apex Leadership Training</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>vii.</td> 
-							<td className={styles.Acheivement}>Alumnus Wilberforce Academy United Kingdom	2015</td>
-							<td className={styles.Date}>2015 </td>
-							<td>Young Professional Leadership Training</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>viii.</td> 
-							<td className={styles.Acheivement}>Alumnus Christian Concern, United Kingdom</td>
-							<td className={styles.Date}>2015</td>
-							<td>Advance Clergy Training</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>ix.</td> 
-							<td className={styles.Acheivement}>Chairman Directorate of Prayer and Deliverance Unit</td>
-							<td className={styles.Date}>2009 - 2018</td>
-							<td>Dip.Th</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>x.</td> 
-							<td className={styles.Acheivement}>Chairman of Clergy Forum of Ondo Ecclesiastical Provincial Council </td>
-							<td className={styles.Date}>2012 - 2018 </td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xi.</td> 
-							<td className={styles.Acheivement}>Appointed member of Ondo State Christian Pilgrims Board</td>
-							<td className={styles.Date}>2015</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xii.</td>
-							<td className={styles.Acheivement}>Appointed as the National Representative of Christian Concern, United Kingdom </td>
-							<td className={styles.Date}>2015</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xiii.</td> 
-							<td className={styles.Acheivement}>Chairman Directorate of Evangelism of the Diocese of Ondo</td>
-							<td className={styles.Date}>2017</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xiv.</td> 
-							<td className={styles.Acheivement}>Chairman Directorate of Training of the Diocese of Ondo</td>
-							<td className={styles.Date}>2017</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xv.</td> 
-							<td className={styles.Acheivement}>Appointed Vicar General of the Diocese of Ondo</td>
-							<td className={styles.Date}>2017</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xvi.</td> 
-							<td className={styles.Acheivement}>Appointed as the Coordinating Bishop for Youth Work in the Ecclesiastical Province of Ondo </td>
-							<td className={styles.Date}>2018</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xvii.</td> 
-							<td className={styles.Acheivement}>Appointed as the Prayer Coordinator of Prayer Convocation of the Ecclesiastical Province of Ondo </td>
-							<td className={styles.Date}>2018</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xviii.</td> 
-							<td className={styles.Acheivement}>Alumnus of Global Anglican Future Conference (Gafcon), Bishop Training Institutes Kenya </td>
-							<td className={styles.Date}>2019</td>
-						</tr>
-						<tr>
-							<td className={styles.RomanNumber}>xix.</td> 
-							<td className={styles.Acheivement}>Appointed as the Chairman of translations committee of the Ecclesiastical Province of Ondo </td>
-							<td className={styles.Date}>2019</td>
-						</tr>
-					</table>
+					<div className={styles.TableContainer}>
+						<table className={styles.Table} style={{ minWidth: '700px' }}>
+							<tr>
+								<td className={styles.RomanNumber}>i.</td> 
+								<td className={styles.Acheivement}>Archbishop Vining College of Theology, Akure</td>
+								<td className={styles.Date}>1996 - 1999 </td>
+								<td>Dip.Th</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>ii.</td> 
+								<td className={styles.Acheivement}>Lagos State University, Ojo, Lagos</td>
+								<td className={styles.Date}>1999 - 2004 </td>
+								<td>BA (Ed)</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>iii.</td> 
+								<td className={styles.Acheivement}>University of Ibadan </td>
+								<td className={styles.Date}>2015 - 2019 </td>
+								<td>M.Ed (Counselling Psychology)</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>iv.</td> 
+								<td className={styles.Acheivement}>University of Ibadan </td>
+								<td className={styles.Date}>1996 - 1999 </td>
+								<td>Ph.D (Counselling Psychology)</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>v.</td> 
+								<td className={styles.Acheivement}>Alumnus Haggai International</td>
+								<td className={styles.Date}>2012 </td>
+								<td>Leadership Training</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>vi.</td> 
+								<td className={styles.Acheivement}>Alumnus of Anglican Center in Rome, Italy</td>
+								<td className={styles.Date}>2014 </td>
+								<td>Apex Leadership Training</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>vii.</td> 
+								<td className={styles.Acheivement}>Alumnus Wilberforce Academy United Kingdom	2015</td>
+								<td className={styles.Date}>2015 </td>
+								<td>Young Professional Leadership Training</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>viii.</td> 
+								<td className={styles.Acheivement}>Alumnus Christian Concern, United Kingdom</td>
+								<td className={styles.Date}>2015</td>
+								<td>Advance Clergy Training</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>ix.</td> 
+								<td className={styles.Acheivement}>Chairman Directorate of Prayer and Deliverance Unit</td>
+								<td className={styles.Date}>2009 - 2018</td>
+								<td>Dip.Th</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>x.</td> 
+								<td className={styles.Acheivement}>Chairman of Clergy Forum of Ondo Ecclesiastical Provincial Council </td>
+								<td className={styles.Date}>2012 - 2018 </td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xi.</td> 
+								<td className={styles.Acheivement}>Appointed member of Ondo State Christian Pilgrims Board</td>
+								<td className={styles.Date}>2015</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xii.</td>
+								<td className={styles.Acheivement}>Appointed as the National Representative of Christian Concern, United Kingdom </td>
+								<td className={styles.Date}>2015</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xiii.</td> 
+								<td className={styles.Acheivement}>Chairman Directorate of Evangelism of the Diocese of Ondo</td>
+								<td className={styles.Date}>2017</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xiv.</td> 
+								<td className={styles.Acheivement}>Chairman Directorate of Training of the Diocese of Ondo</td>
+								<td className={styles.Date}>2017</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xv.</td> 
+								<td className={styles.Acheivement}>Appointed Vicar General of the Diocese of Ondo</td>
+								<td className={styles.Date}>2017</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xvi.</td> 
+								<td className={styles.Acheivement}>Appointed as the Coordinating Bishop for Youth Work in the Ecclesiastical Province of Ondo </td>
+								<td className={styles.Date}>2018</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xvii.</td> 
+								<td className={styles.Acheivement}>Appointed as the Prayer Coordinator of Prayer Convocation of the Ecclesiastical Province of Ondo </td>
+								<td className={styles.Date}>2018</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xviii.</td> 
+								<td className={styles.Acheivement}>Alumnus of Global Anglican Future Conference (Gafcon), Bishop Training Institutes Kenya </td>
+								<td className={styles.Date}>2019</td>
+							</tr>
+							<tr>
+								<td className={styles.RomanNumber}>xix.</td> 
+								<td className={styles.Acheivement}>Appointed as the Chairman of translations committee of the Ecclesiastical Province of Ondo </td>
+								<td className={styles.Date}>2019</td>
+							</tr>
+						</table>
+					</div>
 					<h3>CLERICAL ENTRY/ PREFERMENTS</h3>
-					<table className={styles.Table}>
-						<tr>
-							<td>Deaconed</td>
-							<td>1999 </td>
-						</tr>
-						<tr>
-							<td>Priested</td>
-							<td>2000</td>
-						</tr>
-						<tr>
-							<td>Statutory Canon</td>
-							<td>2004</td>
-						</tr>
-						<tr>
-							<td>Appointed as Canon Residentiary</td>
-							<td>2005</td>
-						</tr>
-						<tr>
-							<td>Archdeacon </td>
-							<td>2009</td>
-						</tr>
-						<tr>
-							<td>Elected and Installed as the 7th Provost of the Cathedral Church Of St. Stephen, Oke-Aluko, Ondo </td>
-							<td>2012</td>
-						</tr>
-						<tr>
-							<td>Elected, Confirmed, Consecrated and Enthroned as the 7th Bishop of the Diocese of Ondo </td>
-							<td>2018</td>
-						</tr>
-					</table>
+					<div className={styles.TableContainer}>
+						<table className={styles.Table}>
+							<tr>
+								<td>Deaconed</td>
+								<td>1999 </td>
+							</tr>
+							<tr>
+								<td>Priested</td>
+								<td>2000</td>
+							</tr>
+							<tr>
+								<td>Statutory Canon</td>
+								<td>2004</td>
+							</tr>
+							<tr>
+								<td>Appointed as Canon Residentiary</td>
+								<td>2005</td>
+							</tr>
+							<tr>
+								<td>Archdeacon </td>
+								<td>2009</td>
+							</tr>
+							<tr>
+								<td>Elected and Installed as the 7th Provost of the Cathedral Church Of St. Stephen, Oke-Aluko, Ondo </td>
+								<td>2012</td>
+							</tr>
+							<tr>
+								<td>Elected, Confirmed, Consecrated and Enthroned as the 7th Bishop of the Diocese of Ondo </td>
+								<td>2018</td>
+							</tr>
+						</table>
+					</div>
 					<p className={styles.MainText}>
 						The Rt. Revd. Dr. Stephen Adeniran Oni, is well travelled preacher of the Word, who is passionate about prayers, Counselling and building leadership Capacity both in the church, national and international levels. He is blessed with a God fearing and amiable consult, Mrs. Oyewola Blessing Oni. A rear gift to the home and ministry of Christ and an Administrator by profession occupying the post of Chief Executive Officer to her credit and the President of the women organisation of the Diocese of Ondo, (Anglican Communion).They are blessed with wonderful heritages of God as children.  May the name of the Lord be praised for ever. Amen.
 					</p>

@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import styles from './HomeHeader.module.css';
 import CustomPlayButton from '../CustomPlayButton/CustomPlayButton';
+import { GoLocation as LocationIcon } from 'react-icons/go'
 
 const HomeHeader = () => {
   // const router = useRouter()
@@ -14,43 +15,15 @@ const HomeHeader = () => {
         <div className={styles.HeaderButtons}>
           <Link href='/find-church'>
             <a className={styles.HeaderButton}>
-              <img
-                src='/images/svgs/location.svg'
+              <LocationIcon
+                color='#fff'
                 className={styles.ButtonIcon}
-                alt='find a church'
-                height='24px'
-                width='24px'
+                size='24px'
               />
               Find a Church
             </a>
           </Link>
           <CustomPlayButton className={styles.PlayPauseButton} />
-        </div>
-        <div className={styles.Socials}>
-          <img
-            className={styles.SocialIcon}
-            src='/images/svgs/facebook.svg'
-            height='24px'
-            width='24px'
-          />
-          <img
-            className={styles.SocialIcon}
-            src='/images/svgs/instagram.svg'
-            height='24px'
-            width='24px'
-          />
-          <img
-            className={styles.SocialIcon}
-            src='/images/svgs/twitter.svg'
-            height='24px'
-            width='24px'
-          />
-          <img
-            className={[styles.SocialIcon, styles.YTIcon].join(' ')}
-            src='/images/svgs/youtube.svg'
-            height='24px'
-            width='24px'
-          />
         </div>
       </div>
     </header>

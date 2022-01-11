@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link';
 import styles from '../styles/Women.module.css';
+import { HiMenuAlt3 as MenuIcon } from 'react-icons/hi'
 
 const Women = () => {
 	return (
@@ -45,6 +46,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 					<div className={styles.Article}>
@@ -70,6 +72,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 					<div className={styles.Article}>
@@ -95,6 +98,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 					<div className={styles.Article}>
@@ -120,6 +124,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 				</div>
@@ -150,6 +155,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 					<div className={styles.Article}>
@@ -175,6 +181,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 					<div className={styles.Article}>
@@ -200,6 +207,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 					<div className={styles.Article}>
@@ -225,6 +233,7 @@ const Women = () => {
 							<Link href='/'>
 								<a>Read More</a>
 							</Link>
+							<MenuIcon size='30px' color='#000' />
 						</div>
 					</div>
 				</div>

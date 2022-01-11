@@ -87,7 +87,7 @@ const Membership = () => {
         </div>
         <form className={styles.Form} onSubmit={submit}>
           <h2 className={styles.FormHeading}>Register As a Member</h2>
-          <UploadImage file={image} setFile={setImage} />
+          <UploadImage className={styles.UploadImage} file={image} setFile={setImage} />
           <input
             className={styles.Input}
             placeholder='Surname'
