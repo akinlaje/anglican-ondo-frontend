@@ -4,13 +4,13 @@
 	margin-bottom: 0;
 	text-align: center;
 	background-color: #eee;
-	/*background-image: url('/images/worship-2.jpeg');*/
+	background-image: url('/images/membership-header-bg.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-size: 1.2em;
 }
 
-.Header::after {
+/*.Header::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -21,7 +21,7 @@
 	background-color: #fff;
 	opacity: 0.6;
 	z-index: 10;
-}
+}*/
 
 .HeaderInner {
 	position: relative;
