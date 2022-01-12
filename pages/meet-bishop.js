@@ -225,8 +225,6 @@ const MeetBishop = () => {
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
-				</div>
-				<div className={styles.ClergyList}>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
 							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
@@ -234,8 +232,6 @@ const MeetBishop = () => {
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
-				</div>
-				<div className={styles.ClergyList}>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
 							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
@@ -243,8 +239,6 @@ const MeetBishop = () => {
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
-				</div>
-				<div className={styles.ClergyList}>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
 							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
@@ -252,8 +246,6 @@ const MeetBishop = () => {
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
-				</div>
-				<div className={styles.ClergyList}>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
 							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
@@ -261,8 +253,6 @@ const MeetBishop = () => {
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
-				</div>
-				<div className={styles.ClergyList}>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
 							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />

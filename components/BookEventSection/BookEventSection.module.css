@@ -28,7 +28,6 @@
 }
 
 .BookEvent {
-	width: 55%;
 	margin: 0 auto;
 	background-color: #555;
 	position: relative;
@@ -43,10 +42,10 @@
 }
 
 .BookEventHeadingStyledText {
-	font: Pirate Keg, Poppins, sans-serif;
-	font-size: 3em;
-	line-height: 1em;
-	color: #FFEE00;
+	position: relative;
+	height: 100px;
+	width: stretch;
+	margin: 20px 0;
 }
 
 .BookEventText {
@@ -86,7 +85,13 @@
 	}
 
 	.BookEvent {
-		width: 50%;
+		width: 55%;
 		margin-right: 0;
+	}
+
+	.BookEventText {
+		max-width: 500px;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }

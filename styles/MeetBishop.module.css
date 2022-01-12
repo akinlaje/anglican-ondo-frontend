@@ -4,7 +4,7 @@
 	text-align: center;
 	background-color: #eee;
 	background-image: url('/images/SA.png');
-	background-position: center;
+	background-position: center;	
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-size: 1.2em;
@@ -47,6 +47,7 @@
 
 .MainImageWrapper {
 	margin: 20px auto;
+	width: fit-content;
 }
 
 .MainImage {
@@ -126,6 +127,20 @@ td.Acheivement {
 	}
 }
 
+@media (min-width: 700px) {
+	.ClergyList {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		max-width: 1150px;
+		margin: 0 auto;
+	}
+
+	.Clergy {
+		width: calc(50% - 20px);
+	}
+}
+
 @media (min-width: 768px) {
 	.Header {
 		min-height: 65vh;
@@ -153,21 +168,9 @@ td.Acheivement {
 	.MainImage {
 		margin: 0 20px;
 	}
-
-	.ClergyList {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		max-width: 1150px;
-		margin: 0 auto;
-	}
-
-	.Clergy {
-		width: calc(50% - 20px);
-	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 882px) {
 	.Clergy {
 		width: calc(33.33% - 20px);
 	}

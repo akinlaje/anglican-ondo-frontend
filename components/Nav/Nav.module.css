@@ -178,14 +178,17 @@
 
 .NavLink {
 	padding: 10px;
-	border-bottom: 2px solid transparent;
+	border-radius: 10px;
+	margin-right: 5px;
 }
 
 .NavLink:hover,
 .NavLink.Active {
-	border-color: var(--pri);
+	color: #fff;
+	background: #FE3507 0% 0% no-repeat padding-box;
 }
 
+.TopNavLink:hover,
 .TopNavLink.Active {
 	color: #fff;
 	background: #FE3507 0% 0% no-repeat padding-box;
