@@ -2,7 +2,9 @@
 	padding: 30px 60px;
 	margin-bottom: 0;
 	text-align: center;
-	background-color: #eee;
+	background-image: url('/images/membership-header-bg.png');
+	background-size: cover;
+	background-position: center;
 	font-size: 1.2em;
 }
 
