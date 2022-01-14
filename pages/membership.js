@@ -96,7 +96,7 @@ const Membership = () => {
           />
           <input
             className={styles.Input}
-            placeholder='Last Name'
+            placeholder='Name'
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />

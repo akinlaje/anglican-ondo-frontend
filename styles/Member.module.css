@@ -1,0 +1,12 @@
+.Container {
+	padding: 30px;
+}
+
+.Image {
+	position: relative;
+	max-height: 300px;
+	width: fit-content;
+	margin: 20px;
+	border-radius: 10px;
+	overflow: hidden;
+}

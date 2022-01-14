@@ -1,8 +1,11 @@
 .Container {
-	display: flex;
-	flex-wrap: wrap;
 	max-width: 870px;
 	margin: 0 auto;
+}
+
+.Members {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .MemberWrapper {

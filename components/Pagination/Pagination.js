@@ -16,12 +16,12 @@ const Pagination = ({ page, setPage, numPerPage, numItems }) => {
 		<div className={styles.Container}>
 			<span 
 				onClick={prev} 
-				style={{ opacity: isFirstPage ? '0.5' : '1' }}
+				style={{ opacity: isFirstPage ? '0.5' : '1', cursor: 'pointer' }}
 			>Prev</span>
 			<div>Page {page} of {numPages}</div>
 			<span 
 				onClick={next}
-				style={{ opacity: isLastPage ? '0.5' : '1' }}
+				style={{ opacity: isLastPage ? '0.5' : '1', cursor: 'pointer' }}
 			>Next</span>
 		</div>
 	)

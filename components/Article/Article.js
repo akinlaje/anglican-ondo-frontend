@@ -18,7 +18,7 @@ const Article = ({ id, title, details, image, date, time, location }) => {
 				<Image alt='article' src={'/uploads/' + image} layout='fill' objectFit='contain' />
 			</div>
 			<div className={styles.Bottom}>
-				<Link href={'/new-and-events/' + id}>
+				<Link href={'/news-and-events/' + id}>
 					<a>Read More</a>
 				</Link>
 				<MenuIcon size='30px' color='#555' />
