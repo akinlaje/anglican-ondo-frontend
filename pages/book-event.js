@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Head from 'next/head';
+import Image from 'next/image'
 import Link from 'next/link';
 import DatePicker from '../components/DatePicker/DatePicker';
 import TimePicker from '../components/TimePicker/TimePicker';
@@ -33,6 +34,9 @@ const BookEvent = () => {
           <meta name="description" content="About the Anglican diocese of Ondo" />
           <link rel="icon" href="/images/diocese-logo.png" />
         </Head>
+        <div className={styles.HeaderImage}>
+          <Image src='/images/event-hall.jpg' layout='fill' objectFit='cover' alt='event hall' />
+        </div>
 				<div className={styles.HeaderInner}>
 					<h1 className={styles.Heading}>Book Our Event Center</h1>
 					<p className={styles.HeadingText}>

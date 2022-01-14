@@ -57,7 +57,7 @@
 	margin: 30px 0;
 	height: 200px;
 	width: 200px;
-	border: 2px solid var(--pri);
+	/*border: 2px solid var(--pri);*/
 	border-radius: 50%;
 	overflow: hidden;
 }
@@ -84,7 +84,7 @@
 	height: 250px;
 	width: 250px;
 	margin: 0 auto;
-	border: 2px solid var(--pri);
+	/*border: 2px solid var(--pri);*/
 	border-radius: 50%;
 	overflow: hidden;
 }

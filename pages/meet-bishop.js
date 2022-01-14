@@ -19,7 +19,7 @@ const MeetBishop = () => {
 			<section className={styles.CurrentBishopSection}>
 				<div className={styles.MainImageWrapper}>
 					<div className={styles.MainImage} style={{ position: 'relative' }}>
-						<Image layout='fill' objectFit='cover'  alt='bishop' src='/images/bishop.jpeg'  />
+						<Image layout='fill' objectFit='contain'  alt='bishop' src='/images/bishop-oni.png'  />
 					</div>
 				</div>
 				<div className={styles.MainTextWrapper}>
@@ -220,42 +220,42 @@ const MeetBishop = () => {
 				<div className={styles.ClergyList}>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
-							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
+							<Image layout='fill' objectFit='contain' alt='clergy' src='/images/bishop-oni.png' />
 						</div>
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
-							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
+							<Image layout='fill' objectFit='contain' alt='clergy' src='/images/bishop-oni.png' />
 						</div>
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
-							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
+							<Image layout='fill' objectFit='contain' alt='clergy' src='/images/bishop-oni.png' />
 						</div>
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
-							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
+							<Image layout='fill' objectFit='contain' alt='clergy' src='/images/bishop-oni.png' />
 						</div>
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
-							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
+							<Image layout='fill' objectFit='contain' alt='clergy' src='/images/bishop-oni.png' />
 						</div>
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>
 					</div>
 					<div className={styles.Clergy}>
 						<div className={styles.ClergyImage} >
-							<Image layout='fill' objectFit='cover' alt='clergy' src='/images/bishop.jpeg' />
+							<Image layout='fill' objectFit='contain' alt='clergy' src='/images/bishop-oni.png' />
 						</div>
 						<h4 className={styles.ClergyName}>Rt. Revd. Stephen Adeniran O</h4>
 						<div className='faded'>From 1900 - 2021</div>

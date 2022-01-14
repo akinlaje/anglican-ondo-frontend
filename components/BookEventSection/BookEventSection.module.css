@@ -1,7 +1,7 @@
 .BookEventSection {
 	position: relative;
 	width: 100%;
-	/*background-image: url('/images/event-center-2.jpg');*/
+	background-image: url('/images/event-hall.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-color: #555;
@@ -29,7 +29,7 @@
 
 .BookEvent {
 	margin: 0 auto;
-	background-color: #555;
+	background-color: #545f656b;
 	position: relative;
 	padding: 100px 50px;
 	padding-bottom: 50px;
@@ -74,7 +74,6 @@
 @media (min-width: 768px) {
 	.BookEventSection {
 		display: flex;
-		background-size: contain;
 	}
 
 	.BookEventSection::after {
@@ -87,6 +86,7 @@
 	.BookEvent {
 		width: 55%;
 		margin-right: 0;
+		background-color: #545f65;
 	}
 
 	.BookEventText {

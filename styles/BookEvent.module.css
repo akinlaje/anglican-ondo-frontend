@@ -1,40 +1,23 @@
 .Header {
 	position: relative;
-	padding: 30px 60px;
 	margin-bottom: 0;
-	background-color: #aaa;
-	background-image: url('/images/event-center-2.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-color: #555;
 	font-size: 1.2em;
 }
 
-.Header::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: block;
-	height: 100%;
-	width: 100%;
-	background-color: #000;
-	opacity: 0.6;
-	z-index: 10;
+.HeaderImage {
+	position: relative;
+	height: 300px;
 }
 
 .HeaderInner {
 	position: relative;
+	padding: 30px 60px;
 	z-index: 20;
 }
 
 .Heading {
 	color: var(--pri);
 	margin-bottom: 0;
-}
-
-.HeadingText {
-	color: #fff;
 }
 
 .SeeOnGoogle {
