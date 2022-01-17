@@ -33,7 +33,11 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   if (typeof file === 'string') {
     src = file
   } else {
-    src = URL.createObjectURL(file)
+    const reader =  new FileReader()
+    reader.onload = e => {
+     src = e.target.result
+    }
+    reader.readAsDataURL(file)
   }
 
   return (
