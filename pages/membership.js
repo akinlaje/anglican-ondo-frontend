@@ -18,6 +18,8 @@ const Membership = () => {
   const [birthDate, setBirthDate] = useState('');
   const [weddingAnniversary, setWeddingAnniversary] = useState('');
   const [image, setImage] = useState(null);
+  const [sending, setSending] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const submit = (e) => {
     e.preventDefault();
@@ -40,6 +42,8 @@ const Membership = () => {
     membersData.append('phoneNumber', phoneNumber);
     membersData.append('image', image);
 
+    setSending(true);
+
     axios
       .post(apiBaseUrl + 'user/reg_users', membersData)
       .then((data) => {
@@ -56,9 +60,11 @@ const Membership = () => {
         setWeddingAnniversary('');
         setImage('');
         alert('Created Successfully');
+        setSending(false);
       })
       .catch((err) => {
         alert('An Error occured');
+        setSending(false);
       });
   };
 
@@ -87,41 +93,51 @@ const Membership = () => {
         </div>
         <form className={styles.Form} onSubmit={submit}>
           <h2 className={styles.FormHeading}>Register As a Member</h2>
-          <UploadImage className={styles.UploadImage} file={image} setFile={setImage} />
+          <UploadImage
+            className={styles.UploadImage}
+            file={image}
+            setFile={setImage}
+          />
           <input
             className={styles.Input}
             placeholder='Surname'
             value={surname}
+            required
             onChange={(e) => setSurname(e.target.value)}
           />
           <input
             className={styles.Input}
             placeholder='Name'
             value={lastName}
+            required
             onChange={(e) => setLastName(e.target.value)}
           />
           <input
             className={styles.Input}
             placeholder='Other Names'
             value={otherName}
+            required
             onChange={(e) => setOtherName(e.target.value)}
           />
           <input
             className={styles.Input}
             placeholder='Email'
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             className={styles.Input}
             placeholder='Church'
             value={church}
+            required
             onChange={(e) => setChurch(e.target.value)}
           />
           <input
             className={styles.Input}
             placeholder='Archdeaconry'
             value={archdeaconry}
+            required
             onChange={(e) => setArchdeaconry(e.target.value)}
           />
           <input
@@ -129,18 +145,21 @@ const Membership = () => {
             className={styles.Input}
             placeholder='Phone Number'
             value={phoneNumber}
+            required
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
           <input
             className={styles.Input}
             placeholder='Society'
             value={society}
+            required
             onChange={(e) => setSociety(e.target.value)}
           />
           <input
             className={styles.Input}
             placeholder='Role'
             value={roles}
+            required
             onChange={(e) => setRoles(e.target.value)}
           />
           <div className={styles.Flex}>
@@ -153,6 +172,7 @@ const Membership = () => {
                 placeholder='Date of birth'
                 value={birthDate}
                 type='date'
+                required
                 onChange={(e) => setBirthDate(e.target.value)}
               />
             </div>
@@ -165,14 +185,22 @@ const Membership = () => {
                 placeholder='DD/MM/YY'
                 id='weddingAnniversary'
                 type='date'
+                required
                 value={weddingAnniversary}
                 onChange={(e) => setWeddingAnniversary(e.target.value)}
               />
             </div>
           </div>
-          <button type='submit' className={styles.SubmitButton}>
-            Submit
-          </button>
+          {!sending && (
+            <button type='submit' className={styles.SubmitButton}>
+              Submit
+            </button>
+          )}
+          {sending && (
+            <button disabled className={styles.SubmitButton}>
+              Sending
+            </button>
+          )}
         </form>
       </section>
     </>

@@ -3,7 +3,16 @@
 import nodemailer from 'nodemailer';
 
 export default async (req, res) => {
-  const { name, email, message, subject } = req.body;
+  const {
+    name,
+    date,
+    startTime,
+    endTime,
+    numChairs,
+    phoneNumber,
+    message,
+    email,
+  } = req.body;
 
   const transporter = nodemailer.createTransport({
     port: 465,
@@ -37,10 +46,33 @@ export default async (req, res) => {
     },
     replyTo: `${email}`,
     to: 'ondoanglican@gmail.com',
-    subject: `${subject}`,
+    subject: 'Event Hall Booking Request',
     text: message + ' | Sent from: ' + email,
-    html: `<div>${message}</div><p>Sent from:
-    ${email}</p>`,
+    html: `<div>
+      <p>Good day sir/ma I am ${name}. I would like to rent your event hall</p>
+      <p>Details: </p>
+      <table>
+        <tr>				
+          <th>Name</th>	
+          <th>Email</th>	
+          <th>Phone Number</th>	
+          <th>Date</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Number of Chairs</th>
+        </tr> 
+        <tr>
+          <td>${name}</td>
+          <td>${email}</td>
+          <td>${phoneNumber}</td>
+          <td>${date}</td>
+          <td>${startTime.hour}:${startTime.minute}</td>
+          <td>${endTime}</td>
+          <td>${numChairs}</td>
+        </tr>
+        <p>${message}</p>
+      </table>
+    </div>`,
   };
 
   await new Promise((resolve, reject) => {

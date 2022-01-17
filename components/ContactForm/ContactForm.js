@@ -11,7 +11,7 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Sending');
+    // console.log('Sending');
     let data = {
       name,
       email,
