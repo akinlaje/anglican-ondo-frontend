@@ -62,8 +62,6 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
             alt={file.filename}
             layout='fill'
             objectFit='contain'
-            height='200px'
-            width='200px'
           />
         </div>
       ) : unsupported ? (
