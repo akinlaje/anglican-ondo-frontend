@@ -45,7 +45,7 @@ const DatePicker = ({ date, setDate, className, label }) => {
 		// pad day, month and year parts of the string before parsing
 		newDate = pad(newDate);
 		const parsed = parseDate(newDate, FORMAT, LOCALE);
-		// console.log(parsed);
+		console.log(parsed);
 		if (parsed) {
 			setInputDateValid(true);
 			setDate(parsed);

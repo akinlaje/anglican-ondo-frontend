@@ -4,6 +4,7 @@ import AutoGrowingTextarea from '../../components/AutoGrowingTextarea/AutoGrowin
 import TimePicker from '../../components/TimePicker/TimePicker';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import cloneDeep from 'lodash/cloneDeep';
+import { formatDate } from '../../utils'
 
 const EditRadioEvent = (props) => {
 	const [title, setTitle] = useState(props.title);

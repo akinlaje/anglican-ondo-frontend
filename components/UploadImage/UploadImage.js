@@ -30,10 +30,16 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   };
 
   let src
-  if (file instanceof File) {
-    src = URL.createObjectURL(file)
-  } else if (typeof file === 'string') {
-    src = file
+  if (file) {
+    if (typeof file === 'string') {
+      src = file
+    } else {
+      const reader =  new FileReader()
+      reader.onload = e => {
+       src = e.target.result
+      }
+      reader.readAsDataURL(file)
+    }
   }
 
   return (
@@ -56,8 +62,6 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
             alt={file.filename}
             layout='fill'
             objectFit='contain'
-            height='200px'
-            width='200px'
           />
         </div>
       ) : unsupported ? (

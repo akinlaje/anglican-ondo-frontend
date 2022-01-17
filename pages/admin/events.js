@@ -9,6 +9,7 @@ import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa';
 import axios from 'axios';
 import FormError from '../../components/FormError/FormError';
 import { v4 as uuidv4 } from 'uuid';
+import { formatDate } from '../../utils'
 
 const Events = ({ admin, authToken, apiBaseUrl }) => {
   const [image, setImage] = useState();
@@ -30,7 +31,7 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
     eventsData.append('title', title);
     eventsData.append('details', details);
     eventsData.append('image', image);
-    eventsData.append('date', date);
+    eventsData.append('date', formatDate(date));
     eventsData.append('time', time);
 
     axios
