@@ -30,10 +30,10 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   };
 
   let src
-  if (file instanceof File) {
-    src = URL.createObjectURL(file)
-  } else if (typeof file === 'string') {
+  if (typeof file === 'string') {
     src = file
+  } else {
+    src = URL.createObjectURL(file)
   }
 
   return (
