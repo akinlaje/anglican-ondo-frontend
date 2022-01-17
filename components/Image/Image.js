@@ -1,8 +1,8 @@
 
 
-const Image = ({ file, alt, ...rest }) => {
+const Image = ({ file, alt, ...rest, src }) => {
 	return (
-		<img src={URL.createObjectURL(file)} alt={alt} {...rest}/>
+		<img src={src ? src : URL.createObjectURL(file)} alt={alt} {...rest}/>
 	)
 }
 
