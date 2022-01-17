@@ -1,0 +1,43 @@
+.Container {
+	max-width: 870px;
+	margin: 0 auto;
+}
+
+.Members {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.MemberWrapper {
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	border: 1px solid transparent;
+}
+
+.MemberWrapper:hover {
+	border-color: var(--pri);
+}
+
+.ImageWrapper {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+@media (min-width: 768px) {
+	.MemberWrapper {
+		width: 50%;
+	}
+}
+
+@media (min-width: 1060px) {
+	.MemberWrapper {
+		width: 33.33%;
+	}
+}

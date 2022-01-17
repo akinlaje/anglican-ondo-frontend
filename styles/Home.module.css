@@ -1,7 +1,10 @@
 .CarouselSection {
 	position: relative;
-	padding: 30px 0;
-	background-image: url('/images/worship.jpeg');
+	padding-top: 50px;
+	padding-bottom: 30px;
+	padding-right: 0;
+	padding-left: 0;
+	/*background-image: url('/images/worship.jpeg');*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	z-index: 20;
@@ -14,7 +17,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: #fe5b369e;
+	background-color: #fe5b36db;
 	z-index: 10;
 }
 
@@ -35,6 +38,7 @@
 	display: block;
 	height: fit-content;
 	width: 500px;
+	max-width: 100%;
 	margin: 0 auto;
 	margin-bottom: 20px;
 }
@@ -47,7 +51,7 @@
 }
 
 .CarouselItemHeading {
-	font-size: 2em;
+	font-size: 1.5emem;
 	font-weight: 500;
 }
 
@@ -75,6 +79,8 @@
 
 .EventImageWrapper {
 	position: relative;
+	width: 100%;
+    height: 200px;
 }
 
 @media (min-width: 768px) {
@@ -87,6 +93,10 @@
 	.CarouselItemImageWrapper {
 		flex: 0.3;
 		margin-bottom: 0;
+	}
+
+	.CarouselItemHeading {
+		font-size: 2em;
 	}
 
 	.CarouselItemText {

@@ -2,6 +2,8 @@
 	/* Colors: */
 	--pri: #FE3507;
 	--pri-darker: #911b00;
+	--pri-darkest: #5b1100;
+	--light-blue: #f0faff;
 	--unnamed-color-f8c755: #F8C755;
 	--unnamed-color-ffffff: #FFFFFF;
 	--unnamed-color-262424: #262424;
@@ -23,6 +25,7 @@ body {
   margin: 0;
   font-family: Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+ 	/*overflow-x: hidden;*/
 }
 
 a {

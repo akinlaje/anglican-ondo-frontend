@@ -16,57 +16,63 @@ const ClergyMen = ({ venerables, canons, reverends }) => {
 					<p>The Priest in the Diocese of Ondo</p>
 				</div>
 			</header>
-			<section>
+			<section className={styles.Section}>
 				<h3 className={styles.SubHeading}>Former Bishops</h3>
-				<div className={styles.ClergyList}>
-					{venerables.map((bishop, i) => (
-						<div key={i} className={styles.Clergy}>
-							<div className={styles.ClergyImage} >
-								<Image 
-									layout='fill'
-									objectFit='cover'
-									alt={bishop.name}
-									src={bishop.imageUrl}
-								/>
+				<div className={styles.ClergyListWrapper}>
+					<div className={styles.ClergyList}>
+						{venerables.map((bishop, i) => (
+							<div key={i} className={styles.Clergy}>
+								<div className={styles.ClergyImage} >
+									<Image 
+										layout='fill'
+										objectFit='cover'
+										alt={bishop.name}
+										src={bishop.imageUrl}
+									/>
+								</div>
+								<h4 className={styles.ClergyName}>{bishop.name}</h4>
+								<div className='faded'>{bishop.position}</div>
 							</div>
-							<h4 className={styles.ClergyName}>{bishop.name}</h4>
-							<div className='faded'>{bishop.position}</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 				<h3 className={styles.SubHeading}>Former Bishops</h3>
-				<div className={styles.ClergyList}>
-					{canons.map((bishop, i) => (
-						<div key={i} className={styles.Clergy}>
-							<div className={styles.ClergyImage} >
-								<Image 
-									layout='fill'
-									objectFit='cover'
-									alt={bishop.name}
-									src={bishop.imageUrl}
-								/>
+				<div className={styles.ClergyListWrapper}>
+					<div className={styles.ClergyList}>
+						{canons.map((bishop, i) => (
+							<div key={i} className={styles.Clergy}>
+								<div className={styles.ClergyImage} >
+									<Image 
+										layout='fill'
+										objectFit='cover'
+										alt={bishop.name}
+										src={bishop.imageUrl}
+									/>
+								</div>
+								<h4 className={styles.ClergyName}>{bishop.name}</h4>
+								<div className='faded'>{bishop.position}</div>
 							</div>
-							<h4 className={styles.ClergyName}>{bishop.name}</h4>
-							<div className='faded'>{bishop.position}</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 				<h3 className={styles.SubHeading}>Former Bishops</h3>
-				<div className={styles.ClergyList}>
-					{reverends.map((bishop, i) => (
-						<div key={i} className={styles.Clergy}>
-							<div className={styles.ClergyImage} >
-								<Image 
-									layout='fill'
-									objectFit='cover'
-									alt={bishop.name}
-									src={bishop.imageUrl}
-								/>
+				<div className={styles.ClergyListWrapper}>
+					<div className={styles.ClergyList}>
+						{reverends.map((bishop, i) => (
+							<div key={i} className={styles.Clergy}>
+								<div className={styles.ClergyImage} >
+									<Image 
+										layout='fill'
+										objectFit='cover'
+										alt={bishop.name}
+										src={bishop.imageUrl}
+									/>
+								</div>
+								<h4 className={styles.ClergyName}>{bishop.name}</h4>
+								<div className='faded'>{bishop.position}</div>
 							</div>
-							<h4 className={styles.ClergyName}>{bishop.name}</h4>
-							<div className='faded'>{bishop.position}</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</section>
 		</>

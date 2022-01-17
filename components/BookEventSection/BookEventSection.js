@@ -17,7 +17,9 @@ const BookEventSection = () => {
       <div className={styles.BookEvent}>
         <h2 className={styles.BookEventHeading}>
           BOOK OUR EVENT
-          <div className={styles.BookEventHeadingStyledText}>CENTER</div>
+          <div className={styles.BookEventHeadingStyledText}>
+            <Image layout='fill' objectFit='contain' src='/images/CENTER.png' alt='CENTER' />
+          </div>
         </h2>
         <p className={styles.BookEventText}>
           Do you have an Upcoming event or Program, You can

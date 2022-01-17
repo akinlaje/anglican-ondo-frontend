@@ -2,7 +2,9 @@
 	padding: 30px 60px;
 	margin-bottom: 0;
 	text-align: center;
-	background-color: #eee;
+	background-image: url('/images/membership-header-bg.png');
+	background-size: cover;
+	background-position: center;
 	font-size: 1.2em;
 }
 
@@ -37,7 +39,14 @@
 	display: flex;
 	flex-flow: wrap;
 	list-style: none;
+	max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
 	padding: 0;
+}
+
+.EventListItem {
+	width: 100%;
 }
 
 .Button {
@@ -53,6 +62,12 @@
 .Button:hover {
 	background-color: var(--pri-darker);
 	color: #fff;
+}
+
+@media (min-width: 600px) {
+	.EventListItem {
+		width: 50%;
+	}
 }
 
 @media (min-width: 768px) {
@@ -71,10 +86,20 @@
 	.Heading {
 		font-size: 3em;
 	}
+
+	.MonthName {
+		margin: 0 50px;
+	}
 }
 
-@media (min-width: 1265px) {
-	.EventList {
-		display: flex;
+@media (min-width: 820px) {
+	.EventListItem {
+		width: 33.33%;
+	}
+}
+
+@media (min-width: 1130px) {
+	.EventListItem {
+		width: 25%;
 	}	
 }

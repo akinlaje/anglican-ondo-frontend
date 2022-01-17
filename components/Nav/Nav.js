@@ -64,6 +64,10 @@ const Nav = () => {
       href: '/meet-bishop',
       display: 'Meet the Bishop',
     },
+    {
+      href: '/book-event',
+      display: 'Book Event Center',
+    },
   ];
 
   return (

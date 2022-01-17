@@ -1,12 +1,38 @@
 .Header {
-	padding: 30px 60px;
+	position: relative;
 	margin-bottom: 0;
 	text-align: center;
 	background-color: #eee;
 	background-image: url('/images/SA.png');
+	background-position: center;	
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-size: 1.2em;
+}
+
+.Header::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-color: #e7eef2;
+	opacity: 0.6;
+	z-index: 10;
+}
+
+.HeaderInner {
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	width: fit-content;
+	height: inherit;
+	padding: 30px 60px;
+	background: none;
+	z-index: 20;
 }
 
 .Heading {
@@ -21,6 +47,7 @@
 
 .MainImageWrapper {
 	margin: 20px auto;
+	width: fit-content;
 }
 
 .MainImage {
@@ -30,7 +57,7 @@
 	margin: 30px 0;
 	height: 200px;
 	width: 200px;
-	border: 2px solid var(--pri);
+	/*border: 2px solid var(--pri);*/
 	border-radius: 50%;
 	overflow: hidden;
 }
@@ -57,13 +84,19 @@
 	height: 250px;
 	width: 250px;
 	margin: 0 auto;
-	border: 2px solid var(--pri);
+	/*border: 2px solid var(--pri);*/
 	border-radius: 50%;
+	overflow: hidden;
 }
 
 .ClergyName {
 	margin-bottom: 5px;
 	font-weight: 500;
+}
+
+.TableContainer {
+	max-width: 100%;
+	overflow-x: auto;
 }
 
 .Table tr {
@@ -94,32 +127,7 @@ td.Acheivement {
 	}
 }
 
-@media (min-width: 768px) {
-	.Header {
-		min-height: 65vh;
-		display: flex;
-		flex-flow: column;
-		justify-items: center;
-		text-align: left;
-	}
-
-	.HeaderInner {
-		margin: auto 0;
-	}
-
-	.Heading {
-		font-size: 3em;
-	}
-
-	.MainImageWrapper,
-	.MainTextWrapper {
-		flex: 1;
-	}
-
-	.MainImage {
-		margin: 0 20px;
-	}
-
+@media (min-width: 700px) {
 	.ClergyList {
 		display: flex;
 		flex-wrap: wrap;
@@ -134,7 +142,47 @@ td.Acheivement {
 }
 
 @media (min-width: 768px) {
+	.Header {
+		min-height: 65vh;
+		display: flex;
+		flex-flow: column;
+		justify-items: center;
+		text-align: left;
+	}
+
+	.HeaderInner {
+		margin: auto 0;
+		min-height: 65vh;
+		background: linear-gradient(90deg, var(--light-blue) 50%, #e7eef2 80%, transparent 100%);
+	}
+
+	.Heading {
+		font-size: 3em;
+	}
+
+	.MainImageWrapper,
+	.MainTextWrapper {
+		flex: 1;
+	}
+
+	.MainImage {
+		margin: 0 20px;
+	}
+}
+
+@media (min-width: 882px) {
 	.Clergy {
 		width: calc(33.33% - 20px);
+	}
+}
+
+@media (min-width: 1008px) {
+	.CurrentBishopSection {
+		display: flex;
+	    flex-flow: row-reverse;
+	    align-items: center;
+	    justify-content: center;
+	    width: fit-content;
+	    margin: 0 auto;
 	}
 }

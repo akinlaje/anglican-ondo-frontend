@@ -41,13 +41,14 @@ const Sidebar = ({ admin, router, closeSidebar, open, openSidebar }) => {
 				</h1>
 				<ul className={styles.SidebarInner}>
 					{pathnames.map(pathname => {
-						const isActive = router.pathname === ('/admin/' + pathname);
+						const href = '/admin/' + pathname
+						const isActive = router.pathname === href;
 						return (
 							<li 
 								key={pathname} 
 								className={styles.SidebarItem}>
 								<Link 
-									href={pathname}
+									href={href}
 								>
 									<a
 										onClick={closeSidebar}

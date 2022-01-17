@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 import styles from './UploadImage.module.css';
-import Image from '../Image/Image';
+import Image from 'next/image';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 
-const UploadImage = ({ file, setFile, name, className }) => {
+const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   const [unsupported, setUnsupported] = useState(false);
 
   const fileInput = useRef();
@@ -29,6 +29,13 @@ const UploadImage = ({ file, setFile, name, className }) => {
     setFile(selectedFile);
   };
 
+  let src
+  if (file instanceof File) {
+    src = URL.createObjectURL(file)
+  } else if (typeof file === 'string') {
+    src = file
+  }
+
   return (
     <div
       className={[styles.Container, className].join(' ')}
@@ -45,9 +52,9 @@ const UploadImage = ({ file, setFile, name, className }) => {
       {file ? (
         <div className={styles.Image}>
           <Image
-            file={file}
+            src={src}
             alt={file.filename}
-            layout='contain'
+            layout='fill'
             objectFit='contain'
             height='200px'
             width='200px'

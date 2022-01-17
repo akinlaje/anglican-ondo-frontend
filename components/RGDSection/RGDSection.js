@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link';
 import styles from './RGDSection.module.css';
 
@@ -11,7 +12,7 @@ const RGDSection = () => {
             <a 
               className={styles.ImageWrapper}
             >
-              <img className={styles.Image} src="/images/svgs/radio.svg" />
+              <Image layout='fill' objectFit='cover' alt='radio' src="/images/radio-RGD.png" />
             </a>
           </Link>
           <h3 className={styles.Heading}>Radio</h3>
@@ -28,7 +29,7 @@ const RGDSection = () => {
                 styles.Gallery
               ].join(' ')}
             >
-              <img style={{ paddingTop: '20px' }} className={styles.Image} src="/images/svgs/image.svg" />
+              <Image layout='fill' objectFit='cover' alt='gallery' style={{ paddingTop: '20px' }} src="/images/gallery-RGD.png" />
             </a>
           </Link>
           <h3 className={styles.Heading}>Gallery</h3>
@@ -46,7 +47,7 @@ const RGDSection = () => {
               }} 
               className={styles.ImageWrapper}
             >
-              <img className={styles.Image} src="/images/svgs/cloud-download.svg" />
+              <Image layout='fill' objectFit='cover' alt='download' src="/images/download-RGD.png" />
             </a>
           </Link>
           <h3 className={styles.Heading}>Download</h3>

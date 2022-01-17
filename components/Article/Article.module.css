@@ -1,22 +1,22 @@
 .Container {
 	display: block;
-	background-color: #eee;
+	background-color: #FE35070D;
 	margin-bottom: 40px;
 	max-width: 500px;
-	/*margin-right: auto;*/
-	/*margin-left: auto;*/
+	margin-right: auto;
+	margin-left: auto;
 }
 
-.Info {
-	padding: 10px;
+.Top {
+	padding: 0 10px;
 	color: #777;
 }
 
 .Desc {
 	margin: 10px 0;
-	color: var(--pri);
-	font-size: 1.2em;
-	font-weight: 500;
+    color: var(--pri);
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
 .Image {
@@ -28,6 +28,8 @@
 }
 
 .Bottom {
+	display: flex;
+	justify-content: space-between;
 	padding: 10px 20px;
 }
 
@@ -37,9 +39,27 @@
 	font-weight: 500;
 }
 
+.Details {
+	padding: 20px;
+}
+
+.Info {
+	display: flex;
+	align-items: center;
+	color: var(--pri);
+	padding: 10px 20px;
+}
+
+.InfoIcon {
+	display: inline-block;
+	margin-right: 10px;
+}
+
 @media (min-width: 768px) {
 	.Container {
 		width: calc(50% - 20px);
+		margin-right: unset;
+		margin-left: unset;
 	}
 }
 

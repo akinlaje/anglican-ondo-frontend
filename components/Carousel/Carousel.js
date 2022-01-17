@@ -23,7 +23,10 @@ const Carousel = ({ children, NextIcon=GrFormNext, PrevIcon=GrFormPrevious, indi
 	}, [childrenLength])
 
 	useEffect(() => {
-		const updateHeight = v => setHeight(v)
+		const updateHeight = () => {
+			// console.log(childrenWrapperRef.current.clientHeight)
+			setHeight(childrenWrapperRef.current.clientHeight)
+		}
 		window.addEventListener('resize', updateHeight)
 		return () => window.removeEventListener('resize', updateHeight)
 	}, [])
@@ -86,7 +89,12 @@ const Carousel = ({ children, NextIcon=GrFormNext, PrevIcon=GrFormPrevious, indi
 				<div ref={childrenWrapperRef} style={childrenWrapperStyle} className={styles.ChildrenWrapper}>
 					{Children.map(children, (child, i) => {
 						return (
-							<div key={i} ref={refs[i]} style={{ width: String(width) + 'vw' }} className={styles.Child}>{child}</div>
+							<div 
+								key={i} 
+								ref={refs[i]} 
+								style={{ width: `${width}vw` }} 
+								className={styles.Child}
+							>{child}</div>
 						)
 					})}
 				</div>

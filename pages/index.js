@@ -130,17 +130,17 @@ export async function getServerSideProps(context) {
   const events = [
     {
       id: '1',
-      image: '/images/ae.jpg',
+      image: '/images/event-carousel.png',
       title: 'Test Event',
     },
     {
       id: '1',
-      image: '/images/ae.jpg',
+      image: '/images/event-carousel.png',
       title: 'Test Event',
     },
     {
       id: '1',
-      image: '/images/ae.jpg',
+      image: '/images/event-carousel.png',
       title: 'Test Event',
     },
   ];

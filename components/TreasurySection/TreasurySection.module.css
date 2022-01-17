@@ -6,7 +6,8 @@
 	position: relative;
 	color: #fff;
 	background-color: #555;
-	background-image: url('/images/worship.jpeg');
+	background-image: url('/images/diocesan-treasury-bg.png');
+	background-size: cover;
 	padding: 40px 0;
 	text-align: center;
 }
@@ -18,7 +19,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: #fe5b369e;
+	background-color: #fe5b36e0;
 	z-index: 1;
 }
 
@@ -73,7 +74,7 @@
 	margin: 10px 0;
 }
 
-@media {
+@media (min-width: 768px) {
 	.TreasurySection {
 		padding: 50px;
 	}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Head from 'next/head';
+import Image from 'next/image'
 import Link from 'next/link';
 import DatePicker from '../components/DatePicker/DatePicker';
 import TimePicker from '../components/TimePicker/TimePicker';
@@ -7,7 +8,8 @@ import AutoGrowingTextarea from '../components/AutoGrowingTextarea/AutoGrowingTe
 import styles from '../styles/BookEvent.module.css'
 
 const BookEvent = () => {
-	const [date, setDate] = useState()
+  const [name, setName] = useState('')
+  const [date, setDate] = useState()
 	const [startTime, setStartTime] = useState('')
 	const [endTime, setEndTime] = useState('')
 	const [numChairs, setNumChairs] = useState('')
@@ -32,6 +34,9 @@ const BookEvent = () => {
           <meta name="description" content="About the Anglican diocese of Ondo" />
           <link rel="icon" href="/images/diocese-logo.png" />
         </Head>
+        <div className={styles.HeaderImage}>
+          <Image src='/images/event-hall.jpg' layout='fill' objectFit='cover' alt='event hall' />
+        </div>
 				<div className={styles.HeaderInner}>
 					<h1 className={styles.Heading}>Book Our Event Center</h1>
 					<p className={styles.HeadingText}>
@@ -49,6 +54,19 @@ const BookEvent = () => {
 			<section>
 				<form className={styles.Form} onSubmit={submit}>
 					{/* date, startTime, endTime, no of chairs, phone number */}
+          <label className={styles.Label}>Phone Number</label>
+          <input 
+            className={styles.Input} 
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <label className={styles.Label}>Phone Number</label>
+          <input 
+            type='number' 
+            className={styles.Input} 
+            value={phoneNumber}
+            onChange={e => setPhoneNumber(e.target.value)}
+          />
 					<DatePicker
             className={styles.DatePicker}
             date={date}
@@ -82,13 +100,6 @@ const BookEvent = () => {
           	className={styles.Input} 
           	value={numChairs}
           	onChange={e => setNumChairs(e.target.value)}
-          />
-          <label className={styles.Label}>Phone Number</label>
-          <input 
-          	type='number' 
-          	className={styles.Input} 
-          	value={phoneNumber}
-          	onChange={e => setPhoneNumber(e.target.value)}
           />
           <label className={styles.Label}>Event details</label>
           <AutoGrowingTextarea
