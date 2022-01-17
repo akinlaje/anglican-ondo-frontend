@@ -66,7 +66,7 @@ export default async (req, res) => {
           <td>${email}</td>
           <td>${phoneNumber}</td>
           <td>${date}</td>
-          <td>${startTime.hour}:${startTime.minute}</td>
+          <td>${startTime}</td>
           <td>${endTime}</td>
           <td>${numChairs}</td>
         </tr>

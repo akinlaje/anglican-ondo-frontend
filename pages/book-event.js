@@ -5,12 +5,7 @@ import Link from 'next/link';
 import DatePicker from '../components/DatePicker/DatePicker';
 import TimePicker from '../components/TimePicker/TimePicker';
 import AutoGrowingTextarea from '../components/AutoGrowingTextarea/AutoGrowingTextarea';
-<<<<<<< HEAD
 import styles from '../styles/BookEvent.module.css';
-=======
-import styles from '../styles/BookEvent.module.css'
-import { formatDate } from '../utils'
->>>>>>> 9509521e3e8937954ac99b999ffdd0a4190ab630
 
 const BookEvent = () => {
   const [name, setName] = useState('');
@@ -23,8 +18,6 @@ const BookEvent = () => {
   const [email, setEmail] = useState('');
 
   const submit = (e) => {
-    e.preventDefault();
-
     let data = {
       name,
       date,

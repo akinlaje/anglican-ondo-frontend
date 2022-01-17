@@ -16,29 +16,30 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [url, setUrl] = useState('create/news');
 
   useEffect(() => {
-    if (!newsId) return
+    if (!newsId) return;
     // if there is a news id, fetch that news and set the state to it
     const getNews = async () => {
-      setLoading(true)
-      const news = { // fetch news here
-        title: 'Lorem Ipsum',
-        details: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
-        imageUrl: '/images/SA.png',
-        location: 'Ondo',
-      }
-      const { title, details, imageUrl, location } = news
-      setTitle(title)
-      setDetails(details)
-      setImage(imageUrl)
-      setLocation(location)
-      setLoading(false)
-    }
-    getNews()
-  }, [newsId])
+      setLoading(true);
+      axios.post(apiBaseUrl + 'single/news', { id: newsId }).then((e) => {
+        // console.log(e);
+        let news = e.data.msg;
+        console.log(news);
+        const { title, details, imageUrl, location } = news[0];
+        setTitle(title);
+        setDetails(details);
+        setImage(imageUrl);
+        setLocation(location);
+        setLoading(false);
+        setUrl('update/news');
+      });
+    };
+    getNews();
+  }, []);
 
-  const submit = async (e) => {
+  const submit = (e) => {
     e.preventDefault();
     setSaving(true);
     let formData = new FormData();
@@ -51,23 +52,29 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
     formData.append('image', image);
     formData.append('location', location);
 
-    const res = await axios
-      .post(apiBaseUrl + apiEndpoint, formData, {
+    axios
+      .post(apiBaseUrl + url, formData, {
         headers: {
           Authorization: authToken,
         },
       })
       .then((data) => {
+        if (!data.success) {
+          alert('please choose an image');
+          return;
+        }
         setTitle('');
         setDetails('');
         setImage('');
         setLocation('');
         alert('Created Successfully');
         setSaving(false);
+        console.log(data);
       })
       .catch((err) => {
         setSaving(false);
         alert('An Error occured');
+        console.log(err);
       });
 
     // check if server returned an error
@@ -81,7 +88,7 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
     setSaving(false);
   };
 
-  if (loading) return <h2>LOADING...</h2>
+  if (loading) return <h2>LOADING...</h2>;
 
   return (
     <div className={styles.Container}>
