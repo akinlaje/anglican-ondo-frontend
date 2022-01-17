@@ -30,14 +30,16 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   };
 
   let src
-  if (typeof file === 'string') {
-    src = file
-  } else {
-    const reader =  new FileReader()
-    reader.onload = e => {
-     src = e.target.result
+  if (file) {
+    if (typeof file === 'string') {
+      src = file
+    } else {
+      const reader =  new FileReader()
+      reader.onload = e => {
+       src = e.target.result
+      }
+      reader.readAsDataURL(file)
     }
-    reader.readAsDataURL(file)
   }
 
   return (
