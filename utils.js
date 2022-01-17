@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { DateTime } from 'luxon'
 
 export const JSONToFormData = (json) => {
   const formData = new FormData();
@@ -38,5 +39,7 @@ export const deleteFileFromNextServer = async (filename) => {
   const res = await axios.delete('/api/uploads', { params: { filename } });
   return res;
 };
+
+export const formatDate = (date) => DateTime.fromJSDate(date).toFormat("yyyy'-'MM'-'dd")
 
 export const BASE_URL = 'https://18.224.16.187.nip.io/api/';

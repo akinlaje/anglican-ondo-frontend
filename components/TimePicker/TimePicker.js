@@ -14,16 +14,7 @@ const TimePicker = ({ value, onChange, className, label, setTime }) => {
 	useEffect(() => {
 		let [hour, minute] = timeValues;
 		if (!hour.length || !minute.length || !timePeriod?.id) return
-		if (timePeriod.id === 'pm') hour = Number(hour) + 12;
-		// const date = DateTime.fromObject({
-		// 	hour,
-		// 	minute
-		// }).toJSDate();
-		// console.log(date);
-		setTime({
-			hour,
-			minute
-		});
+		setTime(`${hour}:${minute} ${timePeriod.id.toUpperCase()}`);
 	}, [timeValues, setTime, timePeriod])
 
 	const setTimeValue = (i, value) => {

@@ -6,6 +6,7 @@ import DatePicker from '../components/DatePicker/DatePicker';
 import TimePicker from '../components/TimePicker/TimePicker';
 import AutoGrowingTextarea from '../components/AutoGrowingTextarea/AutoGrowingTextarea';
 import styles from '../styles/BookEvent.module.css'
+import { formatDate } from '../utils'
 
 const BookEvent = () => {
   const [name, setName] = useState('')
@@ -18,7 +19,7 @@ const BookEvent = () => {
 
 	const submit = e => {
 		e.preventDefault()
-
+    // save date as formatDate(date)
 	}
 
 	return (
