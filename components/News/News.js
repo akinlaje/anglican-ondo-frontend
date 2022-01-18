@@ -12,11 +12,13 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [image, setImage] = useState();
+  const [imageUrl, setImageUrl] = useState('');
   const [location, setLocation] = useState('Ondo - test');
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [url, setUrl] = useState('create/news');
+  const [edit , setEdit] = useState(false);
 
   useEffect(() => {
     if (!newsId) return;
@@ -30,9 +32,10 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
         const { title, details, imageUrl, location } = news[0];
         setTitle(title);
         setDetails(details);
-        setImage(imageUrl);
+        setImageUrl(imageUrl);
         setLocation(location);
         setLoading(false);
+        setEdit(true);
         setUrl('update/news');
       });
     };
@@ -59,10 +62,6 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
         },
       })
       .then((data) => {
-        if (!data.success) {
-          alert('please choose an image');
-          return;
-        }
         setTitle('');
         setDetails('');
         setImage('');
@@ -100,13 +99,19 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
       </div>
       <form onSubmit={submit} method='POST' encType='multipart/form-data'>
         <div className={styles.FormInner}>
-          <UploadImage
-            initialImageUrl={image}
+          {edit && <UploadImage
+            initialImageUrl={imageUrl}
             file={image}
             setFile={setImage}
             name='image'
             className={styles.UploadImage}
-          />
+          />}
+          {!edit && <UploadImage
+            file={image}
+            setFile={setImage}
+            name='image'
+            className={styles.UploadImage}
+          />}
           <div className={styles.TextContainer}>
             <input
               className={styles.Title}

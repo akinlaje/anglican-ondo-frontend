@@ -29,17 +29,19 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
     setFile(selectedFile);
   };
 
-  let src
-  if (file) {
-    if (typeof file === 'string') {
-      src = file
-    } else {
-      const reader =  new FileReader()
-      reader.onload = e => {
-       src = e.target.result
-      }
-      reader.readAsDataURL(file)
-    }
+  let src;
+  // if (file) {
+  //   if (typeof file === 'string') {
+  //     src = file;
+  //   } else {
+  //     src = URL.createObjectURL(file);
+  //   }
+  // }
+
+  if (initialImageUrl) {
+    src = initialImageUrl;
+  }  else {
+    src = URL.createObjectURL(file);
   }
 
   return (
