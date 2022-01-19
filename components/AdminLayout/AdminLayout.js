@@ -9,7 +9,7 @@ import {
 
 const Sidebar = ({ admin, router, closeSidebar, open, openSidebar }) => {
 	const pathnames = [
-	'home', 'news', 'events', 'women', 'gallery', 'radio', 'churches', 'priests', 'members'];
+	'home', 'news', 'events', 'women', 'gallery', 'radio', 'churches', 'priests', 'members', 'BulkSMS'];
 
 	const capitalize = ([firstLetter, ...rest]) => firstLetter.toUpperCase() + rest.join('');
 
