@@ -18,7 +18,7 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [url, setUrl] = useState('create/news');
-  const [edit , setEdit] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     if (!newsId) return;
@@ -29,13 +29,14 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
         // console.log(e);
         let news = e.data.msg;
         console.log(news);
+        setEdit(true);
         const { title, details, imageUrl, location } = news[0];
         setTitle(title);
         setDetails(details);
         setImageUrl(imageUrl);
         setLocation(location);
+        setImage(imageUrl);
         setLoading(false);
-        setEdit(true);
         setUrl('update/news');
       });
     };
@@ -99,19 +100,14 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
       </div>
       <form onSubmit={submit} method='POST' encType='multipart/form-data'>
         <div className={styles.FormInner}>
-          {edit && <UploadImage
-            initialImageUrl={imageUrl}
+          <UploadImage
+            initialImageUrl={image}
             file={image}
+            editing={edit}
             setFile={setImage}
             name='image'
             className={styles.UploadImage}
-          />}
-          {!edit && <UploadImage
-            file={image}
-            setFile={setImage}
-            name='image'
-            className={styles.UploadImage}
-          />}
+          />
           <div className={styles.TextContainer}>
             <input
               className={styles.Title}

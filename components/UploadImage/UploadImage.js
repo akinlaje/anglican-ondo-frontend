@@ -3,7 +3,14 @@ import styles from './UploadImage.module.css';
 import Image from 'next/image';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 
-const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
+const UploadImage = ({
+  file,
+  editing,
+  setFile,
+  name,
+  className,
+  initialImageUrl,
+}) => {
   const [unsupported, setUnsupported] = useState(false);
 
   const fileInput = useRef();
@@ -13,6 +20,7 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   const FILE_TYPES = ['png', 'jpg', 'jpeg'];
 
   const onChange = (e) => {
+    e.preventDefault();
     setUnsupported(false);
     const selectedFile = e.target.files[0];
     if (!setUnsupported) return;
@@ -38,10 +46,18 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   //   }
   // }
 
-  if (initialImageUrl) {
+  if (editing) {
     src = initialImageUrl;
-  }  else {
-    src = URL.createObjectURL(file);
+    // console.log(src);
+  } else {
+    if (file) {
+      console.log(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
   return (
