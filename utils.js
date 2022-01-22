@@ -42,5 +42,7 @@ export const deleteFileFromNextServer = async (filename) => {
 
 export const formatDate = (date) => DateTime.fromJSDate(date).toFormat("yyyy'-'MM'-'dd")
 
+export const formatTime = (date) => DateTime.fromJSDate(date).toLocaleString(DateTime.TIME_SIMPLE)
+
 export const BASE_URL = 'https://18.224.16.187.nip.io/api/';
 // export const BASE_URL = 'http://localhost:5000/api/';

@@ -46,7 +46,7 @@ const UploadImage = ({
   //   }
   // }
 
-  if (editing) {
+  if (initialImageUrl && !file) {
     src = initialImageUrl;
     // console.log(src);
   } else {
@@ -73,11 +73,11 @@ const UploadImage = ({
         accept={FILE_TYPES.map((type) => '.' + type).join(', ')}
         name={name}
       />
-      {file ? (
+      {(file || initialImageUrl) ? (
         <div className={styles.Image}>
           <Image
             src={src}
-            alt={file.filename}
+            alt={file ? file.filename : 'Upload'}
             layout='fill'
             objectFit='contain'
           />
@@ -87,7 +87,7 @@ const UploadImage = ({
       ) : (
         <PlusIcon className={styles.PlusIcon} size='50px' color='var(--pri)' />
       )}
-      <button className={styles.AddImageButton}>
+      <button className={styles.AddImageButton} type='button'>
         {file ? 'Change ' : 'Add '}Image
       </button>
     </div>

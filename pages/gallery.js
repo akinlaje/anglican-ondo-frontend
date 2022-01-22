@@ -4,6 +4,9 @@ import styles from '../styles/Gallery.module.css';
 import HorizontalSlider from '../components/HorizontalSlider/HorizontalSlider';
 import Event from '../components/Event/Event';
 
+import axios from 'axios'
+import { BASE_URL as apiBaseUrl } from '../utils'
+
 const Gallery = ({ events=[], recentEvents=[] }) => {
 	return (
 		<>
@@ -57,6 +60,8 @@ export default Gallery;
 export async function getServerSideProps (context) {
 
   // get events and recent events here
+  const { data: { msg } } = await axios.get(apiBaseUrl + 'read/gallery')
+  console.log(msg);
   
 	const events = [
 		{

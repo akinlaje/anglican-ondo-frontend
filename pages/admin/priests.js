@@ -129,35 +129,17 @@ const Priests = ({ admin, authToken, apiBaseUrl }) => {
 
   useEffect(() => {
     const getPriests = async () => {
-      // get priests from  backend
-      const priests = [
-        {
-          id: '1',
-          name: 'Ven S. O. Adeleye',
-          position: 'Ondo Archdeaconry',
-          image: 'SA.png',
-          imageUrl: '/images/SA.png',
-        },
-        {
-          id: '2',
-          name: 'Ven S. O. Adeleye',
-          position: 'Ondo Archdeaconry',
-          image: 'SA.png',
-          imageUrl: '/images/SA.png',
-        },
-        {
-          id: '3',
-          name: 'Ven S. O. Adeleye',
-          position: 'Ondo Archdeaconry',
-          image: 'SA.png',
-          imageUrl: '/images/SA.png',
-        },
-      ];
-      setPriests(priests);
+      try {
+        // get priests from backend
+        const { data: { msg: priests } } = await axios.get(apiBaseUrl + 'read/priests')
+        setPriests(priests);
+      } catch (error) {
+        alert('An Error Ocurred while fetching Priests')
+      }
     };
 
     getPriests();
-  }, []);
+  }, [apiBaseUrl]);
 
   const savePriest = async () => {
     setSaving(true);

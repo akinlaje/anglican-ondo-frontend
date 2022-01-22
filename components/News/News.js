@@ -8,7 +8,7 @@ import Spinner from '../Spinner/Spinner';
 import FormError from '../FormError/FormError';
 import { v4 as uuidv4 } from 'uuid';
 
-const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
+const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [image, setImage] = useState();
@@ -41,7 +41,7 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
       });
     };
     getNews();
-  }, []);
+  }, [newsId, apiBaseUrl]);
 
   const submit = (e) => {
     e.preventDefault();

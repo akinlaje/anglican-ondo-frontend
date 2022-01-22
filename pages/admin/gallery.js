@@ -6,11 +6,17 @@ import Spinner from '../../components/Spinner/Spinner';
 import cloneDeep from 'lodash/cloneDeep';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import { DateTime } from 'luxon'
 
 const AddImage = ({ image, setImage, title, setTitle, saveImage, saving }) => {
   return (
     <div className={[styles.ImageWrapper, styles.AddImageWrapper].join(' ')}>
-      <UploadImage className={styles.Image} file={image} setFile={setImage} />
+      <UploadImage 
+        className={styles.Image} 
+        file={typeof image === 'string' ? null : image} 
+        initialImageUrl={typeof image === 'string' ? image : null} 
+        setFile={setImage} 
+      />
       <input
         className={styles.Input}
         placeholder={'Add Title'}
@@ -36,19 +42,22 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
   const [title, setTitle = { setTitle }] = useState('');
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState('');
+  const [editing, setEditing] = useState()
+  const [updating, setUpdating] = useState()
 
   useEffect(() => {
     const getImages = async () => {
-      // get images from backend
-      const images = [
-        { imageUrl: '/images/ae.jpg', image: 'ae.jpg', id: '0' },
-        { imageUrl: '/images/ae.jpg', image: 'ae.jpg', id: '1' },
-      ];
-      setImages(images);
+      try {
+        // get images from backend
+        const { data: { msg: images } } = await axios.get(apiBaseUrl + 'read/gallery')
+        setImages(images);
+      } catch (error) {
+        alert('An Error Ocurred while fetching Images')
+      }
     };
 
     getImages();
-  }, []);
+  }, [apiBaseUrl]);
 
   const saveImage = () => {
     setSaving(true);
@@ -75,6 +84,43 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
       })
       .catch((err) => {
         setSaving(false);
+        alert('An Error occured');
+      });
+  };
+
+  const updateImage = id => {
+    setUpdating(id);
+    let galleryData = new FormData();
+
+    const { id, title, image } = images.find(image => image.id === id)
+
+    const month = DateTime.now().toFormat('MMMM')
+    console.log(month)
+    // return
+
+    galleryData.append('id', id);
+    galleryData.append('title', title);
+    galleryData.append('image', image);
+    galleryData.append('monthCreated', month);
+
+    axios
+      .post(apiBaseUrl + 'update/gallery', galleryData, {
+        headers: {
+          Authorization: authToken,
+        },
+      })
+      .then(({ data: { data, msgDb, success } }) => {
+        setImages((galleryImages) => galleryImages.map(galleryImage => {
+          if (galleryImage.id === id) return data
+          return cloneDeep(galleryImage)
+        }));
+        setEditing(null);
+        setUpdating(null);
+        alert('Updated Successfully');
+      })
+      .catch((err) => {
+        setEditing(null);
+        setUpdating(null);
         alert('An Error occured');
       });
   };
@@ -113,24 +159,61 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
   return (
     <div className={styles.Container}>
       <div className={styles.AddImageContainer}>
-        {images.map(({ id, image, imageUrl }, i) => (
-          <div key={i} className={styles.ImageWrapper}>
-            <Image
-              className={styles.Image}
-              layout='fill'
-              objectFit='cover'
-              alt={image}
-              src={imageUrl}
-            />
-            <button
-              className={styles.Button}
-              onClick={() => deleteImage(id, image)}
-              disabled={deleting === id}
-            >
-              {deleting === id ? <Spinner color='#000' /> : 'Delete'}
-            </button>
-          </div>
-        ))}
+        {images.map(({ id, image, imageUrl, title }, i) => {
+          if (editing === id) {
+            return (
+              <AddImage
+                key={id}
+                image={imageUrl}
+                setImage={(newImage) => setImages(images => images.map(image => {
+                  if (image.id === id) {
+                    return { ...cloneDeep(image), image: newImage }
+                  }
+                  return cloneDeep(image)
+                }))}
+                title={title}
+                setTitle={(newTitle) => setImages(images => images.map(image => {
+                  if (image.id === id) {
+                    return { ...cloneDeep(image), title: newTitle }
+                  }
+                  return cloneDeep(image)
+                }))}
+                saveImage={() => updateImage(id)}
+                saving={updating === id}
+              />
+            )
+          }
+          return (
+            <div key={i} className={styles.ItemContainer}>
+              <div className={styles.ImageWrapper}>
+                <Image
+                  className={styles.Image}
+                  layout='fill'
+                  objectFit='cover'
+                  alt={image}
+                  src={imageUrl}
+                />
+              </div>
+              <div className={styles.ButtonContainer}>
+                <button
+                  className={styles.Button}
+                  onClick={() => deleteImage(id, image)}
+                  disabled={deleting === id}
+                >
+                  {deleting === id ? <Spinner color='#000' /> : 'Delete'}
+                </button>
+                {editing !== id && (
+                  <button
+                    className={styles.Button}
+                    onClick={() => setEditing(id)}
+                  >
+                    Edit
+                  </button>
+                )}
+              </div>              
+            </div>
+          )
+        })}
         <AddImage
           image={image}
           setImage={setImage}

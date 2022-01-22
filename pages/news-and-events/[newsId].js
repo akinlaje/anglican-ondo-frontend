@@ -54,21 +54,8 @@ export default FullNews
 
 export async function getServerSideProps (context) {
 	const id = context.params.id
-
-  // get complete news here
-
-  const fullNews = {
-      id: '1',
-      title: 'Lorem Ipsum...Lorem Ipsum...',
-      details: `Lorem ipsum dolor sit amet, consetetur sadipscing
-		elitr, sed diam nonumy eirmod tempor invidunt ut
-		labore et dolore magna aliquyam erat, sed diam
-		voluptua. At vero eos et accusam et justo duo dolores
-		et ea rebum. Stet clita kasd gubergren, no sea`,
-      imageUrl: '/images/ae.jpg',
-      date: '13th December, 2021',
-      time: '10:00 pm',
-    }
+	const { data: { msg: fullNews } } = await axios.post(apiBaseUrl + 'single/news', { id })
+  console.log(fullNews);
 
   return {
     props: {

@@ -2,6 +2,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/ClergyMen.module.css';
 
+import axios from 'axios'
+import { BASE_URL as apiBaseUrl } from '../utils'
+
 const ClergyMen = ({ venerables, canons, reverends }) => {
 	return (
 		<>
@@ -82,6 +85,8 @@ const ClergyMen = ({ venerables, canons, reverends }) => {
 export default ClergyMen;
 
 export async function getServerSideProps (context) {
+	const { data: { msg: priests } } = await axios.get(apiBaseUrl + 'read/priests')
+  console.log(priests);
 
   // get venerables, canons and reverends here
 

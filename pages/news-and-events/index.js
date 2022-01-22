@@ -49,6 +49,8 @@ export default NewsAndEvents;
 
 export async function getServerSideProps (context) {
 
+	const { data: { msg: news } } = await axios.get(apiBaseUrl + 'read/news')
+  console.log(news);
   // get latest news and whats on here
 
   const latestNews = [

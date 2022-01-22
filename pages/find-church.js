@@ -4,6 +4,9 @@ import styles from '../styles/FindChurch.module.css';
 import SearchChurches from '../components/SearchChurches/SearchChurches';
 import Locations from '../components/Locations/Locations';
 
+import axios from 'axios'
+import { BASE_URL as apiBaseUrl } from '../utils'
+
 const FindChurch = ({ churches }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchedTerm, setSearchedTerm] = useState('')
@@ -35,24 +38,7 @@ export default FindChurch;
 
 export async function getServerSideProps (context) {
 
-  // get upcoming events here
-
-  const churches = [
-    {
-      id: '1',
-      name: 'All Saints Anglican Church. Headquarters of Ondo Archdeaconry',
-      location: 'Ogbonkowo, Ondo',
-      image: 'all-saints-church-2.jpg',
-      imageUrl: '/images/all-saints-church-2.jpg'
-    },
-    {
-      id: '2',
-      name: 'St. Peters Anglican Church. Headquarters of Araromi Archdeaconry',
-      location: 'Araromi Obu',
-      image: 'st-peters-church.jpg',
-      imageUrl: '/images/st-peters-church.jpg'
-    },
-  ];
+  const { data: { msg: churches } } = await axios.get(apiBaseUrl + 'read/churches')
 
   return {
     props: {

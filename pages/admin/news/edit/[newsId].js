@@ -9,7 +9,6 @@ const Edit = (props) => {
 	return (
 		<News 
 			{...props}
-			apiEndpoint='create/news'
 			newsId={newsId}
 		/>
 	)

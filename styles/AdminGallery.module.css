@@ -4,16 +4,20 @@
 	justify-content: center;
 }
 
-.ImageWrapper {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.ItemContainer {
+	width: fit-content;
 	margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 30px;
 	text-align: center;
+}
+
+.ImageWrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	height: 250px;
 	width: 250px;
 	border: 1px solid var(--pri);
@@ -39,11 +43,15 @@
 	margin-bottom: 10px;
 }
 
+.ButtonContainer {
+	margin: 15px 0;
+	display: flex;
+	justify-content: space-between;
+}
+
 .Button {
-	position: absolute;
-    bottom: 10px;
-    z-index: 20;
 	height: 40px;
+	width: 100%;
 	border: 1px solid var(--pri-darker);
 	background-color: #fff;
 	color: var(--pri-darker);
@@ -54,11 +62,14 @@
 	cursor: pointer;
 }
 
+.ButtonContainer .Button {
+	width: calc(50% - 10px);
+}
+
 .Button.SaveButton {
 	display: block;
 	position: relative;
 	margin: 10px;
-	width: 100%;
 }
 
 .Button:hover {
@@ -76,9 +87,5 @@
 		flex-wrap: wrap;
 		max-width: 988px;
 		margin: 0 auto;
-	}
-
-	.Button {
-		display: none;
 	}
 }

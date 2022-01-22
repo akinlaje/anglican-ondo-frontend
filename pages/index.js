@@ -10,6 +10,9 @@ import TreasurySection from '../components/TreasurySection/TreasurySection';
 import BookEventSection from '../components/BookEventSection/BookEventSection';
 import Carousel from '../components/Carousel/Carousel';
 
+import axios from 'axios'
+import { BASE_URL as apiBaseUrl } from '../utils'
+
 export default function Home({ events = [] }) {
   return (
     <>
@@ -125,25 +128,10 @@ export default function Home({ events = [] }) {
 }
 
 export async function getServerSideProps(context) {
+  console.log(apiBaseUrl)
   // get upcoming events here
-
-  const events = [
-    {
-      id: '1',
-      image: '/images/event-carousel.png',
-      title: 'Test Event',
-    },
-    {
-      id: '1',
-      image: '/images/event-carousel.png',
-      title: 'Test Event',
-    },
-    {
-      id: '1',
-      image: '/images/event-carousel.png',
-      title: 'Test Event',
-    },
-  ];
+  const { data: { msg: events } } = await axios.get(apiBaseUrl + 'read/events')
+  console.log(events);
 
   return {
     props: {

@@ -15,6 +15,8 @@ const Membership = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [society, setSociety] = useState('');
   const [roles, setRoles] = useState('');
+  const [baptismalDate, setBaptismalDate] = useState('')
+  const [confirmationDate, setConfirmationDate] = useState('')
   const [birthDate, setBirthDate] = useState('');
   const [weddingAnniversary, setWeddingAnniversary] = useState('');
   const [image, setImage] = useState(null);
@@ -41,6 +43,8 @@ const Membership = () => {
     membersData.append('society', society);
     membersData.append('phoneNumber', phoneNumber);
     membersData.append('image', image);
+    membersData.append('baptismalDate', baptismalDate)
+    membersData.append('confirmationDate', confirmationDate)
 
     setSending(true);
 
@@ -162,6 +166,36 @@ const Membership = () => {
             required
             onChange={(e) => setRoles(e.target.value)}
           />
+          <div className={styles.Flex}>
+            <div className={styles.DateInputWrapper}>
+              <label className={styles.Label} htmlFor='baptismalDate'>
+                Baptisimal Date
+              </label>
+              <input
+                id='baptismalDate'
+                className={styles.Input}
+                placeholder='DD/MM/YY'
+                value={baptismalDate}
+                type='date'
+                required
+                onChange={(e) => setBaptismalDate(e.target.value)}
+              />
+            </div>
+            <div className={styles.DateInputWrapper}>
+              <label className={styles.Label} htmlFor='confirmationDate'>
+                Confirmation Date
+              </label>
+              <input
+                id='confirmationDate'
+                className={styles.Input}
+                placeholder='DD/MM/YY'
+                type='date'
+                required
+                value={confirmationDate}
+                onChange={(e) => setConfirmationDate(e.target.value)}
+              />
+            </div>
+          </div>
           <div className={styles.Flex}>
             <div className={styles.DateInputWrapper}>
               <label className={styles.Label} htmlFor='birthday'>
