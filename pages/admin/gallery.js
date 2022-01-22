@@ -92,7 +92,7 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
     setUpdating(id);
     let galleryData = new FormData();
 
-    const { id, title, image } = images.find(image => image.id === id)
+    const { title, image } = images.find(image => image.id === id)
 
     const month = DateTime.now().toFormat('MMMM')
     console.log(month)
