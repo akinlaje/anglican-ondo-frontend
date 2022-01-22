@@ -62,131 +62,45 @@ export async function getServerSideProps (context) {
   // get events and recent events here
   const { data: { msg } } = await axios.get(apiBaseUrl + 'read/gallery')
   console.log(msg);
-  
-	const events = [
-		{
-			month: 'October',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-			]
-		},
-		{
-			month: 'November',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-			]
-		},
-		{
-			month: 'December',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-			]
-		},
-	]
 
-	const recentEvents = [
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-	]
+  let events = []
+
+  const isMonthInEventsArray = (month) => {
+  	let index = null
+  	for (let i = events.length - 1; i >= 0; i--) {
+  		const eventGroupByMonth = events[i]
+  		if (eventGroupByMonth.month === month) {
+  			index = i
+  			break
+  		}
+  	}
+  	return index
+  }
+
+  for (let i = msg.length - 1; i >= 0; i--) {
+  	const galleryItem = msg[i]
+  	const { month } = galleryItem
+  	const index = isMonthInEventsArray(month)
+  	if (index === 0 || index) {
+  		events[index].events.push(galleryItem)
+  	} else {
+  		events.push({
+  			month,
+  			events: [galleryItem]
+  		})
+  	}
+  }
+
+  console.log(events)
+
+	const recentEvents = [...Array(7)].map((_, i) => {
+		if (msg[i]) return msg[i]
+		return null
+	}).filter(v => v)
 
   return {
     props: {
-      events,
+      events: [],
       recentEvents
     }
   }

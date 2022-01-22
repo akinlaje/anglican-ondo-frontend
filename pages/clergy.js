@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/ClergyMen.module.css';
@@ -5,7 +6,7 @@ import styles from '../styles/ClergyMen.module.css';
 import axios from 'axios'
 import { BASE_URL as apiBaseUrl } from '../utils'
 
-const ClergyMen = ({ venerables, canons, reverends }) => {
+const ClergyMen = ({ clergyMen=[] }) => {
 	return (
 		<>
 			<header className={styles.Header}>
@@ -20,63 +21,32 @@ const ClergyMen = ({ venerables, canons, reverends }) => {
 				</div>
 			</header>
 			<section className={styles.Section}>
-				<h3 className={styles.SubHeading}>Former Bishops</h3>
-				<div className={styles.ClergyListWrapper}>
-					<div className={styles.ClergyList}>
-						{venerables.map((bishop, i) => (
-							<div key={i} className={styles.Clergy}>
-								<div className={styles.ClergyImage} >
-									<Image 
-										layout='fill'
-										objectFit='cover'
-										alt={bishop.name}
-										src={bishop.imageUrl}
-									/>
+				{clergyMen.map((clergyGroup, i) => {
+					const { position, priests } = clergyGroup
+					return (
+						<Fragment key={i}>
+							<h3 className={styles.SubHeading}>{position}</h3>
+							<div className={styles.ClergyListWrapper}>
+								<div className={styles.ClergyList}>
+									{priests.map((priest, i) => (
+										<div key={i} className={styles.Clergy}>
+											<div className={styles.ClergyImage} >
+												<Image 
+													layout='fill'
+													objectFit='cover'
+													alt={priest.name}
+													src={priest.imageUrl}
+												/>
+											</div>
+											<h4 className={styles.ClergyName}>{priest.name}</h4>
+											<div className='faded'>{priest.position}</div>
+										</div>
+									))}
 								</div>
-								<h4 className={styles.ClergyName}>{bishop.name}</h4>
-								<div className='faded'>{bishop.position}</div>
 							</div>
-						))}
-					</div>
-				</div>
-				<h3 className={styles.SubHeading}>Former Bishops</h3>
-				<div className={styles.ClergyListWrapper}>
-					<div className={styles.ClergyList}>
-						{canons.map((bishop, i) => (
-							<div key={i} className={styles.Clergy}>
-								<div className={styles.ClergyImage} >
-									<Image 
-										layout='fill'
-										objectFit='cover'
-										alt={bishop.name}
-										src={bishop.imageUrl}
-									/>
-								</div>
-								<h4 className={styles.ClergyName}>{bishop.name}</h4>
-								<div className='faded'>{bishop.position}</div>
-							</div>
-						))}
-					</div>
-				</div>
-				<h3 className={styles.SubHeading}>Former Bishops</h3>
-				<div className={styles.ClergyListWrapper}>
-					<div className={styles.ClergyList}>
-						{reverends.map((bishop, i) => (
-							<div key={i} className={styles.Clergy}>
-								<div className={styles.ClergyImage} >
-									<Image 
-										layout='fill'
-										objectFit='cover'
-										alt={bishop.name}
-										src={bishop.imageUrl}
-									/>
-								</div>
-								<h4 className={styles.ClergyName}>{bishop.name}</h4>
-								<div className='faded'>{bishop.position}</div>
-							</div>
-						))}
-					</div>
-				</div>
+						</Fragment>
+					)
+				})}
 			</section>
 		</>
 	)
@@ -85,35 +55,42 @@ const ClergyMen = ({ venerables, canons, reverends }) => {
 export default ClergyMen;
 
 export async function getServerSideProps (context) {
-	const { data: { msg: priests } } = await axios.get(apiBaseUrl + 'read/priests')
-  console.log(priests);
+	const { data: { msg } } = await axios.get(apiBaseUrl + 'read/priests')
+  console.log(msg);
 
-  // get venerables, canons and reverends here
+  let clergyMen = []
 
-  const venerables = [...Array(9)].map(_ => ({
-	  name: 'Ven S. O. Adeleye',
-	  position: 'Ondo Archdeaconry',
-	  imageUrl: '/images/bishop.jpeg',
-	  image: 'bishop.jpeg',
-	}))
+  const isPositionInClergyMenArray = (position) => {
+  	let index = null
+  	for (let i = clergyMen.length - 1; i >= 0; i--) {
+  		const priestGroupByPosition = clergyMen[i]
+  		if (priestGroupByPosition.position === position) {
+  			index = i
+  			break
+  		}
+  	}
+  	return index
+  }
 
-	const canons = [...Array(9)].map(_ => ({
-	  name: 'Ven S. O. Adeleye',
-	  position: 'Ondo Archdeaconry',
-	  imageUrl: '/images/bishop.jpeg',
-	  image: 'bishop.jpeg',
-	}))
+  for (let i = msg.length - 1; i >= 0; i--) {
+  	const priest = msg[i]
+  	const { position } = priest
+  	const index = isPositionInClergyMenArray(position)
+  	if (index === 0 || index) {
+  		clergyMen[index].priests.push(priest)
+  	} else {
+  		clergyMen.push({
+  			position,
+  			priests: [priest]
+  		})
+  	}
+  }
 
-	const reverends = [...Array(9)].map(_ => ({
-	  name: 'Ven S. O. Adeleye',
-	  position: 'Ondo Archdeaconry',
-	  imageUrl: '/images/bishop.jpeg',
-	  image: 'bishop.jpeg',
-	}))
+  console.log(clergyMen)
 
   return {
     props: {
-      venerables, canons, reverends
+      clergyMen
     }
   }
 

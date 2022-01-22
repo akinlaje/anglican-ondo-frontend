@@ -93,29 +93,31 @@ export default function Home({ events = [] }) {
             <h2 className={styles.EventCarouselTitle}>
               Upcoming Events and Programs
             </h2>
-            <Carousel
-              className={[styles.Carousel, styles.EventCarousel].join(' ')}
-              indicatorColor='var(--pri)'
-              iconClassName={[styles.NextIcon, styles.EventCarouselIcon].join(
-                ' '
-              )}
-            >
-              {events.map((event, i) => {
-                return (
-                  <div key={i} className={styles.EventCarouselItem}>
-                    <div className={styles.EventImageWrapper}>
-                      <Image
-                        className={styles.EventsImage}
-                        layout='fill'
-                        objectFit='contain'
-                        src={event.image}
-                        alt={event.title}
-                      />
+            {events.length ? (
+              <Carousel
+                className={[styles.Carousel, styles.EventCarousel].join(' ')}
+                indicatorColor='var(--pri)'
+                iconClassName={[styles.NextIcon, styles.EventCarouselIcon].join(
+                  ' '
+                )}
+              >
+                {events.map((event, i) => {
+                  return (
+                    <div key={i} className={styles.EventCarouselItem}>
+                      <div className={styles.EventImageWrapper}>
+                        <Image
+                          className={styles.EventsImage}
+                          layout='fill'
+                          objectFit='contain'
+                          src={event.image}
+                          alt={event.title}
+                        />
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </Carousel>
+                  );
+                })}
+              </Carousel>
+            ) : <h3>No Upcoming Events at the moment</h3>}
           </section>
           <ContactForm />
           <RGDSection />
