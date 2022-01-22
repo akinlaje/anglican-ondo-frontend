@@ -25,7 +25,7 @@ const Article = ({ id, title, details, image, date, time, location }) => {
 			</div>
 
 			{details && (
-				<p className={styles.Details}>{details}</p>
+				<p className={styles.Details}>{details.substring(0, 100) + '...'}</p>
 			)}
 
 			{date && (
