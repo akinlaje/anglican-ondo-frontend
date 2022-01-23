@@ -18,6 +18,7 @@ const BookEvent = () => {
   const [email, setEmail] = useState('');
 
   const submit = (e) => {
+    e.preventDefault();
     let data = {
       name,
       date,
@@ -38,6 +39,7 @@ const BookEvent = () => {
       body: JSON.stringify(data),
     })
       .then((res) => {
+        console.log(res);
         console.log('Response received');
         if (res.status === 200) {
           alert('Sent successfully!');

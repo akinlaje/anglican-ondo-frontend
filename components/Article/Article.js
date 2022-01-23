@@ -6,7 +6,7 @@ import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa'
 import { MdLocationOn as LocationIcon } from 'react-icons/md'
 import { BsClock as ClockIcon } from 'react-icons/bs'
 
-const Article = ({ id, title, details, image, date, time, location }) => {
+const Article = ({ id, title, details, imageUrl, date, time, location }) => {
 	return (
 		<div className={styles.Container}>
 			<div className={styles.Top}>
@@ -15,7 +15,7 @@ const Article = ({ id, title, details, image, date, time, location }) => {
 				<div>{date}</div>
 			</div>
 			<div className={styles.Image}>
-				<Image alt='article' src={'/uploads/' + image} layout='fill' objectFit='contain' />
+				<Image alt='article' src={imageUrl} layout='fill' objectFit='contain' />
 			</div>
 			<div className={styles.Bottom}>
 				<Link href={'/news-and-events/' + id}>

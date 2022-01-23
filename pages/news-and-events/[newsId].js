@@ -3,12 +3,14 @@ import styles from '../../styles/FullNews.module.css'
 import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa'
 import { MdLocationOn as LocationIcon } from 'react-icons/md'
 import { BsClock as ClockIcon } from 'react-icons/bs'
+import axios from 'axios';
+import { BASE_URL as apiBaseUrl } from '../../utils';
 
 const FullNews = ({ id, title, details, image, imageUrl, date, time, location }) => {
 	return (
 		<>
 			<div className={styles.Image}>
-				<Image layout='fill' objectFit='cover' src={imageUrl} alt={title || 'News title'} />			
+				<Image layout='fill' objectFit='cover' src={imageUrl} alt={title || 'News title'} />
 			</div>
 			<div className={styles.Container}>
 				<h1 className={styles.Title}>{title}</h1>
@@ -54,6 +56,7 @@ export default FullNews
 
 export async function getServerSideProps (context) {
 	const id = context.params.id
+	console.log(id);
 	const { data: { msg: fullNews } } = await axios.post(apiBaseUrl + 'single/news', { id })
   console.log(fullNews);
 
