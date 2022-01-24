@@ -4,6 +4,7 @@ import styles from '../styles/Membership.module.css';
 import UploadImage from '../components/UploadImage/UploadImage';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import { BASE_URL as apiBaseUrl } from '../utils';
 
 const Membership = () => {
   const [surname, setSurname] = useState('');
@@ -15,8 +16,8 @@ const Membership = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [society, setSociety] = useState('');
   const [roles, setRoles] = useState('');
-  const [baptismalDate, setBaptismalDate] = useState('')
-  const [confirmationDate, setConfirmationDate] = useState('')
+  const [baptismalDate, setBaptismalDate] = useState('');
+  const [confirmationDate, setConfirmationDate] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [weddingAnniversary, setWeddingAnniversary] = useState('');
   const [image, setImage] = useState(null);
@@ -33,7 +34,7 @@ const Membership = () => {
     membersData.append('id', id);
     membersData.append('surname', surname);
     membersData.append('lastName', lastName);
-    membersData.append('otherNames', otherName);
+    membersData.append('otherName', otherName);
     membersData.append('email', email);
     membersData.append('archdeaconry', archdeaconry);
     membersData.append('church', church);
@@ -43,14 +44,15 @@ const Membership = () => {
     membersData.append('society', society);
     membersData.append('phoneNumber', phoneNumber);
     membersData.append('image', image);
-    membersData.append('baptismalDate', baptismalDate)
-    membersData.append('confirmationDate', confirmationDate)
+    membersData.append('baptismalDate', baptismalDate);
+    membersData.append('confirmationDate', confirmationDate);
 
     setSending(true);
 
     axios
       .post(apiBaseUrl + 'user/reg_users', membersData)
       .then((data) => {
+        console.log(data);
         setSurname('');
         setLastName('');
         setOtherName('');

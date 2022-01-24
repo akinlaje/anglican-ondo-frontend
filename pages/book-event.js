@@ -39,7 +39,7 @@ const BookEvent = () => {
       body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         console.log('Response received');
         if (res.status === 200) {
           alert('Sent successfully!');
@@ -53,7 +53,7 @@ const BookEvent = () => {
         }
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
         alert('Email is not sent please try again or contact the church');
       });
   };

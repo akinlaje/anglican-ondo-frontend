@@ -129,7 +129,7 @@ const Gallery = ({ admin, authToken, apiBaseUrl }) => {
     // delete image from server
     setDeleting(id);
     axios
-      .delete(apiBaseUrl + 'delete/priest', {
+      .delete(apiBaseUrl + 'delete/gallery', {
         data: { id, image },
         headers: {
           'Content-Type': 'application/json',

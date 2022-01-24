@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Pagination from '../../../components/Pagination/Pagination'
 import styles from '../../../styles/AdminMembership.module.css'
+import axios from 'axios';
+import { BASE_URL as apiBaseUrl } from '../../../utils'
 
-const Membership = ({ admin, authToken, apiBaseUrl }) => {
+const Membership = ({ admin, authToken }) => {
   const [members, setMembers] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [searchedTerm, setSearchedTerm] = useState('')
@@ -18,7 +20,8 @@ const Membership = ({ admin, authToken, apiBaseUrl }) => {
     const getMembers = async () => {
       try {
         // get members from backend
-        const { data: { msg: members } } = await axios.get(apiBaseUrl + 'read/members')
+        const { data: { msg: members } } = await axios.get(apiBaseUrl + 'read/members');
+        console.log(members);
         setMembers(members);
       } catch (error) {
         alert('An Error Ocurred while fetching Members')
@@ -26,7 +29,7 @@ const Membership = ({ admin, authToken, apiBaseUrl }) => {
     };
 
     getMembers();
-  }, [apiBaseUrl]);
+  }, []);
 
   const viewMember = (id) => router.push('/admin/members/' + id)
 
