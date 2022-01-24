@@ -9,7 +9,7 @@ import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa';
 import axios from 'axios';
 import FormError from '../../components/FormError/FormError';
 import { v4 as uuidv4 } from 'uuid';
-import { formatDate } from '../../utils'
+import { formatDate } from '../../utils';
 
 const Events = ({ admin, authToken, apiBaseUrl }) => {
   const [image, setImage] = useState();
@@ -17,6 +17,7 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
   const [details, setDetails] = useState('');
   const [date, setDate] = useState();
   const [time, setTime] = useState();
+  const [location, setLocation] = useState('')
   const [error, setError] = useState('');
   const [saving, setSaving] = useState(false);
 
@@ -33,6 +34,9 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
     eventsData.append('image', image);
     eventsData.append('date', formatDate(date));
     eventsData.append('time', time);
+    eventsData.append('location', location);
+
+    // console.log(authToken);
 
     axios
       .post(apiBaseUrl + 'create/event', eventsData, {
@@ -41,11 +45,13 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
         },
       })
       .then((data) => {
+        // console.log(data);
         setTitle('');
         setTime('');
         setDetails('');
         setDate('');
         setImage('');
+        setLocation('');
         setSaving(false);
         alert('Created Successfully');
       })
@@ -86,6 +92,12 @@ const Events = ({ admin, authToken, apiBaseUrl }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder='Event Title'
+            />
+            <input
+              className={styles.Title}
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder='Event Location'
             />
             <AutoGrowingTextarea
               className={styles.AutoTextareaWrapper}

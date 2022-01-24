@@ -4,7 +4,6 @@ const create = (props) => {
 	return (
 		<News 
 			{...props}
-			apiEndpoint='create/news'	
 		/>
 	)
 }

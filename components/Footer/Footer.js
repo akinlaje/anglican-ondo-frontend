@@ -44,13 +44,13 @@ const footer = () => {
 					<h3 className={styles.FooterListHeading}>Watch</h3>
 					<ul className={styles.FooterList}>
 						<li className={styles.FooterListItem}>
-							<Link href='/'>
+							<Link href='https://youtube.com/channel/UClHVH4Jf89IuI9YilxYW4hA'>
 								<a className={styles.FooterLink}>Youtube</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>
-							<Link href='/'>
-								<a className={styles.FooterLink}>Radio</a>
+							<Link href='https://www.facebook.com/dioceseofondo/'>
+								<a className={styles.FooterLink}>Facebook</a>
 							</Link>
 						</li>
 						<li className={styles.FooterListItem}>

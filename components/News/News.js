@@ -8,15 +8,17 @@ import Spinner from '../Spinner/Spinner';
 import FormError from '../FormError/FormError';
 import { v4 as uuidv4 } from 'uuid';
 
-const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
+const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
   const [image, setImage] = useState();
+  const [imageUrl, setImageUrl] = useState('');
   const [location, setLocation] = useState('Ondo - test');
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [url, setUrl] = useState('create/news');
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     if (!newsId) return;
@@ -27,17 +29,19 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
         // console.log(e);
         let news = e.data.msg;
         console.log(news);
+        setEdit(true);
         const { title, details, imageUrl, location } = news[0];
         setTitle(title);
         setDetails(details);
-        setImage(imageUrl);
+        setImageUrl(imageUrl);
         setLocation(location);
+        setImage(imageUrl);
         setLoading(false);
         setUrl('update/news');
       });
     };
     getNews();
-  }, []);
+  }, [newsId, apiBaseUrl]);
 
   const submit = (e) => {
     e.preventDefault();
@@ -59,10 +63,6 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
         },
       })
       .then((data) => {
-        if (!data.success) {
-          alert('please choose an image');
-          return;
-        }
         setTitle('');
         setDetails('');
         setImage('');
@@ -103,6 +103,7 @@ const News = ({ admin, authToken, apiBaseUrl, apiEndpoint, newsId }) => {
           <UploadImage
             initialImageUrl={image}
             file={image}
+            editing={edit}
             setFile={setImage}
             name='image'
             className={styles.UploadImage}

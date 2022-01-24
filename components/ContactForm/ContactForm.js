@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './ContactForm.module.css';
 import AutoGrowingTextarea from '../AutoGrowingTextarea/AutoGrowingTextarea';
+import Spinner from '../Spinner/Spinner';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -8,10 +9,12 @@ const ContactForm = () => {
   const [message, setMessage] = useState('');
   const [subject, setSubject] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log('Sending');
+    setSubmitting(true)
     let data = {
       name,
       email,
@@ -28,6 +31,7 @@ const ContactForm = () => {
     })
       .then((res) => {
         console.log('Response received');
+        setSubmitting(false)
         if (res.status === 200) {
           alert('Email succeeded!');
           setSubmitted(true);
@@ -35,13 +39,19 @@ const ContactForm = () => {
           setEmail('');
           setMessage('');
           setSubject('');
+        } else if (res.status === 500) {
+          alert('Email is not sent please try again or contact the church')
         }
+        
       })
       .catch((e) => {
         console.log(e);
         alert('Email is not sent please try again or contact the church');
+        setSubmitting(false)
       });
   };
+
+  const isIncomplete = !(name.trim() && email.trim() && message.trim() && subject.trim())
 
   return (
     <section
@@ -101,8 +111,9 @@ const ContactForm = () => {
             handleSubmit(e);
           }}
           className={styles.ContactButton}
+          disabled={submitting || isIncomplete}
         >
-          SEND MESSAGE
+          {submitting ? <Spinner /> : 'SEND MESSAGE'}
         </button>
       </form>
     </section>

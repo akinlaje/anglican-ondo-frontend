@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Pagination from '../../../components/Pagination/Pagination'
 import styles from '../../../styles/AdminMembership.module.css'
+import axios from 'axios';
+import { BASE_URL as apiBaseUrl } from '../../../utils'
 
-const Membership = () => {
+const Membership = ({ admin, authToken }) => {
   const [members, setMembers] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [searchedTerm, setSearchedTerm] = useState('')
@@ -16,209 +18,18 @@ const Membership = () => {
 
   useEffect(() => {
     const getMembers = async () => {
-      // get members from  backend
-      const members = [
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-        {
-          id: '1',
-          imageUrl: '/images/SA.png',
-          name: 'First Member'
-        },
-        {
-          id: '2',
-          imageUrl: '/images/SA.png',
-          name: 'Second Member'
-        },
-        {
-          id: '3',
-          imageUrl: '/images/SA.png',
-          name: 'Third Member'
-        },
-      ]
-      setMembers(members)
-    }
+      try {
+        // get members from backend
+        const { data: { msg: members } } = await axios.get(apiBaseUrl + 'read/members');
+        console.log(members);
+        setMembers(members);
+      } catch (error) {
+        alert('An Error Ocurred while fetching Members')
+      }
+    };
 
-    getMembers()
-  }, [])
+    getMembers();
+  }, []);
 
   const viewMember = (id) => router.push('/admin/members/' + id)
 

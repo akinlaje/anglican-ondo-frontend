@@ -3,7 +3,14 @@ import styles from './UploadImage.module.css';
 import Image from 'next/image';
 import { FaPlusCircle as PlusIcon } from 'react-icons/fa';
 
-const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
+const UploadImage = ({
+  file,
+  editing,
+  setFile,
+  name,
+  className,
+  initialImageUrl,
+}) => {
   const [unsupported, setUnsupported] = useState(false);
 
   const fileInput = useRef();
@@ -13,6 +20,7 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
   const FILE_TYPES = ['png', 'jpg', 'jpeg'];
 
   const onChange = (e) => {
+    e.preventDefault();
     setUnsupported(false);
     const selectedFile = e.target.files[0];
     if (!setUnsupported) return;
@@ -29,16 +37,22 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
     setFile(selectedFile);
   };
 
-  let src
-  if (file) {
+  let src;
+  // if (file) {
+  //   if (typeof file === 'string') {
+  //     src = file;
+  //   } else {
+  //     src = URL.createObjectURL(file);
+  //   }
+  // }
+
+  if (initialImageUrl && !file) {
+    src = initialImageUrl;
+  } else if (file) {
     if (typeof file === 'string') {
       src = file
     } else {
-      const reader =  new FileReader()
-      reader.onload = e => {
-       src = e.target.result
-      }
-      reader.readAsDataURL(file)
+      src = URL.createObjectURL(file)
     }
   }
 
@@ -55,11 +69,11 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
         accept={FILE_TYPES.map((type) => '.' + type).join(', ')}
         name={name}
       />
-      {file ? (
+      {(file || initialImageUrl) ? (
         <div className={styles.Image}>
           <Image
             src={src}
-            alt={file.filename}
+            alt={file ? file.filename : 'Upload'}
             layout='fill'
             objectFit='contain'
           />
@@ -69,7 +83,7 @@ const UploadImage = ({ file, setFile, name, className, initialImageUrl }) => {
       ) : (
         <PlusIcon className={styles.PlusIcon} size='50px' color='var(--pri)' />
       )}
-      <button className={styles.AddImageButton}>
+      <button className={styles.AddImageButton} type='button'>
         {file ? 'Change ' : 'Add '}Image
       </button>
     </div>

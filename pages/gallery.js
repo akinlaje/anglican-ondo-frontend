@@ -4,7 +4,11 @@ import styles from '../styles/Gallery.module.css';
 import HorizontalSlider from '../components/HorizontalSlider/HorizontalSlider';
 import Event from '../components/Event/Event';
 
+import axios from 'axios'
+import { BASE_URL as apiBaseUrl } from '../utils'
+
 const Gallery = ({ events=[], recentEvents=[] }) => {
+	console.log(events, recentEvents)
 	return (
 		<>
 			<header className={styles.Header}>
@@ -35,6 +39,9 @@ const Gallery = ({ events=[], recentEvents=[] }) => {
 						)
 					})}
 				</HorizontalSlider>
+				{!events.length ? (
+					<div style={{ textAlign: 'center', padding: '30px' }}>No Images have been uploaded yet</div>
+				) : null}
 				{events.map(({ month, events }, i) => (
 					<div key={i} className={styles.Month}>
 						<h2 className={styles.MonthName}>{month}</h2>
@@ -57,131 +64,47 @@ export default Gallery;
 export async function getServerSideProps (context) {
 
   // get events and recent events here
-  
-	const events = [
-		{
-			month: 'October',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-			]
-		},
-		{
-			month: 'November',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-			]
-		},
-		{
-			month: 'December',
-			events: [
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-				{
-					title: 'Synod 2020',
-					desc: 'Who are you?',
-					image: 'synod.png',
-					imageUrl: '/images/synod.png'
-				},
-			]
-		},
-	]
+  const { data: { msg } } = await axios.get(apiBaseUrl + 'read/gallery')
+  console.log(msg);
 
-	const recentEvents = [
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-		{
-			image: 'event-page-scroll.png',
-			imageUrl: '/images/event-page-scroll.png'
-		},
-	]
+  let events = []
+
+  const isMonthInEventsArray = (month) => {
+  	let index = null
+  	for (let i = events.length - 1; i >= 0; i--) {
+  		const eventGroupByMonth = events[i]
+  		if (eventGroupByMonth.month === month) {
+  			index = i
+  			break
+  		}
+  	}
+  	return index
+  }
+
+  for (let i = msg.length - 1; i >= 0; i--) {
+  	const galleryItem = msg[i]
+  	const { month } = galleryItem
+  	const index = isMonthInEventsArray(month)
+  	if (index === 0 || index) {
+  		events[index].events.push(galleryItem)
+  	} else {
+  		events.push({
+  			month,
+  			events: [galleryItem]
+  		})
+  	}
+  }
+
+  console.log(events)
+
+	const recentEvents = [...Array(7)].map((_, i) => {
+		if (msg[i]) return msg[i]
+		return null
+	}).filter(v => v)
 
   return {
     props: {
-      events,
+      events: [],
       recentEvents
     }
   }

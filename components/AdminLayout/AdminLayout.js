@@ -6,6 +6,7 @@ import {
 	AiOutlineClose as CloseIcon,
 	AiOutlineMenu as MenuIcon, 
 } from 'react-icons/ai'
+import { bulkSMSLink } from '../../utils'
 
 const Sidebar = ({ admin, router, closeSidebar, open, openSidebar }) => {
 	const pathnames = [
@@ -63,6 +64,19 @@ const Sidebar = ({ admin, router, closeSidebar, open, openSidebar }) => {
 							</li>
 						)
 					})}
+					<li 
+						className={styles.SidebarItem}>
+						<Link 
+							href={bulkSMSLink}
+						>
+							<a
+								onClick={closeSidebar}
+								className={styles.SidebarLink}
+						   	>
+								BulkSMS							
+							</a>
+						</Link>
+					</li>
 				</ul>
 			</nav>
 		</>

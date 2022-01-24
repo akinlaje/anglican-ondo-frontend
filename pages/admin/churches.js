@@ -103,24 +103,13 @@ const Churches = ({ admin, authToken, apiBaseUrl }) => {
 
   useEffect(() => {
     const getChurches = async () => {
-      // get the saved churches
-      const churches = [
-        {
-          id: '1',
-          name: 'All Saints Anglican Church. Headquarters of Ondo Archdeaconry',
-          location: 'No 32 Oke Aluko Street, Ondo',
-          image: 'all-saints-church-2.jpg',
-          imageUrl: '/images/all-saints-church-2.jpg',
-        },
-        {
-          id: '2',
-          name: 'St. Peters Anglican Church. Headquarters of Araromi Archdeaconry',
-          location: 'Araromi Obu',
-          image: 'st-peters-church.jpg',
-          imageUrl: '/images/st-peters-church.jpg',
-        },
-      ];
-      setChurches(churches);
+      try {
+        // get churches from backend
+        const { data: { msg: churches } } = await axios.get(apiBaseUrl + 'read/churches')
+        setChurches(churches);
+      } catch (error) {
+        alert('An Error Ocurred while fetching Churches')
+      }
     };
     getChurches();
   }, []);

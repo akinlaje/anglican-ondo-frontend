@@ -3,12 +3,14 @@ import styles from '../../styles/FullNews.module.css'
 import { FaRegCalendarAlt as CalendarIcon } from 'react-icons/fa'
 import { MdLocationOn as LocationIcon } from 'react-icons/md'
 import { BsClock as ClockIcon } from 'react-icons/bs'
+import axios from 'axios';
+import { BASE_URL as apiBaseUrl } from '../../utils';
 
 const FullNews = ({ id, title, details, image, imageUrl, date, time, location }) => {
 	return (
 		<>
 			<div className={styles.Image}>
-				<Image layout='fill' objectFit='cover' src={imageUrl} alt={title || 'News title'} />			
+				<Image layout='fill' objectFit='cover' src={imageUrl} alt={title || 'News title'} />
 			</div>
 			<div className={styles.Container}>
 				<h1 className={styles.Title}>{title}</h1>
@@ -53,22 +55,11 @@ const FullNews = ({ id, title, details, image, imageUrl, date, time, location })
 export default FullNews
 
 export async function getServerSideProps (context) {
-	const id = context.params.id
-
-  // get complete news here
-
-  const fullNews = {
-      id: '1',
-      title: 'Lorem Ipsum...Lorem Ipsum...',
-      details: `Lorem ipsum dolor sit amet, consetetur sadipscing
-		elitr, sed diam nonumy eirmod tempor invidunt ut
-		labore et dolore magna aliquyam erat, sed diam
-		voluptua. At vero eos et accusam et justo duo dolores
-		et ea rebum. Stet clita kasd gubergren, no sea`,
-      imageUrl: '/images/ae.jpg',
-      date: '13th December, 2021',
-      time: '10:00 pm',
-    }
+	const id = context.query.newsId
+	console.log(id);
+	const { data: { msg } } = await axios.post(apiBaseUrl + 'single/news', { id })
+	const fullNews = msg[0]
+  console.log(fullNews);
 
   return {
     props: {

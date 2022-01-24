@@ -10,6 +10,9 @@ import TreasurySection from '../components/TreasurySection/TreasurySection';
 import BookEventSection from '../components/BookEventSection/BookEventSection';
 import Carousel from '../components/Carousel/Carousel';
 
+import axios from 'axios'
+import { BASE_URL as apiBaseUrl } from '../utils'
+
 export default function Home({ events = [] }) {
   return (
     <>
@@ -90,29 +93,31 @@ export default function Home({ events = [] }) {
             <h2 className={styles.EventCarouselTitle}>
               Upcoming Events and Programs
             </h2>
-            <Carousel
-              className={[styles.Carousel, styles.EventCarousel].join(' ')}
-              indicatorColor='var(--pri)'
-              iconClassName={[styles.NextIcon, styles.EventCarouselIcon].join(
-                ' '
-              )}
-            >
-              {events.map((event, i) => {
-                return (
-                  <div key={i} className={styles.EventCarouselItem}>
-                    <div className={styles.EventImageWrapper}>
-                      <Image
-                        className={styles.EventsImage}
-                        layout='fill'
-                        objectFit='contain'
-                        src={event.image}
-                        alt={event.title}
-                      />
+            {events.length ? (
+              <Carousel
+                className={[styles.Carousel, styles.EventCarousel].join(' ')}
+                indicatorColor='var(--pri)'
+                iconClassName={[styles.NextIcon, styles.EventCarouselIcon].join(
+                  ' '
+                )}
+              >
+                {events.map((event, i) => {
+                  return (
+                    <div key={i} className={styles.EventCarouselItem}>
+                      <div className={styles.EventImageWrapper}>
+                        <Image
+                          className={styles.EventsImage}
+                          layout='fill'
+                          objectFit='contain'
+                          src={event.imageUrl}
+                          alt={event.title}
+                        />
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </Carousel>
+                  );
+                })}
+              </Carousel>
+            ) : <h3 style={{ textAlign: 'center' }}>No Upcoming Events at the moment</h3>}
           </section>
           <ContactForm />
           <RGDSection />
@@ -125,25 +130,10 @@ export default function Home({ events = [] }) {
 }
 
 export async function getServerSideProps(context) {
+  console.log(apiBaseUrl)
   // get upcoming events here
-
-  const events = [
-    {
-      id: '1',
-      image: '/images/event-carousel.png',
-      title: 'Test Event',
-    },
-    {
-      id: '1',
-      image: '/images/event-carousel.png',
-      title: 'Test Event',
-    },
-    {
-      id: '1',
-      image: '/images/event-carousel.png',
-      title: 'Test Event',
-    },
-  ];
+  const { data: { msg: events } } = await axios.get(apiBaseUrl + 'read/events')
+  console.log(events);
 
   return {
     props: {

@@ -29,7 +29,7 @@ const RGDSection = () => {
                 styles.Gallery
               ].join(' ')}
             >
-              <Image layout='fill' objectFit='cover' alt='gallery' style={{ paddingTop: '20px' }} src="/images/gallery-RGD.png" />
+              <Image layout='fill' objectFit='cover' alt='gallery' src="/images/gallery-RGD.png" />
             </a>
           </Link>
           <h3 className={styles.Heading}>Gallery</h3>
