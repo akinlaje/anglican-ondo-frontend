@@ -13,7 +13,7 @@ const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
   const [details, setDetails] = useState('');
   const [image, setImage] = useState();
   const [imageUrl, setImageUrl] = useState('');
-  const [location, setLocation] = useState('Ondo - test');
+  const [location, setLocation] = useState('Ondo');
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
