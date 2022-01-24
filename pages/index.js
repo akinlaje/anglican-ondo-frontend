@@ -117,7 +117,7 @@ export default function Home({ events = [] }) {
                   );
                 })}
               </Carousel>
-            ) : <h3>No Upcoming Events at the moment</h3>}
+            ) : <h3 style={{ textAlign: 'center' }}>No Upcoming Events at the moment</h3>}
           </section>
           <ContactForm />
           <RGDSection />

@@ -34,9 +34,7 @@ const About = () => {
 							<Image layout='fill' objectFit='cover' src='/images/church.jpeg' alt='Church'/>
 						</div>
 						<div className={styles.Bottom}>
-							<Link href='/'>
-								<a>Read More</a>
-							</Link>
+							<span>Read More</span>
 							<MenuIcon size='30px'color='#000' className={styles.MenuIcon} />
 						</div>
 					</div>
@@ -69,9 +67,7 @@ const About = () => {
 							<Image layout='fill' objectFit='cover' src='/images/church.jpeg' alt='Church'/>
 						</div>
 						<div className={styles.Bottom}>
-							<Link href='/'>
-								<a>Read More</a>
-							</Link>
+							<span>Read More</span>
 							<MenuIcon size='30px'color='#000' className={styles.MenuIcon} />
 						</div>
 					</div>

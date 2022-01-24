@@ -55,9 +55,10 @@ const FullNews = ({ id, title, details, image, imageUrl, date, time, location })
 export default FullNews
 
 export async function getServerSideProps (context) {
-	const id = context.params.id
+	const id = context.query.newsId
 	console.log(id);
-	const { data: { msg: fullNews } } = await axios.post(apiBaseUrl + 'single/news', { id })
+	const { data: { msg } } = await axios.post(apiBaseUrl + 'single/news', { id })
+	const fullNews = msg[0]
   console.log(fullNews);
 
   return {

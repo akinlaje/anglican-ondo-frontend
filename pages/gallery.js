@@ -8,6 +8,7 @@ import axios from 'axios'
 import { BASE_URL as apiBaseUrl } from '../utils'
 
 const Gallery = ({ events=[], recentEvents=[] }) => {
+	console.log(events, recentEvents)
 	return (
 		<>
 			<header className={styles.Header}>
@@ -38,6 +39,9 @@ const Gallery = ({ events=[], recentEvents=[] }) => {
 						)
 					})}
 				</HorizontalSlider>
+				{!events.length ? (
+					<div style={{ textAlign: 'center', padding: '30px' }}>No Images have been uploaded yet</div>
+				) : null}
 				{events.map(({ month, events }, i) => (
 					<div key={i} className={styles.Month}>
 						<h2 className={styles.MonthName}>{month}</h2>

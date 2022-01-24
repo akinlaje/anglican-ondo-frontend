@@ -21,6 +21,9 @@ const ClergyMen = ({ clergyMen=[] }) => {
 				</div>
 			</header>
 			<section className={styles.Section}>
+				{!clergyMen.length ? (
+					<div style={{ textAlign: 'center', padding: '30px' }}>No Clergy information yet</div>
+				) : null}
 				{clergyMen.map((clergyGroup, i) => {
 					const { position, priests } = clergyGroup
 					return (

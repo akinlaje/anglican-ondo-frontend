@@ -25,7 +25,9 @@ const FindChurch = ({ churches }) => {
 				</div>
 			</header>
 			<section className={styles.SearchChurches}>
-				<SearchChurches searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchedTerm />
+				{churches.length ? (
+					<SearchChurches searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchedTerm />
+				) : null}
 			</section>
 			<section className={styles.LocationsSection}>
 				<Locations locations={churches} searchTerm={searchTerm} setSearchedTerm={setSearchedTerm} />

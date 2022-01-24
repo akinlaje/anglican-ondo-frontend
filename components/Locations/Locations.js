@@ -78,36 +78,40 @@ const Locations = ({ locations, searchTerm, setSearchedTerm }) => {
 
 	return (
 		<>
-			{searchTerm.length ? (
-				<h2>
-					{ (searchTerm && !locationList.length ? 'No matches for ': 'Search Results for ') }
-					<span style={{ color: 'var(--pri)' }}>{"'" + searchTerm + "'"}</span>
-				</h2>
-			) : ''}
-			<div className={styles.Container}>
-				{
-					searching ? (
-						<div 
-							style={{
-								width: 'fit-content',
-								height: 'fit-content',
-								margin: 'auto'
-							}}
-						>
-							<Spinner />
-						</div>
-					) : 
-					locationList.map((location, i) => (
-						<Location key={i} {...location} />
-					))
-				}
-				<Pagination 
-					page={page} 
-					setPage={setPage} 
-					numPerPage={numPerPage} 
-					numItems={locations.length} 
-				/>
-			</div>
+			{locations.length ? (
+				<>
+					{searchTerm.length ? (
+						<h2>
+							{ (searchTerm && !locationList.length ? 'No matches for ': 'Search Results for ') }
+							<span style={{ color: 'var(--pri)' }}>{"'" + searchTerm + "'"}</span>
+						</h2>
+					) : ''}
+					<div className={styles.Container}>
+						{
+							searching ? (
+								<div 
+									style={{
+										width: 'fit-content',
+										height: 'fit-content',
+										margin: 'auto'
+									}}
+								>
+									<Spinner />
+								</div>
+							) : 
+							locationList.map((location, i) => (
+								<Location key={i} {...location} />
+							))
+						}
+						<Pagination 
+							page={page} 
+							setPage={setPage} 
+							numPerPage={numPerPage} 
+							numItems={locations.length} 
+						/>
+					</div>
+				</>
+			) : <div style={{ textAlign: 'center', padding: '30px' }}>No Church information yet</div>}
 		</>
 	)
 }

@@ -46,3 +46,5 @@ export const formatTime = (date) => DateTime.fromJSDate(date).toLocaleString(Dat
 
 export const BASE_URL = 'https://18.224.16.187.nip.io/api/';
 // export const BASE_URL = 'http://localhost:5000/api/';
+
+export const bulkSMSLink = '/'

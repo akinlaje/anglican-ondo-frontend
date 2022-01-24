@@ -48,15 +48,11 @@ const UploadImage = ({
 
   if (initialImageUrl && !file) {
     src = initialImageUrl;
-    // console.log(src);
-  } else {
-    if (file) {
-      console.log(file);
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        src = e.target.result;
-      };
-      reader.readAsDataURL(file);
+  } else if (file) {
+    if (typeof file === 'string') {
+      src = file
+    } else {
+      src = URL.createObjectURL(file)
     }
   }
 

@@ -7,6 +7,7 @@ import { MdLocationOn as LocationIcon } from 'react-icons/md'
 import { BsClock as ClockIcon } from 'react-icons/bs'
 
 const Article = ({ id, title, details, imageUrl, date, time, location }) => {
+	console.log(id)
 	return (
 		<div className={styles.Container}>
 			<div className={styles.Top}>

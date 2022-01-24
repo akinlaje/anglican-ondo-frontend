@@ -11,16 +11,19 @@ const AdminRouteGuard = ({ children, admin }) => {
         const path = url.split('?')[0];
         if (!admin?.id && !publicPaths.includes(path)) {
             setAuthorized(false);
+            const { href, origin } = window.location
+            const currentUrl = href.replace(origin, '')
+            // console.log(currentUrl)
             router.push({
                 pathname: '/admin/login',
-                query: { returnUrl: router.asPath }
+                query: { returnUrl: currentUrl }
             });
-            console.log('authorized', admin, publicPaths.includes(path))
+            console.log('Not authorized')
         } else {
             setAuthorized(true);
-            console.log('Not authorized')
+            console.log('authorized', admin, publicPaths.includes(path))
         }
-    }, [admin])
+    }, [admin, router])
 
     useEffect(() => {
         // on initial load - run auth check 
