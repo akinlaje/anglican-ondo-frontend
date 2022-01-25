@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from '../../../styles/AdminNews.module.css';
 import axios from 'axios';
 import Pagination from '../../../components/Pagination/Pagination';
+import { BASE_URL as apiBaseUrl } from '../../../utils';
 
 const News = (props) => {
   const [news, setNews] = useState([]);
@@ -32,7 +33,7 @@ const News = (props) => {
   const deleteNews = (id, image) => {
     axios
       .delete(apiBaseUrl + 'delete/news', {
-        data: { id },
+        data: { id, image },
         headers: {
           'Content-Type': 'application/json',
           Authorization: authToken,
@@ -41,7 +42,7 @@ const News = (props) => {
       .then(({ data: { success, message } }) => {
         if (success) {
           setNews((newsItem) =>
-            churches
+            news
               .map((newsItem) => (newsItem.id === id ? null : { ...newsItem }))
               .filter((v) => v)
           );
@@ -70,7 +71,7 @@ const News = (props) => {
     <div className={styles.Container}>
       <div className={styles.Members}>
         {filteredNews.map((news, i) => {
-          const { id, imageUrl, title } = news;
+          const { id, imageUrl, title, image } = news;
           return (
             <div key={i} className={styles.MemberWrapper}>
               <div className={styles.Member}>
@@ -86,7 +87,10 @@ const News = (props) => {
                 <button onClick={() => editNews(id)} className={styles.btn2}>
                   Edit
                 </button>
-                <button onClick={() => deleteNews(id)} className={styles.btn2}>
+                <button
+                  onClick={() => deleteNews(id, image)}
+                  className={styles.btn2}
+                >
                   Delete
                 </button>
               </div>
