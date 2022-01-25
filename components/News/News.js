@@ -7,6 +7,7 @@ import axios from 'axios';
 import Spinner from '../Spinner/Spinner';
 import FormError from '../FormError/FormError';
 import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from 'next/router';
 
 const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
   const [title, setTitle] = useState('');
@@ -19,6 +20,10 @@ const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
   const [error, setError] = useState('');
   const [url, setUrl] = useState('create/news');
   const [edit, setEdit] = useState(false);
+  // when in edit mode
+  const [eId, setEId] = useState('');
+
+  const router = useRouter();
 
   useEffect(() => {
     if (!newsId) return;
@@ -30,12 +35,13 @@ const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
         let news = e.data.msg;
         console.log(news);
         setEdit(true);
-        const { title, details, imageUrl, location } = news[0];
+        const { title, details, imageUrl, location, id } = news[0];
         setTitle(title);
         setDetails(details);
         setImageUrl(imageUrl);
         setLocation(location);
         setImage(imageUrl);
+        setEId(id);
         setLoading(false);
         setUrl('update/news');
       });
@@ -48,7 +54,12 @@ const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
     setSaving(true);
     let formData = new FormData();
 
-    let id = `${title}${uuidv4()}`;
+    let id;
+    if (newsId) {
+      id = eId;
+    } else {
+      id = `${title}${uuidv4()}`;
+    }
 
     formData.append('id', id);
     formData.append('title', title);
@@ -70,6 +81,7 @@ const News = ({ admin, authToken, apiBaseUrl, newsId }) => {
         alert('Created Successfully');
         setSaving(false);
         console.log(data);
+        router.back();
       })
       .catch((err) => {
         setSaving(false);
