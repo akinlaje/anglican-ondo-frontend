@@ -10,8 +10,8 @@ import TreasurySection from '../components/TreasurySection/TreasurySection';
 import BookEventSection from '../components/BookEventSection/BookEventSection';
 import Carousel from '../components/Carousel/Carousel';
 
-import axios from 'axios'
-import { BASE_URL as apiBaseUrl } from '../utils'
+import axios from 'axios';
+import { BASE_URL as apiBaseUrl } from '../utils';
 
 export default function Home({ events = [] }) {
   return (
@@ -30,6 +30,9 @@ export default function Home({ events = [] }) {
           <HomeHeader />
           <WelcomeSection />
           <section className={styles.CarouselSection}>
+            <p className={[styles.CarouselItemHeading, styles.cs].join(' ')}>
+              Our Archdeaconries
+            </p>
             <Carousel className={styles.Carousel}>
               <div className={styles.CarouselItem}>
                 <div className={styles.CarouselItemImageWrapper}>
@@ -37,16 +40,15 @@ export default function Home({ events = [] }) {
                     className={styles.CarouselItemImage}
                     height='500px'
                     width='500px'
-                    src='/images/IMG-20220102-WA0044.jpg'
+                    src='/images/ven11.jpeg'
                     alt='Logo'
                   />
                 </div>
                 <div className={styles.CarouselItemText}>
-                  <h2 className={styles.CarouselItemHeading}>Archdeaconries</h2>
-                  <p>
-                    Check out the archdeaconries and the Archdeacons with the
-                    Churches under them and the Priest in Charge
-                  </p>
+                  <h2 className={styles.CarouselItemHeading}>
+                    Ven D.O. Akinyemi
+                  </h2>
+                  <p>Ondo North East</p>
                 </div>
               </div>
               <div className={styles.CarouselItem}>
@@ -55,16 +57,15 @@ export default function Home({ events = [] }) {
                     className={styles.CarouselItemImage}
                     height='500px'
                     width='500px'
-                    src='/images/IMG-20220102-WA0045.jpg'
+                    src='/images/ven2.jpeg'
                     alt='Logo'
                   />
                 </div>
                 <div className={styles.CarouselItemText}>
-                  <h2 className={styles.CarouselItemHeading}>Archdeaconries</h2>
-                  <p>
-                    Check out the archdeaconries and the Archdeacons with the
-                    Churches under them and the Priest in Charge
-                  </p>
+                  <h2 className={styles.CarouselItemHeading}>
+                    Ven Dr. J.S. Ojewunmi
+                  </h2>
+                  <p>Ondo West</p>
                 </div>
               </div>
               <div className={styles.CarouselItem}>
@@ -73,16 +74,81 @@ export default function Home({ events = [] }) {
                     className={styles.CarouselItemImage}
                     height='500px'
                     width='500px'
-                    src='/images/IMG-20220102-WA0044.jpg'
+                    src='/images/ven4.jpeg'
                     alt='Logo'
                   />
                 </div>
                 <div className={styles.CarouselItemText}>
-                  <h2 className={styles.CarouselItemHeading}>Archdeaconries</h2>
-                  <p>
-                    Check out the archdeaconries and the Archdeacons with the
-                    Churches under them and the Priest in Charge
-                  </p>
+                  <h2 className={styles.CarouselItemHeading}>Ven. J.O. Ese</h2>
+                  <p>Ondo</p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image
+                    className={styles.CarouselItemImage}
+                    height='500px'
+                    width='500px'
+                    src='/images/ven5.jpeg'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>
+                    Ven. S.O. Abajingin
+                  </h2>
+                  <p>Araromi Obu</p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image
+                    className={styles.CarouselItemImage}
+                    height='500px'
+                    width='500px'
+                    src='/images/ven6.jpeg'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>
+                    Ven. S.O. Adeloye
+                  </h2>
+                  <p>Cathedral</p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image
+                    className={styles.CarouselItemImage}
+                    height='500px'
+                    width='500px'
+                    src='/images/ven7.jpeg'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>
+                    Ven. S.O. Ogunmiluyi
+                  </h2>
+                  <p>Ondo North</p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image
+                    className={styles.CarouselItemImage}
+                    height='500px'
+                    width='500px'
+                    src='/images/ven3.jpeg'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>
+                    Ven. Dr. S.O. Olowosusi
+                  </h2>
+                  <p>Ajue</p>
                 </div>
               </div>
             </Carousel>
@@ -117,7 +183,11 @@ export default function Home({ events = [] }) {
                   );
                 })}
               </Carousel>
-            ) : <h3 style={{ textAlign: 'center' }}>No Upcoming Events at the moment</h3>}
+            ) : (
+              <h3 style={{ textAlign: 'center' }}>
+                No Upcoming Events at the moment
+              </h3>
+            )}
           </section>
           <ContactForm />
           <RGDSection />
@@ -130,9 +200,11 @@ export default function Home({ events = [] }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(apiBaseUrl)
+  console.log(apiBaseUrl);
   // get upcoming events here
-  const { data: { msg: events } } = await axios.get(apiBaseUrl + 'read/events')
+  const {
+    data: { msg: events },
+  } = await axios.get(apiBaseUrl + 'read/events');
   console.log(events);
 
   return {

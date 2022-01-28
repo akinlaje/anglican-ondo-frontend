@@ -1,121 +1,134 @@
 .CarouselSection {
-	position: relative;
-	padding-top: 50px;
-	padding-bottom: 30px;
-	padding-right: 0;
-	padding-left: 0;
-	/*background-image: url('/images/worship.jpeg');*/
-	background-size: cover;
-	background-repeat: no-repeat;
-	z-index: 20;
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  padding-right: 0;
+  padding-left: 0;
+  /*background-image: url('/images/worship.jpeg');*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 20;
 }
 
 .CarouselSection::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	background-color: #fe5b36db;
-	z-index: 10;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fe5b36db;
+  z-index: 10;
 }
 
 .Carousel {
-	z-index: 20;
+  z-index: 20;
 }
 
 .CarouselItem {
-	position: relative;
-	text-align: center;
-	padding: 30px;
-	color: #fff;
-	font-size:1.52em;
+  position: relative;
+  text-align: center;
+  padding: 30px;
+  color: #fff;
+  font-size: 1.52em;
 }
 
 .CarouselItemImageWrapper {
-	position: relative;
-	display: block;
-	height: fit-content;
-	width: 500px;
-	max-width: 100%;
-	margin: 0 auto;
-	margin-bottom: 20px;
+  position: relative;
+  display: block;
+  height: fit-content;
+  width: 500px;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .CarouselItemImage {
-	display: inline-block;
-	height: inherit !important;
-	width: inherit !important;
-	border-radius: 50%;
+  display: inline-block;
+  height: inherit !important;
+  width: inherit !important;
+  border-radius: 50%;
 }
 
 .CarouselItemHeading {
-	font-size: 1.5emem;
-	font-weight: 500;
+  font-size: 1.5emem;
+  font-weight: 500;
 }
 
 .EventSection {
-	background-image: none;
-	background-color: #fff;
+  background-image: none;
+  background-color: #fff;
 }
 
 .EventSection::after {
-	display: none;
+  display: none;
 }
 
 .EventCarouselTitle {
-	color: #aaa;
-	font-weight: 500;
-	text-align: center;
+  color: #aaa;
+  font-weight: 500;
+  text-align: center;
 }
 
 .EventCarouselItem {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .EventImageWrapper {
-	position: relative;
-	width: 100%;
-    height: 200px;
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.cs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 100;
+  position: relative;
+  text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
-	.CarouselItem {
-		display: flex;
-		align-items: center;
-		padding: 0 60px;
-	}
+  .CarouselItem {
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+  }
 
-	.CarouselItemImageWrapper {
-		flex: 0.3;
-		margin-bottom: 0;
-	}
+  .CarouselItemImageWrapper {
+    flex: 0.3;
+    margin-bottom: 0;
+  }
 
-	.CarouselItemHeading {
-		font-size: 2em;
-	}
+  .CarouselItemHeading {
+    font-size: 2em;
+  }
 
-	.CarouselItemText {
-		flex: 0.7;
-		margin: auto;
-	}
+  .CarouselItemText {
+    flex: 0.7;
+    margin: auto;
+  }
 
-	.EventImageWrapper {
-		height: 500px;
-		width: 40vw;
-		max-width: 100vw;
-		max-height: auto;
-	}
+  .EventImageWrapper {
+    height: 500px;
+    width: 40vw;
+    max-width: 100vw;
+    max-height: auto;
+  }
 
-	.PrevIcon {
-		left: calc(50vw - 300px) !important;
-	}
+  .PrevIcon {
+    left: calc(50vw - 300px) !important;
+  }
 
-	.NextIcon {
-		right: calc(50vw - 300px) !important;
-	}
+  .NextIcon {
+    right: calc(50vw - 300px) !important;
+  }
 }
