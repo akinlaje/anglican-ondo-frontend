@@ -46,7 +46,7 @@ export default function Home({ events = [] }) {
                 </div>
                 <div className={styles.CarouselItemText}>
                   <h2 className={styles.CarouselItemHeading}>
-                    Ven D.O. Akinyemi
+                    Ven. Daniel Ope Akinyemi
                   </h2>
                   <p>Ondo North East</p>
                 </div>
@@ -63,7 +63,7 @@ export default function Home({ events = [] }) {
                 </div>
                 <div className={styles.CarouselItemText}>
                   <h2 className={styles.CarouselItemHeading}>
-                    Ven Dr. J.S. Ojewunmi
+                    Ven. Dr. J.S. Ojewumi
                   </h2>
                   <p>Ondo West</p>
                 </div>
@@ -112,7 +112,7 @@ export default function Home({ events = [] }) {
                 </div>
                 <div className={styles.CarouselItemText}>
                   <h2 className={styles.CarouselItemHeading}>
-                    Ven. S.O. Adeloye
+                    Ven. S.O. Adeleye
                   </h2>
                   <p>Cathedral</p>
                 </div>
