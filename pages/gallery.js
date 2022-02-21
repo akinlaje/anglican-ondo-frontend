@@ -40,7 +40,7 @@ const Gallery = ({ events=[], recentEvents=[] }) => {
 					})}
 				</HorizontalSlider>
 				{!events.length ? (
-					<div style={{ textAlign: 'center', padding: '30px' }}>No Images have been uploaded yet</div>
+					<div style={{ textAlign: 'center', padding: '30px' }}></div>
 				) : null}
 				{events.map(({ month, events }, i) => (
 					<div key={i} className={styles.Month}>
