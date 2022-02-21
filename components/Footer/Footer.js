@@ -144,7 +144,7 @@ const footer = () => {
 			<div className={styles.Credit}>
 				Developed by{' '}
 				<Link href='https://davakconsult.com.ng'>
-					Davak Consult &copy 2022
+					Davak Consult &copy; 2022
 				</Link>
 			</div>
 		</footer>
