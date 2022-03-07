@@ -40,9 +40,9 @@ const Member = ({ admin, authToken }) => {
     society,
     roles,
     birthDate,
-    //weddingAnniversary,
-    //baptismalDate,
-    //confirmationDate,
+    weddingAnniversary,
+    baptismalDate,
+    confirmationDate,
     imageUrl,
   } = member;
 

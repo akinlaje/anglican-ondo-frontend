@@ -171,7 +171,7 @@ const Membership = () => {
           <div className={styles.Flex}>
             <div className={styles.DateInputWrapper}>
               <label className={styles.Label} htmlFor='baptismalDate'>
-                Baptisimal Date
+                Baptismal Date
               </label>
               <input
                 id='baptismalDate'
@@ -179,7 +179,7 @@ const Membership = () => {
                 placeholder='DD/MM/YY'
                 value={baptismalDate}
                 type='date'
-                required
+                //required
                 onChange={(e) => setBaptismalDate(e.target.value)}
               />
             </div>
@@ -192,7 +192,7 @@ const Membership = () => {
                 className={styles.Input}
                 placeholder='DD/MM/YY'
                 type='date'
-                required
+                //required
                 value={confirmationDate}
                 onChange={(e) => setConfirmationDate(e.target.value)}
               />
@@ -221,7 +221,7 @@ const Membership = () => {
                 placeholder='DD/MM/YY'
                 id='weddingAnniversary'
                 type='date'
-                required
+                //required
                 value={weddingAnniversary}
                 onChange={(e) => setWeddingAnniversary(e.target.value)}
               />
