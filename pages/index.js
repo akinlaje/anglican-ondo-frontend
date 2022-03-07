@@ -46,7 +46,7 @@ export default function Home({ events = [] }) {
                 </div>
                 <div className={styles.CarouselItemText}>
                   <h2 className={styles.CarouselItemHeading}>
-                    Ven. Daniel Ope Akinyemi
+                    Ven. Daniel Ope Akintemi
                   </h2>
                   <p>Ondo North East</p>
                 </div>
