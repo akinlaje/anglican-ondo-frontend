@@ -74,6 +74,40 @@ export default function Home({ events = [] }) {
                     className={styles.CarouselItemImage}
                     height='500px'
                     width='500px'
+                    src='/images/Venfesojaye.jpeg'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>
+                  Ven. Michael Oluseye Fesojaye
+                  </h2>
+                  <p>Odigbo</p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image
+                    className={styles.CarouselItemImage}
+                    height='500px'
+                    width='500px'
+                    src='/images/Venayodele.jpeg'
+                    alt='Logo'
+                  />
+                </div>
+                <div className={styles.CarouselItemText}>
+                  <h2 className={styles.CarouselItemHeading}>
+                  Ven. S. O. Ayodele
+                  </h2>
+                  <p>Okeigbo</p>
+                </div>
+              </div>
+              <div className={styles.CarouselItem}>
+                <div className={styles.CarouselItemImageWrapper}>
+                  <Image
+                    className={styles.CarouselItemImage}
+                    height='500px'
+                    width='500px'
                     src='/images/ven4.jpeg'
                     alt='Logo'
                   />
