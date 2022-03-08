@@ -73,7 +73,7 @@ const Member = ({ admin, authToken }) => {
         </div>
         <div>Name : {lastName}</div>
         <div>Phone Number : {phoneNumber}</div>
-        <div>Surname : {lastName}</div>
+        <div>Surname : {surname}</div>
         <div>Other Names : {otherNames}</div>
         <div>Email : {email}</div>
         <div>Archdeaconry : {archdeaconry}</div>
