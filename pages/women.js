@@ -28,7 +28,7 @@ const Women = () => {
 							<h2 className={styles.ContentHeading}>Our Mission &AMP; Vision</h2>
 							<p className={styles.Content}>
 							
-The vision and mission of the Mothers Union/Women's Guild are  passionately concerned with  strengthening and preserving marriage and Christian family Life. Also, the advancement of the Christian religion in the sphere of marriage and family life.
+The vision and mission of the Mothers Union/Womens Guild are  passionately concerned with  strengthening and preserving marriage and Christian family Life. Also, the advancement of the Christian religion in the sphere of marriage and family life.
 
 To support and actualize these vision and mission, the following Objectives  were set up globally by the Organization:
 <br/>
@@ -57,7 +57,7 @@ To help those who family life has met with adversity.
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Our Mission</h2>
 							<p className={styles.Content}>
-							The women Organizations consist of Mothers Union (MU) and Women's Guild (WG). We have Chaplains, officers: Secretary, assistant secretary, enrolling officers, treasurer and auditors as enshrined in our constitution.
+							The women Organizations consist of Mothers Union (MU) and Womens Guild (WG). We have Chaplains, officers: Secretary, assistant secretary, enrolling officers, treasurer and auditors as enshrined in our constitution.
 The President of the MU/WG is Mrs. Oyewola Blessing Oni, the wife of the Lord Bishop of Ondo Diocese.
 
 Our Activities/ programmes 
@@ -76,9 +76,9 @@ We have Education Committee saddled with the oversight functions to run the scho
 <br/>
 We have Ladies and Girls Guild managed by the MU/WG.
 <br/>
-We have the yearly women's guild conference.
+We have the yearly womens guild conference.
 <br/>
-We have the Women organisations' magazine: Christ Courier
+We have the Women organisations magazine: Christ Courier
 							</p>
 						</div>
 						<div className={styles.Image}>
