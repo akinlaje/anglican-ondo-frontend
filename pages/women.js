@@ -95,16 +95,7 @@ We have the Women organisations magazine: Christ Courier
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Our Works</h2>
 							<p className={styles.Content}>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-								amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+								our works
 							</p>
 						</div>
 						<div className={styles.Image}>
@@ -121,16 +112,7 @@ We have the Women organisations magazine: Christ Courier
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>News and Events</h2>
 							<p className={styles.Content}>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-								amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+								news and events
 							</p>
 						</div>
 						<div className={styles.Image}>
@@ -152,16 +134,7 @@ We have the Women organisations magazine: Christ Courier
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Our Vision</h2>
 							<p className={styles.Content}>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-								amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+								our vision
 							</p>
 						</div>
 						<div className={styles.Image}>
@@ -178,16 +151,7 @@ We have the Women organisations magazine: Christ Courier
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Our Mission</h2>
 							<p className={styles.Content}>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-								amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+								our mission
 							</p>
 						</div>
 						<div className={styles.Image}>
@@ -204,16 +168,7 @@ We have the Women organisations magazine: Christ Courier
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Our Works</h2>
 							<p className={styles.Content}>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-								amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+								our works
 							</p>
 						</div>
 						<div className={styles.Image}>
@@ -230,16 +185,7 @@ We have the Women organisations magazine: Christ Courier
 						<div className={styles.ArticleInfo}>
 							<h2 className={styles.ContentHeading}>Events</h2>
 							<p className={styles.Content}>
-								Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-								diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-								amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-								sed diam nonumy eirmod tempor invidunt ut labore et dolore
-								magna aliquyam erat, sed diam voluptua. At vero eos et
-								accusam et justo duo dolores et ea rebum. Stet clita kasd
-								gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+								events
 							</p>
 						</div>
 						<div className={styles.Image}>
