@@ -44,7 +44,9 @@ export const formatDate = (date) => DateTime.fromJSDate(date).toFormat("yyyy'-'M
 
 export const formatTime = (date) => DateTime.fromJSDate(date).toLocaleString(DateTime.TIME_SIMPLE)
 
-export const BASE_URL = 'https://18.224.16.187.nip.io/api/';
-// export const BASE_URL = 'http://localhost:5000/api/';
+export const BASE_URL = 'https://backend-test-mtqp.onrender.com/api/';
+
+export const api = axios.create({ baseURL: BASE_URL });
+
 
 export const bulkSMSLink = 'https://www.ebulksms.com/'

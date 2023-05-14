@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Layout';
 import AdminLayout from '../components/AdminLayout/AdminLayout';
 import AdminRouteGuard from '../components/AdminRouteGuard/AdminRouteGuard';

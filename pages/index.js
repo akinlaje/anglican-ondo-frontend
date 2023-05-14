@@ -1,17 +1,15 @@
-import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { api } from '../utils';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import Carousel from '../components/Carousel/Carousel';
 import HomeHeader from '../components/HomeHeader/HomeHeader';
-import WelcomeSection from '../components/WelcomeSection/WelcomeSection';
-import ContactForm from '../components/ContactForm/ContactForm';
 import RGDSection from '../components/RGDSection/RGDSection';
+import ContactForm from '../components/ContactForm/ContactForm';
+import WelcomeSection from '../components/WelcomeSection/WelcomeSection';
 import TreasurySection from '../components/TreasurySection/TreasurySection';
 import BookEventSection from '../components/BookEventSection/BookEventSection';
-import Carousel from '../components/Carousel/Carousel';
 
-import axios from 'axios';
-import { BASE_URL as apiBaseUrl } from '../utils';
 
 export default function Home({ events = [] }) {
   return (
@@ -80,7 +78,7 @@ export default function Home({ events = [] }) {
                 </div>
                 <div className={styles.CarouselItemText}>
                   <h2 className={styles.CarouselItemHeading}>
-                  Ven. Michael Oluseye Fesojaye
+                    Ven. Michael Oluseye Fesojaye
                   </h2>
                   <p>Odigbo</p>
                 </div>
@@ -97,7 +95,7 @@ export default function Home({ events = [] }) {
                 </div>
                 <div className={styles.CarouselItemText}>
                   <h2 className={styles.CarouselItemHeading}>
-                  Ven. S. O. Ayodele
+                    Ven. S. O. Ayodele
                   </h2>
                   <p>Okeigbo</p>
                 </div>
@@ -234,16 +232,6 @@ export default function Home({ events = [] }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(apiBaseUrl);
-  // get upcoming events here
-  const {
-    data: { msg: events },
-  } = await axios.get(apiBaseUrl + 'read/events');
-  console.log(events);
-
-  return {
-    props: {
-      events,
-    },
-  };
+  const { msg: events = [] } = await api.get('read/events/');
+  return { props: { events } };
 }
