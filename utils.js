@@ -44,7 +44,8 @@ export const formatDate = (date) => DateTime.fromJSDate(date).toFormat("yyyy'-'M
 
 export const formatTime = (date) => DateTime.fromJSDate(date).toLocaleString(DateTime.TIME_SIMPLE)
 
-export const BASE_URL = 'https://backend-test-mtqp.onrender.com/api/';
+//export const BASE_URL = 'https://backend-test-mtqp.onrender.com/api/';
+export const BASE_URL = "https://backend-server-l4au.onrender.com/api";
 
 export const api = axios.create({ baseURL: BASE_URL });
 
